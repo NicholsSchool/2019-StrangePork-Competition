@@ -49,8 +49,10 @@ public class RobotMap
   public static WPI_TalonSRX rightGrip;
   public static WPI_TalonSRX armExtend;
 
+
   public static AHRS ahrs;
 
+<<<<<<< HEAD
   public static Ultrasonic leftFrontUltraSonic;
   public static Ultrasonic rightFrontUltraSonic;
 
@@ -64,6 +66,8 @@ public class RobotMap
 
   public static AnalogPotentiometer elevatorArmPot;
   public static AnalogPotentiometer armPot;
+=======
+>>>>>>> b40cbda75a8762111021442893c7f8e9d5bfae27
 
   public static void init()
   {
@@ -77,6 +81,7 @@ public class RobotMap
     dartR = new WPI_TalonSRX(Constants.DARTR);
     leftGrip = new WPI_TalonSRX(Constants.LEFTGRIP);
     rightGrip = new WPI_TalonSRX(Constants.RIGHTGRIP);
+
     armExtend = new WPI_TalonSRX(Constants.ARMEXTEND);
 
     frontLD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
