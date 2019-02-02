@@ -10,6 +10,10 @@ package frc.robot;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 
 /**
@@ -42,7 +46,10 @@ public class RobotMap
   public static WPI_TalonSRX gripMotR;
   public static WPI_TalonSRX armExtend;
 
+  public static SpeedControllerGroup leftSide;
+  public static SpeedControllerGroup rightSide;
 
+  public static DifferentialDrive driveBase;
 
   public static void init()
   {
@@ -64,5 +71,10 @@ public class RobotMap
     frontLD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
     midRD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
     backRD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
+
+    leftSide = new SpeedControllerGroup(frontLD, midLD, backLD);
+    rightSide = new SpeedControllerGroup(frontRD, midRD, backRD);
+
+    driveBase = new DifferentialDrive(leftSide, rightSide);
   }
 }
