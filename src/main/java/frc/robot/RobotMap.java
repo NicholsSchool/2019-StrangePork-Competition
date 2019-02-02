@@ -12,6 +12,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.SPI;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
@@ -45,9 +46,8 @@ public class RobotMap
   public static WPI_TalonSRX leftGrip;
   public static WPI_TalonSRX rightGrip;
   public static WPI_TalonSRX armExtend;
-  
 
-
+  public static AnalogPotentiometer pot;
   public static AHRS ahrs;
 
 
@@ -72,7 +72,8 @@ public class RobotMap
     frontLD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
     midRD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
     backRD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
-
+    
+    pot = new AnalogPotentiometer();
     ahrs = new AHRS(SPI.Port.kMXP);
   }
 }
