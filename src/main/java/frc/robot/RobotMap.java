@@ -12,7 +12,10 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.Ultrasonic;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 
@@ -48,6 +51,20 @@ public class RobotMap
 
   public static AHRS ahrs;
 
+  public static Ultrasonic leftFrontUltraSonic;
+  public static Ultrasonic rightFrontUltraSonic;
+
+  public static Ultrasonic leftBackUltraSonic;
+  public static Ultrasonic rightBackUltraSonic;
+
+  public static DigitalInput hatchLockLimitSwitch;
+  public static DigitalInput bottomArmLimitSwitch;
+  public static DigitalInput topArmLimitSwitch;
+  public static DigitalInput retractedJJLimitSwitch;
+
+  public static AnalogPotentiometer elevatorArmPot;
+  public static AnalogPotentiometer armPot;
+
   public static void init()
   {
     frontLD = new WPI_TalonSRX(Constants.FRONTLD);
@@ -70,5 +87,19 @@ public class RobotMap
     backRD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
 
     ahrs = new AHRS(SPI.Port.kMXP);
+
+    leftFrontUltraSonic = new Ultrasonic(0,1);
+    rightFrontUltraSonic = new Ultrasonic(0,1);
+
+    leftBackUltraSonic = new Ultrasonic(0,1);
+    rightBackUltraSonic = new Ultrasonic(0,1);
+
+    hatchLockLimitSwitch = new DigitalInput(Constants.HATCH_LOCK_LIMIT_SWITCH);
+    bottomArmLimitSwitch = new DigitalInput(Constants.BOTTOM_ARM_LIMIT_SWITCH);
+    topArmLimitSwitch = new DigitalInput(Constants.TOP_ARM_LIMIT_SWITCH);
+    retractedJJLimitSwitch = new DigitalInput(Constants.RETRACTED_JJ_LIMIT_SWITCH);
+
+    elevatorArmPot = new AnalogPotentiometer(Constants.ELEVATOR_ARM_POT);
+    armPot = new AnalogPotentiometer(Constants.ARM_POT);
   }
 }
