@@ -1,6 +1,11 @@
 package frc.robot.subsystems;
 
-@Override
-public void intake(){
+public class Intake
+{
+    @Override
+    public void intake()
+    {
+
+    } 
 
 }

@@ -1,6 +1,9 @@
 package frc.robot.sensors;
 
-public class NavX{
+import com.kauailabs.navx.frc.AHRS;
+
+public class NavX
+{
     
     private AHRS navX;
 

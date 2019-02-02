@@ -1,15 +1,16 @@
 package frc.robot.subsystems;
 
-public class DriveTrain{
+public class DriveTrain
+{
    
-public void move(){
+    public void move()
+    {
 
-} 
+    } 
 
-public void stop(){
+    public void stop()
+    {
 
-}
-
-
+    }
 
 }
