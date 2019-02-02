@@ -73,7 +73,7 @@ public class RobotMap
     midRD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
     backRD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
     
-    pot = new AnalogPotentiometer();
+    pot = new AnalogPotentiometer(0);
     ahrs = new AHRS(SPI.Port.kMXP);
   }
 }
