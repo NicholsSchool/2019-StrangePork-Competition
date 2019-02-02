@@ -74,8 +74,12 @@ public class RobotMap
     frontRD = new WPI_TalonSRX(Constants.FRONTRD);
     midRD = new WPI_TalonSRX(Constants.MIDRD);
     backRD = new WPI_TalonSRX(Constants.BACKRD);
+
+    //Making Dart Motors
     dartL = new WPI_TalonSRX(Constants.DARTL);
     dartR = new WPI_TalonSRX(Constants.DARTR);
+
+    //Making Arm Motors
     leftGrip = new WPI_TalonSRX(Constants.LEFTGRIP);
     rightGrip = new WPI_TalonSRX(Constants.RIGHTGRIP);
     armExtend = new WPI_TalonSRX(Constants.ARMEXTEND);
