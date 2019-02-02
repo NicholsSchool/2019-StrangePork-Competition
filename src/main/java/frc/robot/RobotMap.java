@@ -54,7 +54,6 @@ public class RobotMap
 
   public static Ultrasonic leftFrontUltraSonic;
   public static Ultrasonic rightFrontUltraSonic;
-
   public static Ultrasonic leftBackUltraSonic;
   public static Ultrasonic rightBackUltraSonic;
 
@@ -68,6 +67,7 @@ public class RobotMap
 
   public static void init()
   {
+    //Making Drive Motors
     frontLD = new WPI_TalonSRX(Constants.FRONTLD);
     midLD = new WPI_TalonSRX(Constants.MIDLD);
     backLD = new WPI_TalonSRX(Constants.BACKLD);
@@ -78,9 +78,9 @@ public class RobotMap
     dartR = new WPI_TalonSRX(Constants.DARTR);
     leftGrip = new WPI_TalonSRX(Constants.LEFTGRIP);
     rightGrip = new WPI_TalonSRX(Constants.RIGHTGRIP);
-
     armExtend = new WPI_TalonSRX(Constants.ARMEXTEND);
-
+    
+    //Making encoders
     frontLD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
     midLD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
     backLD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
@@ -88,19 +88,22 @@ public class RobotMap
     midRD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
     backRD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
 
+    //Making Gyro
     ahrs = new AHRS(SPI.Port.kMXP);
 
+    //Making Ultrasonic Sensors
     leftFrontUltraSonic = new Ultrasonic(0,1);
     rightFrontUltraSonic = new Ultrasonic(0,1);
-
     leftBackUltraSonic = new Ultrasonic(0,1);
     rightBackUltraSonic = new Ultrasonic(0,1);
 
+    //Making Limit Switches
     hatchLockLimitSwitch = new DigitalInput(Constants.HATCH_LOCK_LIMIT_SWITCH);
     bottomArmLimitSwitch = new DigitalInput(Constants.BOTTOM_ARM_LIMIT_SWITCH);
     topArmLimitSwitch = new DigitalInput(Constants.TOP_ARM_LIMIT_SWITCH);
     retractedJJLimitSwitch = new DigitalInput(Constants.RETRACTED_JJ_LIMIT_SWITCH);
 
+    //Making Potentiometers
     elevatorArmPot = new AnalogPotentiometer(Constants.ELEVATOR_ARM_POT);
     armPot = new AnalogPotentiometer(Constants.ARM_POT);
   }
