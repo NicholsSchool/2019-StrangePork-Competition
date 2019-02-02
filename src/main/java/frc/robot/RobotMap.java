@@ -7,6 +7,9 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.Solenoid;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -14,6 +17,25 @@ package frc.robot;
  * floating around.
  */
 public class RobotMap {
+
+
+  // Pneumatics
+  
+  public static Compressor compressor;
+  public static Solenoid solenoid1;
+  public static Solenoid solenoid2;
+
+
+
+  public static void init() {
+    compressor = new Compressor(50);
+    solenoid1 = new Solenoid(50, 1); //PTO
+    solenoid2 = new Solenoid(50, 2); //DropWheel
+    solenoid1.set(true);  //PTO
+    solenoid2.set(false); //DropWheel
+  }
+
+
   // For example to map the left and right motors, you could define the
   // following variables to use with your drivetrain subsystem.
   // public static int leftMotor = 1;
@@ -23,4 +45,5 @@ public class RobotMap {
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
+
 }

@@ -8,11 +8,13 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
+import frc.robot.Robot;
 
 /**
  * An example subsystem.  You can replace me with your own Subsystem.
  */
-public class ExampleSubsystem extends Subsystem {
+public class JumpJacks extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
@@ -21,4 +23,16 @@ public class ExampleSubsystem extends Subsystem {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
+  public void drop() {
+    RobotMap.solenoid1.set(true);
+    Robot.dropped = true;
+		RobotMap.solenoid2.set(true);
+		Robot.dropped = true;
+  }
+  public void raise() {
+    RobotMap.solenoid1.set(false);
+    Robot.dropped = false;
+    RobotMap.solenoid2.set(false);
+		Robot.dropped = false;
+	}
 }
