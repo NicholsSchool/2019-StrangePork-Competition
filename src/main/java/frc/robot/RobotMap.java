@@ -10,6 +10,7 @@ package frc.robot;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -54,5 +55,12 @@ public class RobotMap
     gripMotL = new WPI_TalonSRX(Constants.gripMotL);
     gripMotR = new WPI_TalonSRX(Constants.gitpMotR);
     armExtend = new WPI_TalonSRX(Constants.armExtend);
+
+    frontLD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
+    midLD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
+    backLD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
+    frontLD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
+    midRD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
+    backRD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
   }
 }
