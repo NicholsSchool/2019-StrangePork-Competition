@@ -10,6 +10,9 @@ package frc.robot;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
+import edu.wpi.first.wpilibj.SPI;
+
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 
 /**
@@ -41,6 +44,7 @@ public class RobotMap
   public static WPI_TalonSRX gripMotL;
   public static WPI_TalonSRX gripMotR;
   public static WPI_TalonSRX armExtend;
+  
 
   public static void init()
   {
@@ -62,5 +66,7 @@ public class RobotMap
     frontLD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
     midRD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
     backRD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
+
+    
   }
 }
