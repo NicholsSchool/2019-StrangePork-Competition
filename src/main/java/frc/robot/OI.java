@@ -7,6 +7,11 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.subsystems.JumpJacks;
+import frc.robot.commands.JumpJacksDrop;
+import frc.robot.commands.JumpJacksRaise;
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -47,6 +52,7 @@ public class OI {
     j0b1 = new JoystickButton(j0, 1);
     j0b2 = new JoystickButton(j0, 2);
 
-    j0b1.whenPressed(new dropJumpJacks);
-    j0b2.whenPressed(new raiseJumpJacks); 
+    j0b1.whenPressed(new JumpJacksDrop());
+    j0b2.whenPressed(new JumpJacksRaise()); 
+}
 }

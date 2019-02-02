@@ -17,34 +17,20 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * An example command.  You can replace me with your own command.
  */
 
-public class Jacks extends Command {
-  public Jacks() {
-    requires(Robot.jumpJacks);
+public class JumpJacksRaise extends Command {
+  public JumpJacksRaise() {
+    requires(Robot.m_subsystem);
     // Use requires() here to declare subsystem dependencies
     //requires(Robot.m_subsystem);
   }
-  public Joystick j0;
-  public JoystickButton j0b1, j0b2;
-  public void OI() {
-    j0 = new Joystick(0);
-
-    j0b1 = new JoystickButton(j0, 1);
-    j0b2 = new JoystickButton(j0, 2);
-  }
-
-  // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.jumpJacks.drop();
-    Robot.jumpJacks.raise();
-
+      Robot.jumpJacks.raise();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //j0b1.whenPressed(new dropJumpJacks());
-    //j0b2.whenPressed(new raiseJumpJacks()); 
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -58,7 +44,7 @@ public class Jacks extends Command {
   protected void end() {
   }
 
-  // Called when another command which requires one or mored of the same
+  // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
