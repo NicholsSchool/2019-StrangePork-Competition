@@ -10,9 +10,9 @@ public class Constants
     FRONTRD = 4,
     MIDRD = 5,
     BACKRD = 6,
-    LDART = 7,
-    RDART = 8,
-    GRIPMOTL = 9,
-    GRIPMOTR = 10,
+    DARTL = 7,
+    DARTR = 8,
+    LEFTGRIP = 9,
+    RIGHTGRIP = 10,
     ARMEXTEND = 11;
 }
