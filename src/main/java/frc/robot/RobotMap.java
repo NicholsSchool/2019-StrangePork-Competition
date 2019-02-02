@@ -10,6 +10,10 @@ package frc.robot;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.kauailabs.navx.frc.AHRS;
+
+import edu.wpi.first.wpilibj.SPI;
+
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 
 /**
@@ -36,12 +40,14 @@ public class RobotMap
   public static WPI_TalonSRX frontRD;
   public static WPI_TalonSRX midRD;
   public static WPI_TalonSRX backRD;
-  public static WPI_TalonSRX lDart;
-  public static WPI_TalonSRX rDart;
-  public static WPI_TalonSRX gripMotL;
-  public static WPI_TalonSRX gripMotR;
+  public static WPI_TalonSRX dartL;
+  public static WPI_TalonSRX dartR;
+  public static WPI_TalonSRX leftGrip;
+  public static WPI_TalonSRX rightGrip;
   public static WPI_TalonSRX armExtend;
 
+
+  public static AHRS ahrs;
 
 
   public static void init()
@@ -52,10 +58,11 @@ public class RobotMap
     frontRD = new WPI_TalonSRX(Constants.FRONTRD);
     midRD = new WPI_TalonSRX(Constants.MIDRD);
     backRD = new WPI_TalonSRX(Constants.BACKRD);
-    lDart = new WPI_TalonSRX(Constants.LDART);
-    rDart = new WPI_TalonSRX(Constants.RDART);
-    gripMotL = new WPI_TalonSRX(Constants.GRIPMOTL);
-    gripMotR = new WPI_TalonSRX(Constants.GRIPMOTR);
+    dartL = new WPI_TalonSRX(Constants.DARTL);
+    dartR = new WPI_TalonSRX(Constants.DARTR);
+    leftGrip = new WPI_TalonSRX(Constants.LEFTGRIP);
+    rightGrip = new WPI_TalonSRX(Constants.RIGHTGRIP);
+
     armExtend = new WPI_TalonSRX(Constants.ARMEXTEND);
 
     frontLD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
@@ -64,5 +71,7 @@ public class RobotMap
     frontLD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
     midRD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
     backRD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
+
+    ahrs = new AHRS(SPI.Port.kMXP);
   }
 }
