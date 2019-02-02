@@ -1,6 +1,17 @@
 package frc.robot.subsystems;
 
-@Override
+public class Arm{
+
 public void armMove(){
+
+}
+
+public void armUp(){
+
+}
+
+public void getCurrentPosition(){
+
+}
 
 }
