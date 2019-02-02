@@ -66,7 +66,6 @@ public class RobotMap
   public static AnalogPotentiometer elevatorArmPot;
   public static AnalogPotentiometer armPot;
 
-  
   public static void init()
   {
     frontLD = new WPI_TalonSRX(Constants.FRONTLD);
