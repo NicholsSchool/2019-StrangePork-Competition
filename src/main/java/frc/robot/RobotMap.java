@@ -42,19 +42,21 @@ public class RobotMap
   public static WPI_TalonSRX gripMotR;
   public static WPI_TalonSRX armExtend;
 
+
+
   public static void init()
   {
-    frontLD = new WPI_TalonSRX(Constants.frontLD);
-    midLD = new WPI_TalonSRX(Constants.midLD);
-    backLD = new WPI_TalonSRX(Constants.backLD);
-    frontRD = new WPI_TalonSRX(Constants.frontRD);
-    midRD = new WPI_TalonSRX(Constants.midRD);
-    backRD = new WPI_TalonSRX(Constants.backRD);
-    lDart = new WPI_TalonSRX(Constants.lDart);
-    rDart = new WPI_TalonSRX(Constants.rDart);
-    gripMotL = new WPI_TalonSRX(Constants.gripMotL);
-    gripMotR = new WPI_TalonSRX(Constants.gitpMotR);
-    armExtend = new WPI_TalonSRX(Constants.armExtend);
+    frontLD = new WPI_TalonSRX(Constants.FRONTLD);
+    midLD = new WPI_TalonSRX(Constants.MIDLD);
+    backLD = new WPI_TalonSRX(Constants.BACKLD);
+    frontRD = new WPI_TalonSRX(Constants.FRONTRD);
+    midRD = new WPI_TalonSRX(Constants.MIDRD);
+    backRD = new WPI_TalonSRX(Constants.BACKRD);
+    lDart = new WPI_TalonSRX(Constants.LDART);
+    rDart = new WPI_TalonSRX(Constants.RDART);
+    gripMotL = new WPI_TalonSRX(Constants.GRIPMOTL);
+    gripMotR = new WPI_TalonSRX(Constants.GRIPMOTR);
+    armExtend = new WPI_TalonSRX(Constants.ARMEXTEND);
 
     frontLD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
     midLD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
