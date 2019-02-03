@@ -15,4 +15,6 @@ public class Constants
     LEFTGRIP = 9,
     RIGHTGRIP = 10,
     ARMEXTEND = 11;
+
+    public static final double SIGMOID_A = 25;
 }
