@@ -9,16 +9,8 @@ public class DustPan
     {
         RobotMap.solenoid0.set(Constants.DUSTPAN_RAISED);
     }
-    public void place()
-    {
-
-    }
     public void drop()
     {
         RobotMap.solenoid0.set(Constants.DUSTPAN_DROPPED);
     } 
-    public void stop()
-    {
-
-    }
 }                                        
