@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.Jacks;
 import frc.robot.subsystems.JumpJacks;
+import frc.robot.sensors.AnalogInput;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,7 +24,8 @@ import frc.robot.subsystems.JumpJacks;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static JumpJacks jumpJacks = null;
+  public static JumpJacks jumpJacks;
+  public static AnalogInput AnalogInput;
 public static JumpJacks m_subsystem = new JumpJacks();
   public static OI m_oi;
 public static boolean dropped;
@@ -37,6 +39,8 @@ public static boolean dropped;
    */
   @Override
   public void robotInit() {
+
+
     m_oi = new OI();
     m_chooser.setDefaultOption("Default Auto", new Jacks());
     // chooser.addOption("My Auto", new MyAutoCommand());

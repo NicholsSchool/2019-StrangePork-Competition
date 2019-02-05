@@ -1,22 +1,12 @@
 package frc.robot.sensors;
 
 import edu.wpi.first.wpilibj.Ultrasonic;
-import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.Robot;
-import frc.robot.commands.UltrasonicL;
-import frc.robot.commands.UltrasonicR;
-
 /**
  * An example subsystem.  You can replace me with your own Subsystem.
  */
-public class AnalogInput extends Subsystem{
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
-  @Override
-  public void initDefaultCommand() {
-  }
-
+public class AnalogInput{
 
   public double getRange(char side) 
   {
@@ -36,4 +26,20 @@ public class AnalogInput extends Subsystem{
           RobotMap.ultrasonicR.resetAccumulator();
             System.out.println("right ultrasonic reset");
     }
+    public double getInches(char side)
+    {
+        if(side == 'L')
+        {
+          double x = RobotMap.ultrasonicR.getValue();
+          x = x * .048;
+          return x;
+        }
+        if(side == 'R')
+        {
+          double x = RobotMap.ultrasonicL.getValue();
+          x = x * .048;
+          return x;
+        }
+        return 0;
+    } 
 }

@@ -10,11 +10,11 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * An example command.  You can replace me with your own command.
  */
 
-public class UltrasonicR extends Command {
-  public UltrasonicR() {
+public class WallAllign extends Command {
+
+  public WallAllign() {
     requires(Robot.m_subsystem);
-    // Use requires() here to declare subsystem dependencies
-    //requires(Robot.m_subsystem);
+
   }
   @Override
   protected void initialize() {
