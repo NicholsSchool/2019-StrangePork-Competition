@@ -3,7 +3,7 @@ package frc.robot.subsystems;
 import frc.robot.Constants;
 import frc.robot.RobotMap;
 
-public class Dustpan
+public class DustPan
 {
     public void raise()
     {
@@ -16,7 +16,7 @@ public class Dustpan
     public void drop()
     {
         RobotMap.solenoid0.set(Constants.DUSTPAN_DROPPED);
-    }
+    } 
     public void stop()
     {
 
