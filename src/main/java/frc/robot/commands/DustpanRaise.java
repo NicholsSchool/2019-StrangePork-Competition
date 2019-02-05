@@ -1,17 +1,10 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 
-public class FloorHatchScoop extends Command
+public class DustpanRaise extends Command
 {
-    double speed;
-    double time;
-
-    public FloorHatchScoop(double sp, double tm)
-    {
-        speed = sp;
-        time = tm;
-    }
 
     @Override
     public void initialize()
@@ -22,13 +15,13 @@ public class FloorHatchScoop extends Command
     @Override
     protected void execute() 
     {
-        
+        Robot.dustpan.raise();
     }
 
 	@Override
     protected boolean isFinished()
     {
-		return false;
+		return true;
     }
     
     @Override
