@@ -13,8 +13,10 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Ultrasonic;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
@@ -65,6 +67,11 @@ public class RobotMap
   public static AnalogPotentiometer elevatorArmPot;
   public static AnalogPotentiometer armPot;
 
+  public static Compressor compressor;
+  public static Solenoid solenoid0;
+  public static Solenoid solenoid1;
+  public static Solenoid solenoid2;
+
   public static void init()
   {
     //Making Drive Motors
@@ -110,5 +117,10 @@ public class RobotMap
     //Making Potentiometers
     elevatorArmPot = new AnalogPotentiometer(Constants.ELEVATOR_ARM_POT);
     armPot = new AnalogPotentiometer(Constants.ARM_POT);
+
+    compressor = new Compressor(50);
+    solenoid0 = new Solenoid(50, 0);
+    solenoid1 = new Solenoid(50, 1);
+    solenoid2 = new Solenoid(50, 2);
   }
 }
