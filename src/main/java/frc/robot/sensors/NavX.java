@@ -16,7 +16,7 @@ public class NavX
     {
         return navX.getYaw() % 360;
     }
-    
+
     public double getAngle()
     {
         double angle = navX.getAngle();
@@ -46,7 +46,7 @@ public class NavX
         navX.reset();
     }
 
-    }
+    
 
 
 }

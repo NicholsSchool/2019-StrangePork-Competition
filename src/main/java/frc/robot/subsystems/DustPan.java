@@ -1,8 +1,7 @@
 package frc.robot.subsystems;
 
-public class HatchScoop
+public class DustPan
 {
-
     public void scoop()
     {
 
