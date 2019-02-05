@@ -16,7 +16,9 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
+
 import edu.wpi.first.wpilibj.DigitalInput;
+
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.Ultrasonic;
 
@@ -52,9 +54,11 @@ public class RobotMap
   public static WPI_TalonSRX rightGrip;
   public static WPI_TalonSRX armExtend;
 
+  public static AnalogPotentiometer pot;
+  public static AHRS ahrs;
+
   public static SpeedControllerGroup leftSide;
   public static SpeedControllerGroup rightSide;
-
 
 
   public static DifferentialDrive driveBase;
@@ -100,6 +104,10 @@ public class RobotMap
     midRD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
     backRD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
 
+    
+    pot = new AnalogPotentiometer(0);
+
+
 
     leftSide = new SpeedControllerGroup(frontLD, midLD, backLD);
     rightSide = new SpeedControllerGroup(frontRD, midRD, backRD);
@@ -107,7 +115,6 @@ public class RobotMap
     driveBase = new DifferentialDrive(leftSide, rightSide);
 
     //Making Gyro
-
     ahrs = new AHRS(SPI.Port.kMXP);
 
     //Making Ultrasonic Sensors
