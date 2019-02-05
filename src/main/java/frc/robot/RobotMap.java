@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot;
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Solenoid;
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -27,6 +28,8 @@ public class RobotMap {
   public static Compressor compressor;
   public static Solenoid solenoid1;
   public static Solenoid solenoid2;
+  public static AnalogInput ultrasonicL;
+  public static AnalogInput ultrasonicR;
 
 
 
