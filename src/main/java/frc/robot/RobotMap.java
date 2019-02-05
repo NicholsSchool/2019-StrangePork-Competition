@@ -56,8 +56,6 @@ public class RobotMap
 
   public static Ultrasonic leftFrontUltraSonic;
   public static Ultrasonic rightFrontUltraSonic;
-  public static Ultrasonic leftBackUltraSonic;
-  public static Ultrasonic rightBackUltraSonic;
 
   public static DigitalInput hatchLockLimitSwitch;
   public static DigitalInput bottomArmLimitSwitch;
@@ -105,8 +103,6 @@ public class RobotMap
     //Making Ultrasonic Sensors
     leftFrontUltraSonic = new Ultrasonic(0,1);
     rightFrontUltraSonic = new Ultrasonic(0,1);
-    leftBackUltraSonic = new Ultrasonic(0,1);
-    rightBackUltraSonic = new Ultrasonic(0,1);
 
     //Making Limit Switches
     hatchLockLimitSwitch = new DigitalInput(Constants.HATCH_LOCK_LIMIT_SWITCH);
