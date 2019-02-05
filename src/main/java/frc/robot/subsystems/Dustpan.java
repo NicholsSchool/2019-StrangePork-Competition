@@ -3,7 +3,7 @@ package frc.robot.subsystems;
 import frc.robot.Constants;
 import frc.robot.RobotMap;
 
-public class DustPan
+public class Dustpan
 {
     public void raise()
     {
