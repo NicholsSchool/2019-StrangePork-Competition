@@ -2,7 +2,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class Elevator extends Command
+public class ElevatorMove extends Command
 {
 
 @Override
