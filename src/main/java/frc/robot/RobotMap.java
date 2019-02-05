@@ -57,7 +57,6 @@ public class RobotMap
   public static WPI_TalonSRX armExtend;
 
   public static AnalogPotentiometer pot;
-  public static AHRS ahrs;
 
   public static SpeedControllerGroup leftSide;
   public static SpeedControllerGroup rightSide;
