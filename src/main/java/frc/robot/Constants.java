@@ -31,5 +31,9 @@ public class Constants
     WHEEL_DIAMETER_IN_FEET = 0.5,
     TICKS_PER_ROTATION = 1128;
 
+    public static double INTAKE_SPEED=0.5;
+
+        
+    
 
 }

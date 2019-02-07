@@ -84,7 +84,6 @@ public class RobotMap
   public static Solenoid solenoid1;
   public static Solenoid solenoid2;
 
-  public static AHRS ahrs;
 
   public static void init()
   {
