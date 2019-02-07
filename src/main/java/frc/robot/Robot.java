@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -15,6 +17,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.JumpJacks;
 import frc.robot.sensors.AnalogInput;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Gripper;
+import frc.robot.sensors.NavX;
+import frc.robot.sensors.Vision;
+import frc.robot.subsystems.DustPan;
+
 
 
 /**
@@ -23,14 +30,19 @@ import frc.robot.subsystems.DriveTrain;
  * documentation. If you change the name of this class or the package after
  * creating this project, you must also update the build.gradle file in the
  * project.
+ * 
+ * @param <driveTrain>
  */
+
 public class Robot extends TimedRobot {
   public static JumpJacks jumpJacks;
   public static AnalogInput AnalogInput;
-  public static OI m_oi;
   public static boolean dropped;
   public static OI oi;
   public static DriveTrain driveTrain;
+  public static DustPan dustpan;
+  public static NavX navX;
+  public static Gripper gripper;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -46,7 +58,10 @@ public class Robot extends TimedRobot {
 
     jumpJacks = new JumpJacks();
     driveTrain = new DriveTrain();
-
+    dustpan = new DustPan();
+    gripper = new Gripper();
+    Vision.init();
+    navX = new NavX(RobotMap.ahrs);
     //OI gets Instantiated LAST!
     oi = new OI();
   }
@@ -138,4 +153,8 @@ public class Robot extends TimedRobot {
   @Override
   public void testPeriodic() {
   }
+
+public static void gripper(Gripper gripper2) {
+}
+
 }

@@ -22,6 +22,7 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.Compressor;
 
@@ -64,7 +65,6 @@ public class RobotMap
 
   public static AnalogPotentiometer pot;
 
-
   public static SpeedControllerGroup leftSide;
   public static SpeedControllerGroup rightSide;
 
@@ -73,8 +73,6 @@ public class RobotMap
 
   public static AnalogInput leftFrontUltraSonic;
   public static AnalogInput rightFrontUltraSonic;
-  public static AnalogInput leftBackUltraSonic;
-  public static AnalogInput rightBackUltraSonic;
 
   public static DigitalInput hatchLockLimitSwitch;
   public static DigitalInput bottomArmLimitSwitch;
@@ -84,13 +82,13 @@ public class RobotMap
   public static AnalogPotentiometer elevatorArmPot;
   public static AnalogPotentiometer armPot;
 
+  public static AHRS ahrs;
 
   public static Compressor compressor;
   public static Solenoid solenoid0;
   public static Solenoid solenoid1;
   public static Solenoid solenoid2;
 
-  public static AHRS ahrs;
 
   public static void init()
   {
@@ -121,8 +119,6 @@ public class RobotMap
 
     
     pot = new AnalogPotentiometer(0);
-
-
 
     leftSide = new SpeedControllerGroup(frontLD, midLD, backLD);
     rightSide = new SpeedControllerGroup(frontRD, midRD, backRD);
