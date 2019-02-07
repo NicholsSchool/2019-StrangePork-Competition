@@ -75,6 +75,7 @@ public class RobotMap
   public static AnalogPotentiometer elevatorArmPot;
   public static AnalogPotentiometer armPot;
 
+  public static AHRS ahrs;
 
   public static Compressor compressor;
   public static Solenoid solenoid0;
