@@ -19,19 +19,10 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class JumpJacksDrop extends Command {
   public JumpJacksDrop() {
-    requires(Robot.m_subsystem);
-    // Use requires() here to declare subsystem dependencies
-    //requires(Robot.m_subsystem);
-}
-public Joystick j0;
-public JoystickButton j0b1, j0b2;
-public void OI() {
-  j0 = new Joystick(0);
 
-  j0b1 = new JoystickButton(j0, 1);
-  j0b2 = new JoystickButton(j0, 2);
-}
-  
+  }
+    // Use requires() here to declare subsystem dependencies
+    //requires(Robot.m_subsystem);  
   @Override
   protected void initialize() {
     Robot.jumpJacks.drop();
@@ -46,7 +37,7 @@ public void OI() {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true

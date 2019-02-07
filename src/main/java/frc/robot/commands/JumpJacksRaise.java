@@ -19,7 +19,6 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class JumpJacksRaise extends Command {
   public JumpJacksRaise() {
-    requires(Robot.m_subsystem);
     // Use requires() here to declare subsystem dependencies
     //requires(Robot.m_subsystem);
   }
@@ -36,7 +35,7 @@ public class JumpJacksRaise extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true
