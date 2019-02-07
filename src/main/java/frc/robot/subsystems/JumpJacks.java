@@ -24,13 +24,9 @@ public class JumpJacks extends Subsystem {
   public void drop() {
     RobotMap.solenoid1.set(true);
     Robot.dropped = true;
-		RobotMap.solenoid2.set(true);
-		Robot.dropped = true;
   }
   public void raise() {
     RobotMap.solenoid1.set(false);
     Robot.dropped = false;
-    RobotMap.solenoid2.set(false);
-		Robot.dropped = false;
 	}
 }
