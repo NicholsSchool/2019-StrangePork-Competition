@@ -6,6 +6,13 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot;
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.Solenoid;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
@@ -23,7 +30,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.Ultrasonic;
+import edu.wpi.first.wpilibj.AnalogInput;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 
@@ -44,7 +51,6 @@ public class RobotMap
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
-
   public static WPI_TalonSRX frontLD;
   public static WPI_TalonSRX midLD;
   public static WPI_TalonSRX backLD;
@@ -123,9 +129,9 @@ public class RobotMap
     ahrs = new AHRS(SPI.Port.kMXP);
 
     //Making Ultrasonic Sensors
-    leftFrontUltraSonic = new AnalogInput(1);
-    rightFrontUltraSonic = new AnalogInput(1);
-
+    leftFrontUltraSonic = new AnalogInput(0);
+    rightFrontUltraSonic = new AnalogInput(0);
+    
     //Making Limit Switches
     hatchLockLimitSwitch = new DigitalInput(Constants.HATCH_LOCK_LIMIT_SWITCH);
     bottomArmLimitSwitch = new DigitalInput(Constants.BOTTOM_ARM_LIMIT_SWITCH);
@@ -141,4 +147,5 @@ public class RobotMap
     solenoid1 = new Solenoid(50, 1);
     solenoid2 = new Solenoid(50, 2);
   }
+
 }

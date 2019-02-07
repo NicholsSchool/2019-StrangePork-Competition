@@ -14,8 +14,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.Gripper;
+import frc.robot.subsystems.JumpJacks;
+import frc.robot.sensors.AnalogInput;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Gripper;
 import frc.robot.sensors.NavX;
 import frc.robot.sensors.Vision;
 import frc.robot.subsystems.DustPan;
@@ -31,14 +33,15 @@ import frc.robot.subsystems.DustPan;
  * 
  * @param <driveTrain>
  */
-public class Robot<driveTrain> extends TimedRobot {
 
+public class Robot extends TimedRobot {
+  public static JumpJacks jumpJacks;
+  public static AnalogInput AnalogInput;
+  public static boolean dropped;
   public static OI oi;
   public static DriveTrain driveTrain;
   public static DustPan dustpan;
-
   public static NavX navX;
-
   public static Gripper gripper;
 
   Command m_autonomousCommand;
@@ -50,6 +53,10 @@ public class Robot<driveTrain> extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    // chooser.addOption("My Auto", new MyAutoCommand());
+    SmartDashboard.putData("Auto mode", m_chooser);
+
+    jumpJacks = new JumpJacks();
     driveTrain = new DriveTrain();
     dustpan = new DustPan();
     gripper = new Gripper();
