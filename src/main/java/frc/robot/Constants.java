@@ -32,8 +32,8 @@ public class Constants
     TICKS_PER_ROTATION = 1128;
 
     public static double INTAKE_SPEED=0.5;
-
-        
-    
+    public static final boolean
+        DUSTPAN_RAISED = true,
+        DUSTPAN_DROPPED = false;
 
 }
