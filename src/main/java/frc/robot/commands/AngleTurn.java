@@ -56,7 +56,6 @@ public class AngleTurn extends Command
     @Override
     protected void end() 
     {
-        
-        end();
+        Robot.driveTrain.stop();
     }
 }

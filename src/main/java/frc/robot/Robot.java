@@ -14,7 +14,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.sensors.NavX;
+import frc.robot.sensors.Vision;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.DustPan;
 
 
 /**
@@ -25,9 +28,12 @@ import frc.robot.subsystems.DriveTrain;
  * project.
  */
 public class Robot extends TimedRobot {
+
   public static OI oi;
   public static DriveTrain driveTrain;
-  public static AHRS navX;
+  public static DustPan dustpan;
+
+  public static NavX navX;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -39,9 +45,12 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     driveTrain = new DriveTrain();
+    dustpan = new DustPan();
 
     //OI gets Instantiated LAST!
     oi = new OI();
+    Vision.init();
+    navX = new NavX(RobotMap.ahrs);
   }
 
   /**
