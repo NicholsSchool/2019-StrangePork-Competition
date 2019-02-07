@@ -14,10 +14,12 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.subsystems.Gripper;
+import frc.robot.subsystems.DriveTrain;
 import frc.robot.sensors.NavX;
 import frc.robot.sensors.Vision;
-import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.DustPan;
+
 
 
 /**
@@ -26,14 +28,18 @@ import frc.robot.subsystems.DustPan;
  * documentation. If you change the name of this class or the package after
  * creating this project, you must also update the build.gradle file in the
  * project.
+ * 
+ * @param <driveTrain>
  */
-public class Robot extends TimedRobot {
+public class Robot<driveTrain> extends TimedRobot {
 
   public static OI oi;
   public static DriveTrain driveTrain;
   public static DustPan dustpan;
 
   public static NavX navX;
+
+  public static Gripper gripper;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -46,11 +52,11 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     driveTrain = new DriveTrain();
     dustpan = new DustPan();
-
-    //OI gets Instantiated LAST!
-    oi = new OI();
+    gripper = new Gripper();
     Vision.init();
     navX = new NavX(RobotMap.ahrs);
+    //OI gets Instantiated LAST!
+    oi = new OI();
   }
 
   /**
@@ -140,4 +146,8 @@ public class Robot extends TimedRobot {
   @Override
   public void testPeriodic() {
   }
+
+public static void gripper(Gripper gripper2) {
+}
+
 }
