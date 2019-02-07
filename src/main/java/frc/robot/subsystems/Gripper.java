@@ -5,9 +5,16 @@ import frc.robot.Constants;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
+/**
+ * The Gripper class contains methods to run
+ * the two motors on the ball gripper.
+ */
 public class Gripper extends Subsystem
 {
 
+    /**
+     * Runs the gripper motors to intake a ball.
+     */
     public void intake()
     {
         RobotMap.leftGrip.set(Constants.INTAKE_SPEED);
@@ -15,6 +22,9 @@ public class Gripper extends Subsystem
 
 
     } 
+    /**
+     * runs gripper motors to outtake ball.
+     */
     public void outtake()
     {
         RobotMap.leftGrip.set(-Constants.INTAKE_SPEED);
@@ -22,6 +32,9 @@ public class Gripper extends Subsystem
 
 
     }
+    /**
+     * Stops the gripper motors.
+     */
     public void stop()
     {
         RobotMap.leftGrip.set(0);
