@@ -12,29 +12,37 @@ public class DustpanDrop extends Command
 
     }
 
+    /**
+     * Drops the Dustpan
+     */
     @Override
     protected void execute() 
     {
         Robot.dustpan.drop();
     }
 
+    /**
+     * Finishes automatically
+     */
 	@Override
     protected boolean isFinished()
     {
 		return true;
     }
-    
+
+    /**
+     * Calls end
+     */
     @Override
     protected void interrupted()
     {
-    
+        end();
     }
 
     @Override
     protected void end() 
     {
-        
-        end();
+    
     }
 
 

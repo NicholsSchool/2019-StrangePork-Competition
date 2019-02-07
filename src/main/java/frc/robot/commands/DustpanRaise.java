@@ -12,30 +12,34 @@ public class DustpanRaise extends Command
 
     }
 
+    /**
+     * Raises the Dustpan
+     */
     @Override
     protected void execute() 
     {
         Robot.dustpan.raise();
     }
-
+    /**
+     * Finishes automatically
+     */
 	@Override
     protected boolean isFinished()
     {
 		return true;
     }
-    
+    /**
+     * Calls end
+     */
     @Override
     protected void interrupted()
     {
-    
+        end();
     }
 
     @Override
     protected void end() 
     {
-        
-        end();
+
     }
-
-
 }
