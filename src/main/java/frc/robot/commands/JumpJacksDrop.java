@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
- * An example command.  You can replace me with your own command.
+ * drops the jumpjacks with button 1
  */
 
 public class JumpJacksDrop extends Command {

@@ -19,6 +19,10 @@ public class WallAllign extends Command {
   public WallAllign(double speed) {
     this.speed = speed;
   }
+  /**
+   * tells which side is further from wall and runs the wheels on that side to allign with the wall
+   * with button 3
+   */
   @Override
   protected void initialize() {
     if(right < left)
