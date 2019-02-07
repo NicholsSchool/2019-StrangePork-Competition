@@ -14,12 +14,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.JumpJacks;
-import frc.robot.sensors.AnalogInput;
-import frc.robot.subsystems.DriveTrain;
-import frc.robot.subsystems.Gripper;
-import frc.robot.sensors.NavX;
-import frc.robot.sensors.Vision;
+import frc.robot.subsystems.*;
+import frc.robot.sensors.*;
 import frc.robot.subsystems.DustPan;
 
 
@@ -36,7 +32,7 @@ import frc.robot.subsystems.DustPan;
 
 public class Robot extends TimedRobot {
   public static JumpJacks jumpJacks;
-  public static AnalogInput AnalogInput;
+  public static Ultrasonic ultrasonic;
   public static boolean dropped;
   public static OI oi;
   public static DriveTrain driveTrain;
@@ -62,6 +58,7 @@ public class Robot extends TimedRobot {
     gripper = new Gripper();
     Vision.init();
     navX = new NavX(RobotMap.ahrs);
+    ultrasonic = new Ultrasonic();
     //OI gets Instantiated LAST!
     oi = new OI();
   }

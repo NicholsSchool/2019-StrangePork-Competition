@@ -1,6 +1,5 @@
 package frc.robot.sensors;
 
-import edu.wpi.first.wpilibj.Ultrasonic;
 import frc.robot.RobotMap;
 import frc.robot.Robot;
 import frc.robot.subsystems.*;
@@ -8,7 +7,7 @@ import frc.robot.subsystems.*;
 /**
  * An example subsystem. You can replace me with your own Subsystem.
  */
-public class AnalogInput {
+public class Ultrasonic {
 
     public double getRange(char side) {
         if (side == 'L')

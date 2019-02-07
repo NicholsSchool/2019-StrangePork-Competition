@@ -14,8 +14,6 @@ public class WallAllign extends Command {
   double speed;
   double lspeed;
   double rspeed;
-  double left = RobotMap.leftFrontUltraSonic.getValue();
-  double right = RobotMap.rightFrontUltraSonic.getValue();
   public WallAllign(double speed) {
     this.speed = speed;
   }
@@ -25,6 +23,8 @@ public class WallAllign extends Command {
    */
   @Override
   protected void initialize() {
+    double left = RobotMap.leftFrontUltraSonic.getValue();
+    double right = RobotMap.rightFrontUltraSonic.getValue();
     if(right < left)
       lspeed = speed;
     else
@@ -38,6 +38,8 @@ public class WallAllign extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
+    double left = RobotMap.leftFrontUltraSonic.getValue();
+    double right = RobotMap.rightFrontUltraSonic.getValue();
    return (Math.abs(left - right)<=10); 
   }
   // Called once after isFinished returns true
