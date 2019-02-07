@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.Compressor;
 
@@ -64,8 +65,8 @@ public class RobotMap
 
   public static DifferentialDrive driveBase;
 
-  public static Ultrasonic leftFrontUltraSonic;
-  public static Ultrasonic rightFrontUltraSonic;
+  public static AnalogInput leftFrontUltraSonic;
+  public static AnalogInput rightFrontUltraSonic;
 
   public static DigitalInput hatchLockLimitSwitch;
   public static DigitalInput bottomArmLimitSwitch;
@@ -113,8 +114,6 @@ public class RobotMap
     
     pot = new AnalogPotentiometer(0);
 
-
-
     leftSide = new SpeedControllerGroup(frontLD, midLD, backLD);
     rightSide = new SpeedControllerGroup(frontRD, midRD, backRD);
 
@@ -124,8 +123,8 @@ public class RobotMap
     ahrs = new AHRS(SPI.Port.kMXP);
 
     //Making Ultrasonic Sensors
-    leftFrontUltraSonic = new Ultrasonic(0,1);
-    rightFrontUltraSonic = new Ultrasonic(0,1);
+    leftFrontUltraSonic = new AnalogInput(1);
+    rightFrontUltraSonic = new AnalogInput(1);
 
     //Making Limit Switches
     hatchLockLimitSwitch = new DigitalInput(Constants.HATCH_LOCK_LIMIT_SWITCH);

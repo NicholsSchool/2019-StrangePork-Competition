@@ -32,7 +32,7 @@ public class OI {
 
     j0b1 = new JoystickButton(j0, 1);
     j0b2 = new JoystickButton(j0, 2);
-    j0b3 = new JoystickButton(j0, 3)
+    j0b3 = new JoystickButton(j0, 3);
     
     j0b1.whileHeld(new Intake());
     j0b2.whileHeld(new Outtake());
