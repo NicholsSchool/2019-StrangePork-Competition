@@ -5,14 +5,15 @@ import frc.robot.Constants;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class SpecialMove extends Command
+public class SigmoidMoveForward extends Command
 {
     private double speed;
     private double distance;
-    private double remainingDistance;
-    private boolean sigFinished;
+    private double startValue;
+    private double distanceToAccelerate;
+    private boolean speedReached;
 
-    public SpecialMove(double speed, double feet)
+    public SigmoidMoveForward(double speed, double feet)
     {
         requires(Robot.driveTrain);
         double rotations = feet / (Constants.WHEEL_DIAMETER_IN_FEET * Math.PI );
@@ -24,20 +25,22 @@ public class SpecialMove extends Command
     protected void initialize() {
         Robot.driveTrain.resetEncoders();
         Robot.driveTrain.reset();
-        sigFinished = false;
-        remainingDistance = distance;
+        speedReached = false;
+        startValue = RobotMap.frontLD.getSelectedSensorPosition(0);
+        distanceToAccelerate = 0;
     }
 
     @Override
     protected void execute() {
-        if (!sigFinished)
+        
+        if (distance - RobotMap.frontLD.getSelectedSensorPosition(0) > distanceToAccelerate)
             Robot.driveTrain.sigmoidMove(speed, speed, 1);
         else
-            Robot.driveTrain.setDistance(remainingDistance);
+            Robot.driveTrain.sigmoidMove(0, 0, 1);
 
-        if (Robot.driveTrain.currentSpeeds[0] >= speed && !sigFinished) {
-            sigFinished = true;
-            remainingDistance = distance - RobotMap.frontLD.getSelectedSensorPosition();
+        if (Robot.driveTrain.currentSpeeds[0] >= speed && !speedReached) {
+            speedReached = true;
+            distanceToAccelerate = RobotMap.frontLD.getSelectedSensorPosition(0) - startValue;
         }
     }
     @Override

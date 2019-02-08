@@ -29,9 +29,7 @@ public class Outtake extends Command {
 	@Override
 	protected void execute() 
 	{
-		
 		Robot.gripper.outtake();
-
 	}
 	/**
 	 * isFinished returns false, so Outtake will never finish on its own. Use this

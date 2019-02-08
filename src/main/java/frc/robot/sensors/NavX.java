@@ -34,7 +34,7 @@ public class NavX
     }
     public boolean atAngle(double angle)
     {
-        return (getAngle() < angle + 5 && getAngle() > angle -5)
+        return (getAngle() < angle + 5 && getAngle() > angle -5);
     }
     public void reset()
     {
