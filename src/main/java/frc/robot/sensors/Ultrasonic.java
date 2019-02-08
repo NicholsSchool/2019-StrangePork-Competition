@@ -21,10 +21,10 @@ public class Ultrasonic {
     public void reset(char side) {
         if (side == 'L')
             RobotMap.leftFrontUltraSonic.resetAccumulator();
-        System.out.println("left ultrasonic reset");
+     //   System.out.println("left ultrasonic reset");
         if (side == 'R')
             RobotMap.rightFrontUltraSonic.resetAccumulator();
-        System.out.println("right ultrasonic reset");
+    //    System.out.println("right ultrasonic reset");
     }
 
     public double getInches(char side) {

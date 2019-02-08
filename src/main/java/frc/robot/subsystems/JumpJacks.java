@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+import frc.robot.Constants;
 import frc.robot.Robot;
 
 /**
@@ -22,11 +23,11 @@ public class JumpJacks extends Subsystem {
   public void initDefaultCommand() {
   }
   public void drop() {
-    RobotMap.solenoid1.set(true);
+    RobotMap.solenoid1.set(Constants.JUMPJACKS_DROPPED);
     Robot.dropped = true;
   }
   public void raise() {
-    RobotMap.solenoid1.set(false);
+    RobotMap.solenoid1.set(Constants.JUMPJACKS_RAISED);
     Robot.dropped = false;
 	}
 }

@@ -24,7 +24,6 @@ public class NavX
         {
         angle = 360 + angle;
         }
-
         else 
         {
         angle = 360 - angle;
@@ -35,11 +34,7 @@ public class NavX
     }
     public boolean atAngle(double angle)
     {
-        if(getAngle() < angle + 5 && getAngle() > angle -5){
-        return true;
-        }
-
-        return false;
+        return (getAngle() < angle + 5 && getAngle() > angle -5)
     }
     public void reset()
     {

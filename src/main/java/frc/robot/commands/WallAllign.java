@@ -18,8 +18,8 @@ public class WallAllign extends Command {
     this.speed = speed;
   }
   /**
-   * tells which side is further from wall and runs the wheels on that side to allign with the wall
-   * with button 3
+   * tells which side is further from wall and runs the wheels on 
+   * that side to allign with the wall
    */
   @Override
   protected void initialize() {
@@ -30,6 +30,7 @@ public class WallAllign extends Command {
     else
       rspeed = speed;
   }
+  
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {

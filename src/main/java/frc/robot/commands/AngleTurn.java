@@ -55,12 +55,7 @@ public class AngleTurn extends Command
     protected boolean isFinished()
     {
         double currentAngle = Robot.navX.getAngle();
-
-        if(currentAngle < desiredAngle + 5 && currentAngle > desiredAngle - 5)
-        {
-          return true;
-        }  
-        return false;  
+        return (currentAngle < desiredAngle + 5 && currentAngle > desiredAngle - 5);
     }
 
     @Override

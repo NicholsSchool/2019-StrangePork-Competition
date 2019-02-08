@@ -29,8 +29,6 @@ public class Gripper extends Subsystem
     {
         RobotMap.leftGrip.set(-Constants.INTAKE_SPEED);
         RobotMap.rightGrip.set(Constants.INTAKE_SPEED);
-
-
     }
     /**
      * Stops the gripper motors.

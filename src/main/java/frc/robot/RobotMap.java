@@ -93,21 +93,21 @@ public class RobotMap
   public static void init()
   {
     //Making Drive Motors
-    frontLD = new WPI_TalonSRX(Constants.FRONTLD);
-    midLD = new WPI_TalonSRX(Constants.MIDLD);
-    backLD = new WPI_TalonSRX(Constants.BACKLD);
-    frontRD = new WPI_TalonSRX(Constants.FRONTRD);
-    midRD = new WPI_TalonSRX(Constants.MIDRD);
-    backRD = new WPI_TalonSRX(Constants.BACKRD);
+    frontLD = new WPI_TalonSRX(Constants.FRONT_LEFT_DRIVE_ID);
+    midLD = new WPI_TalonSRX(Constants.MID_LEFT_DRIVE_ID);
+    backLD = new WPI_TalonSRX(Constants.BACK_LEFT_DRIVE_ID);
+    frontRD = new WPI_TalonSRX(Constants.FRONT_RIGHT_DRIVE_ID);
+    midRD = new WPI_TalonSRX(Constants.MID_RIGHT_DRIVE_ID);
+    backRD = new WPI_TalonSRX(Constants.BACK_RIGHT_DRIVE_ID);
 
     //Making Dart Motors
-    dartL = new WPI_TalonSRX(Constants.DARTL);
-    dartR = new WPI_TalonSRX(Constants.DARTR);
+    dartL = new WPI_TalonSRX(Constants.LEFT_DART_ID);
+    dartR = new WPI_TalonSRX(Constants.RIGHT_DART_ID);
 
     //Making Arm Motors
-    leftGrip = new WPI_TalonSRX(Constants.LEFTGRIP);
-    rightGrip = new WPI_TalonSRX(Constants.RIGHTGRIP);
-    armExtend = new WPI_TalonSRX(Constants.ARMEXTEND);
+    leftGrip = new WPI_TalonSRX(Constants.LEFT_GRIPPER_ID);
+    rightGrip = new WPI_TalonSRX(Constants.RIGHT_GRIPPER_ID);
+    armExtend = new WPI_TalonSRX(Constants.ARM_EXTEND_MOTOR_ID);
     
     //Making encoders
     frontLD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
