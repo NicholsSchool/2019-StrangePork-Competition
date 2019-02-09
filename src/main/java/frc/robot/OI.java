@@ -16,10 +16,12 @@ import edu.wpi.first.wpilibj.Joystick;
 public class OI {
   public Joystick j0;
   public Joystick j1;
+  public Joystick j2;
 
   public OI()
   {
     j0 = new Joystick(0);
     j1 = new Joystick(1);
+    j2 = new Joystick(2);
   }
 }

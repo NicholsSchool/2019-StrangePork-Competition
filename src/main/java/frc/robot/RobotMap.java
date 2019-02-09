@@ -57,7 +57,7 @@ public class RobotMap
   public static WPI_TalonSRX armExtend;
 
   public static AnalogPotentiometer pot;
-  public static AHRS ahrs;
+  
 
   public static SpeedControllerGroup leftSide;
   public static SpeedControllerGroup rightSide;
@@ -99,6 +99,7 @@ public class RobotMap
     //Making Dart Motors
     dartL = new WPI_TalonSRX(Constants.DARTL);
     dartR = new WPI_TalonSRX(Constants.DARTR);
+    dartL.set(ControlMode.Follower, Constants.DARTR);
 
     //Making Arm Motors
     leftGrip = new WPI_TalonSRX(Constants.LEFTGRIP);
