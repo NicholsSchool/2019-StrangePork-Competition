@@ -62,11 +62,12 @@ public class Robot extends TimedRobot {
 
     //sensors
     Vision.init();
+    RobotMap.init();
     navX = new NavX(RobotMap.ahrs);
-    ultrasonic = new Ultrasonic();
-    limitswitches = new LimitSwitch(RobotMap.leftGrip, RobotMap.dartL);
-    armPot = new ArmPot(RobotMap.dartL);
-    elevatorPot = new ElevatorPot(RobotMap.armExtend);
+   // ultrasonic = new Ultrasonic();
+   // limitswitches = new LimitSwitch(RobotMap.leftGrip, RobotMap.dartL);
+   // armPot = new ArmPot(RobotMap.dartL);
+   // elevatorPot = new ElevatorPot(RobotMap.armExtend);
     //OI gets Instantiated LAST!
     oi = new OI();
   }
@@ -142,6 +143,7 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+ //   driveTrain.resetEncoders();
   }
 
   /**
@@ -150,22 +152,22 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-
-    SmartDashboard.putNumber("FrontLD Encoder Value:", RobotMap.frontLD.getSelectedSensorPosition(0));
-    SmartDashboard.putNumber("MidLD Encoder Value:", RobotMap.midLD.getSelectedSensorPosition(0));
-    SmartDashboard.putNumber("BackLD Encoder Value:", RobotMap.backLD.getSelectedSensorPosition(0));
-    SmartDashboard.putNumber("FrontRD Encoder Value:", RobotMap.frontRD.getSelectedSensorPosition(0));
-    SmartDashboard.putNumber("MidRD Encoder Value:", RobotMap.midRD.getSelectedSensorPosition(0));
-    SmartDashboard.putNumber("BackRD Encoder Value:", RobotMap.backRD.getSelectedSensorPosition(0));
+   // RobotMap.rBackDrive.set(0.1);
+    SmartDashboard.putNumber("FrontLD Encoder Value:", RobotMap.lFrontDrive.getSelectedSensorPosition(0));
+    SmartDashboard.putNumber("MidLD Encoder Value:", RobotMap.lMidDrive.getSelectedSensorPosition(0));
+    SmartDashboard.putNumber("BackLD Encoder Value:", RobotMap.lBackDrive.getSelectedSensorPosition(0));
+    SmartDashboard.putNumber("FrontRD Encoder Value:", RobotMap.rFrontDrive.getSelectedSensorPosition(0));
+    SmartDashboard.putNumber("MidRD Encoder Value:", RobotMap.rMidDrive.getSelectedSensorPosition(0));
+    SmartDashboard.putNumber("BackRD Encoder Value:", RobotMap.rBackDrive.getSelectedSensorPosition(0));
 
     // SmartDashboard.putNumber("leftFrontUltrasonic Value:",
     // RobotMap.leftFrontUltraSonic.);
 
-    SmartDashboard.putBoolean("bottomArmLimitSwitch Value:", limitswitches.isArmDown());
+ /*   SmartDashboard.putBoolean("bottomArmLimitSwitch Value:", limitswitches.isArmDown());
     SmartDashboard.putBoolean("ball Limit Switch Value:", limitswitches.isBallIn());
 
     SmartDashboard.putNumber("ElevatorArmPot Value:", elevatorPot.getPosition());
-    SmartDashboard.putNumber("ArmPot Value:", armPot.getPosition());
+    SmartDashboard.putNumber("ArmPot Value:", armPot.getPosition()); */
   }
 
   /**

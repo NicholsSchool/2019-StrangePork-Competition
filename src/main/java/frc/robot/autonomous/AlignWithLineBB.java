@@ -65,7 +65,7 @@ public class AlignWithLineBB extends Command {
 
         } else if (!isOnLine) {
 
-            if (Math.abs(RobotMap.frontLD.getSelectedSensorPosition(0)) < distanceToLine) {
+            if (Math.abs(RobotMap.lFrontDrive.getSelectedSensorPosition(0)) < distanceToLine) {
                 Robot.driveTrain.move(speed, speed);
             } else {
                 System.out.println("\n\n[VISION]: On Line\n\n");

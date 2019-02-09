@@ -35,7 +35,7 @@ public class OI {
     j0b4 = new JoystickButton(j0, 4);
     j0b5 = new JoystickButton(j0, 5);
     j0b6 = new JoystickButton(j0, 6);
-    
+  /*  
     j0b3.whenPressed(new WallAllign(.5));
     j0b2.whenPressed(new JumpJacksRaise());
     j0b1.whenPressed(new JumpJacksDrop());
@@ -44,6 +44,6 @@ public class OI {
     j0b4.whileHeld(new Intake());
     j0b5.whileHeld(new Outtake());
     
-    j0b6.whenPressed(new AngleTurn(90, 0.5));
+    j0b6.whenPressed(new AngleTurn(90, 0.5)); */
   }
 }

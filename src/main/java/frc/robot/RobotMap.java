@@ -52,14 +52,14 @@ public class RobotMap
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
-  public static WPI_TalonSRX frontLD;
-  public static WPI_TalonSRX midLD;
-  public static WPI_TalonSRX backLD;
-  public static WPI_TalonSRX frontRD;
-  public static WPI_TalonSRX midRD;
-  public static WPI_TalonSRX backRD;
-  public static WPI_TalonSRX dartL;
-  public static WPI_TalonSRX dartR;
+  public static WPI_TalonSRX lFrontDrive;
+  public static WPI_TalonSRX lMidDrive;
+  public static WPI_TalonSRX lBackDrive;
+  public static WPI_TalonSRX rFrontDrive;
+  public static WPI_TalonSRX rMidDrive;
+  public static WPI_TalonSRX rBackDrive;
+  public static WPI_TalonSRX leftDart;
+  public static WPI_TalonSRX rightDart;
   public static WPI_TalonSRX leftGrip;
   public static WPI_TalonSRX rightGrip;
   public static WPI_TalonSRX armExtend;
@@ -87,17 +87,26 @@ public class RobotMap
   public static void init()
   {
     //Making Drive Motors
-    frontLD = new WPI_TalonSRX(Constants.FRONT_LEFT_DRIVE_ID);
-    midLD = new WPI_TalonSRX(Constants.MID_LEFT_DRIVE_ID);
-    backLD = new WPI_TalonSRX(Constants.BACK_LEFT_DRIVE_ID);
-    frontRD = new WPI_TalonSRX(Constants.FRONT_RIGHT_DRIVE_ID);
-    midRD = new WPI_TalonSRX(Constants.MID_RIGHT_DRIVE_ID);
-    backRD = new WPI_TalonSRX(Constants.BACK_RIGHT_DRIVE_ID);
+    lFrontDrive = new WPI_TalonSRX(Constants.LEFT_FRONT_DRIVE_ID);
+    lMidDrive = new WPI_TalonSRX(Constants.LEFT_MID_DRIVE_ID);
+    lBackDrive = new WPI_TalonSRX(Constants.LEFT_BACK_DRIVE_ID);
+    rFrontDrive = new WPI_TalonSRX(Constants.RIGHT_FRONT_DRIVE_ID);
+    rMidDrive = new WPI_TalonSRX(Constants.RIGHT_MID_DRIVE_ID);
+    rBackDrive = new WPI_TalonSRX(Constants.RIGHT_BACK_DRIVE_ID);
+
+    //Config changes
+    lFrontDrive.setInverted(true);
+    lMidDrive.setInverted(true);
+    lBackDrive.setInverted(true);
+
+    rFrontDrive.setInverted(false);
+    rMidDrive.setInverted(true);
+    rBackDrive.setInverted(true);
 
     //Making Dart Motors
-    dartL = new WPI_TalonSRX(Constants.LEFT_DART_ID);
-    dartR = new WPI_TalonSRX(Constants.RIGHT_DART_ID);
-    dartR.set(ControlMode.Follower, Constants.LEFT_DART_ID);
+    leftDart = new WPI_TalonSRX(Constants.LEFT_DART_ID);
+    rightDart = new WPI_TalonSRX(Constants.RIGHT_DART_ID);
+    rightDart.set(ControlMode.Follower, Constants.LEFT_DART_ID);
 
 
     //Making Arm Motors
@@ -106,17 +115,26 @@ public class RobotMap
     armExtend = new WPI_TalonSRX(Constants.ARM_EXTEND_MOTOR_ID);
     
     //Making encoders
-    frontLD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
-    midLD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
-    backLD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
-    frontLD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
-    midRD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
-    backRD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
+    lFrontDrive.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
+    lMidDrive.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
+    lBackDrive.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
+    lFrontDrive.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
+    rMidDrive.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
+    rBackDrive.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
+
+    lFrontDrive.setSensorPhase(true);
+    lMidDrive.setSensorPhase(true);
+    lBackDrive.setSensorPhase(true);
+
+    rFrontDrive.setSensorPhase(true);
+    rMidDrive.setSensorPhase(false);
+    rBackDrive.setSensorPhase(false);
     
+
     pot = new AnalogPotentiometer(0);
 
-    leftSide = new SpeedControllerGroup(frontLD, midLD, backLD);
-    rightSide = new SpeedControllerGroup(frontRD, midRD, backRD);
+    leftSide = new SpeedControllerGroup(lFrontDrive, lMidDrive, lBackDrive);
+    rightSide = new SpeedControllerGroup(rFrontDrive, rMidDrive, rBackDrive);
 
     driveBase = new DifferentialDrive(leftSide, rightSide);
 
@@ -124,14 +142,14 @@ public class RobotMap
     ahrs = new AHRS(SPI.Port.kMXP);
 
     //Making Ultrasonic Sensors
-    leftFrontUltraSonic = new AnalogInput(0);
-    rightFrontUltraSonic = new AnalogInput(0);
+  //  leftFrontUltraSonic = new AnalogInput(0);
+  //  rightFrontUltraSonic = new AnalogInput(0);
     
     //Making Limit Switches
     //Ball LS
     leftGrip.configForwardLimitSwitchSource(LimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyOpen);
     //Arm Down LS
-    dartL.configForwardLimitSwitchSource(LimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyOpen);
+    leftDart.configForwardLimitSwitchSource(LimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyOpen);
 
 
     compressor = new Compressor(50);

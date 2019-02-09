@@ -9,7 +9,7 @@ public class Arm extends Subsystem
 
     private void set( double speed )
     {
-        RobotMap.dartL.set(speed);
+        RobotMap.leftDart.set(speed);
     }
 
     public void move( double speed )
