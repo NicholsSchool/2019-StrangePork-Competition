@@ -104,7 +104,7 @@ public class RobotMap
     //Making Dart Motors
     dartL = new WPI_TalonSRX(Constants.LEFT_DART_ID);
     dartR = new WPI_TalonSRX(Constants.RIGHT_DART_ID);
-    dartL.set(ControlMode.Follower, Constants.DARTR);
+    dartL.set(ControlMode.Follower, Constants.RIGHT_DART_ID);
 
 
     //Making Arm Motors
