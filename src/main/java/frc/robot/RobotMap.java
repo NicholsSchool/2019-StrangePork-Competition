@@ -13,7 +13,8 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-
+import com.ctre.phoenix.motorcontrol.LimitSwitchNormal;
+import com.ctre.phoenix.motorcontrol.LimitSwitchSource;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -104,7 +105,7 @@ public class RobotMap
     //Making Dart Motors
     dartL = new WPI_TalonSRX(Constants.LEFT_DART_ID);
     dartR = new WPI_TalonSRX(Constants.RIGHT_DART_ID);
-    dartL.set(ControlMode.Follower, Constants.RIGHT_DART_ID);
+    dartR.set(ControlMode.Follower, Constants.LEFT_DART_ID);
 
 
     //Making Arm Motors
@@ -119,7 +120,6 @@ public class RobotMap
     frontLD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
     midRD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
     backRD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
-
     
     pot = new AnalogPotentiometer(0);
 
@@ -136,13 +136,14 @@ public class RobotMap
     rightFrontUltraSonic = new AnalogInput(0);
     
     //Making Limit Switches
-    hatchLockLimitSwitch = new DigitalInput(Constants.HATCH_LOCK_LIMIT_SWITCH);
-    bottomArmLimitSwitch = new DigitalInput(Constants.BOTTOM_ARM_LIMIT_SWITCH);
-    topArmLimitSwitch = new DigitalInput(Constants.TOP_ARM_LIMIT_SWITCH);
-    retractedJJLimitSwitch = new DigitalInput(Constants.RETRACTED_JJ_LIMIT_SWITCH);
+    //Ball LS
+    leftGrip.configForwardLimitSwitchSource(LimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyOpen);
+    //Arm Down LS
+    dartL.configForwardLimitSwitchSource(LimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyOpen);
 
     //Making Potentiometers
-    elevatorArmPot = new AnalogPotentiometer(Constants.ELEVATOR_ARM_POT);
+  
+
     armPot = new AnalogPotentiometer(Constants.ARM_POT);
 
     compressor = new Compressor(50);

@@ -36,9 +36,11 @@ public class Robot extends TimedRobot {
   public static OI oi;
   public static DriveTrain driveTrain;
   public static ArmPot armPot; 
+  public static ElevatorPot elevatorPot;
   public static DustPan dustpan;
   public static NavX navX;
   public static Gripper gripper;
+  public static LimitSwitch limitswitches;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -52,13 +54,19 @@ public class Robot extends TimedRobot {
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
 
+    //subsystems
     jumpJacks = new JumpJacks();
     driveTrain = new DriveTrain();
     dustpan = new DustPan();
     gripper = new Gripper();
+
+    //sensors
     Vision.init();
     navX = new NavX(RobotMap.ahrs);
     ultrasonic = new Ultrasonic();
+    limitswitches = new LimitSwitch(RobotMap.leftGrip, RobotMap.dartL);
+    armPot = new ArmPot(RobotMap.dartL);
+    elevatorPot = new ElevatorPot(RobotMap.armExtend);
     //OI gets Instantiated LAST!
     oi = new OI();
   }

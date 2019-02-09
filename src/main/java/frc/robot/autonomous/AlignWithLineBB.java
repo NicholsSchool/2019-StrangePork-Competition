@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.autonomous;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Constants;
@@ -56,7 +56,7 @@ public class AlignWithLineBB extends Command {
                 System.out.println("\n\n[VISION]: Faced Line\n\n");
                 isFacingLine = true;
 
-                distanceToLine = Vision.distanceToLine / Constants.WHEEL_DIAMETER_IN_FEET * 12 / Math.PI
+                distanceToLine = Vision.distanceToLine / Constants.WHEEL_DIAMETER_IN_FEET / Math.PI
                         * Constants.TICKS_PER_ROTATION;
                 angleToWall = Vision.angleToWall;
 
