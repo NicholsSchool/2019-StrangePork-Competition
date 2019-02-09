@@ -1,17 +1,47 @@
 package frc.robot.subsystems;
 
-public class Arm{
+import frc.robot.Robot;
+import frc.robot.RobotMap;
 
-public void armMove(){
+public class Arm
+{
 
-}
+    private void set( double speed )
+    {
+        RobotMap.dartR.set(speed);
+    }
 
-public void armUp(){
+    public void move( double speed )
+    {
+        int armPosition = Robot.armPot.isAtExtremes();
+        //2 == down
+        if( armPosition == 2 )
+        {
+            if( speed > 0 )
+            {
+                set(speed);
+            }
+        }
+        else if( armPosition == 1 )
+        {
+            if(speed < 0 )
+            {
+                set(speed);
+            }
+        }
+        else set(speed);
+    }
 
-}
+    public void armMove()
+    {
+        move(Robot.oi.j2.getY());
+    }
 
-public void getCurrentPosition(){
 
-}
+    //check the armExtend
+    public void stop()
+    {
+        RobotMap.armExtend.stopMotor();
+    }
 
-}
+}   

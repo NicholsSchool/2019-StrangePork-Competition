@@ -21,11 +21,12 @@ public class OI {
   public Joystick j2;
   
   public JoystickButton j0b1, j0b2, j0b3, j0b4, j0b5, j0b6, j0b7, j0b8, j0b9, j0b10, j0b11, j0b12;
-  
+
   public OI()
   {
     j0 = new Joystick(0);
     j1 = new Joystick(1);
+    j2 = new Joystick(2);
 
     j0b1 = new JoystickButton(j0, 1);
     j0b2 = new JoystickButton(j0, 2);
@@ -43,6 +44,5 @@ public class OI {
     j0b5.whileHeld(new Outtake());
     
     j0b6.whenPressed(new AngleTurn(90, 0.5));
-
   }
 }

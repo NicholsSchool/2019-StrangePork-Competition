@@ -16,7 +16,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.*;
 import frc.robot.sensors.*;
-import frc.robot.subsystems.DustPan;
 
 
 
@@ -36,6 +35,7 @@ public class Robot extends TimedRobot {
   public static boolean dropped;
   public static OI oi;
   public static DriveTrain driveTrain;
+  public static ArmPot armPot; 
   public static DustPan dustpan;
   public static NavX navX;
   public static Gripper gripper;
