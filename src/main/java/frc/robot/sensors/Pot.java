@@ -3,7 +3,6 @@ package frc.robot.sensors;
 import com.ctre.phoenix.motorcontrol.SensorCollection;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-import edu.wpi.first.wpilibj.AnalogPotentiometer;
 
 public class Pot
 {
@@ -12,7 +11,6 @@ public class Pot
     public Pot(WPI_TalonSRX talonWithArmPot)
     {
        this.pot = talonWithArmPot.getSensorCollection();
-    
     }
 
     public void reset() {

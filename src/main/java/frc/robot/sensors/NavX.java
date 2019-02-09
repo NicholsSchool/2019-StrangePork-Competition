@@ -21,13 +21,12 @@ public class NavX
     {
         double angle = navX.getAngle();
         if (angle < -180)
-        {
-        angle = 360 + angle;
-        }
+            angle = 360 + angle;
+        
         else 
         {
-        angle = 360 - angle;
-        angle *= -1;
+            angle = 360 - angle;
+            angle *= -1;
         }
 
         return angle;
