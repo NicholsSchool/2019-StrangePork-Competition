@@ -4,17 +4,17 @@ public class Constants
 {
     public static final int
     
-    FRONTLD = 1,
-    MIDLD = 2,
-    BACKLD = 3,
-    FRONTRD = 4,
-    MIDRD = 5,
-    BACKRD = 6,
-    DARTL = 7,
-    DARTR = 8,
-    LEFTGRIP = 9,
-    RIGHTGRIP = 10,
-    ARMEXTEND = 11,
+    FRONT_LEFT_DRIVE_ID = 1,
+    MID_LEFT_DRIVE_ID = 2,
+    BACK_LEFT_DRIVE_ID = 3,
+    FRONT_RIGHT_DRIVE_ID = 4,
+    MID_RIGHT_DRIVE_ID = 5,
+    BACK_RIGHT_DRIVE_ID = 6,
+    LEFT_DART_ID = 7,
+    RIGHT_DART_ID = 8,
+    LEFT_GRIPPER_ID = 9,
+    RIGHT_GRIPPER_ID = 10,
+    ARM_EXTEND_MOTOR_ID = 11,
 
     HATCH_LOCK_LIMIT_SWITCH = 0,
     BOTTOM_ARM_LIMIT_SWITCH = 1,
@@ -36,5 +36,11 @@ public class Constants
     WHEEL_DIAMETER_IN_FEET = 0.5,
     TICKS_PER_ROTATION = 1128;
 
+    public static double INTAKE_SPEED=0.5;
+    public static final boolean
+        DUSTPAN_RAISED = true,
+        DUSTPAN_DROPPED = !DUSTPAN_RAISED,
+        JUMPJACKS_RAISED = true,
+        JUMPJACKS_DROPPED = !JUMPJACKS_RAISED;
 
 }

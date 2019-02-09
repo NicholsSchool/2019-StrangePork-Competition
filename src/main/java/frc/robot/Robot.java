@@ -7,14 +7,16 @@
 
 package frc.robot;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.sensors.ArmPot;
-import frc.robot.subsystems.DriveTrain;
-import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.*;
+import frc.robot.sensors.*;
+
 
 
 /**
@@ -23,13 +25,20 @@ import frc.robot.subsystems.ExampleSubsystem;
  * documentation. If you change the name of this class or the package after
  * creating this project, you must also update the build.gradle file in the
  * project.
+ * 
+ * @param <driveTrain>
  */
-public class Robot extends TimedRobot {
 
-  public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
+public class Robot extends TimedRobot {
+  public static JumpJacks jumpJacks;
+  public static Ultrasonic ultrasonic;
+  public static boolean dropped;
   public static OI oi;
   public static DriveTrain driveTrain;
   public static ArmPot armPot; 
+  public static DustPan dustpan;
+  public static NavX navX;
+  public static Gripper gripper;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -40,8 +49,16 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    driveTrain = new DriveTrain();
+    // chooser.addOption("My Auto", new MyAutoCommand());
+    SmartDashboard.putData("Auto mode", m_chooser);
 
+    jumpJacks = new JumpJacks();
+    driveTrain = new DriveTrain();
+    dustpan = new DustPan();
+    gripper = new Gripper();
+    Vision.init();
+    navX = new NavX(RobotMap.ahrs);
+    ultrasonic = new Ultrasonic();
     //OI gets Instantiated LAST!
     oi = new OI();
   }
@@ -133,4 +150,8 @@ public class Robot extends TimedRobot {
   @Override
   public void testPeriodic() {
   }
+
+public static void gripper(Gripper gripper2) {
+}
+
 }

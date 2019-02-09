@@ -37,6 +37,7 @@ public class Arm
         move(Robot.oi.j2.getY());
     }
 
+
     //check the armExtend
     public void stop()
     {
