@@ -76,14 +76,6 @@ public class RobotMap
   public static AnalogInput leftFrontUltraSonic;
   public static AnalogInput rightFrontUltraSonic;
 
-  public static DigitalInput hatchLockLimitSwitch;
-  public static DigitalInput bottomArmLimitSwitch;
-  public static DigitalInput topArmLimitSwitch;
-  public static DigitalInput retractedJJLimitSwitch;
-
-  public static AnalogPotentiometer elevatorArmPot;
-  public static AnalogPotentiometer armPot;
-
   public static AHRS ahrs;
 
   public static Compressor compressor;
@@ -141,10 +133,6 @@ public class RobotMap
     //Arm Down LS
     dartL.configForwardLimitSwitchSource(LimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyOpen);
 
-    //Making Potentiometers
-  
-
-    armPot = new AnalogPotentiometer(Constants.ARM_POT);
 
     compressor = new Compressor(50);
     solenoid0 = new Solenoid(50, 0);

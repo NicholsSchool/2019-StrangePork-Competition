@@ -150,6 +150,22 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+
+    SmartDashboard.putNumber("FrontLD Encoder Value:", RobotMap.frontLD.getSelectedSensorPosition(0));
+    SmartDashboard.putNumber("MidLD Encoder Value:", RobotMap.midLD.getSelectedSensorPosition(0));
+    SmartDashboard.putNumber("BackLD Encoder Value:", RobotMap.backLD.getSelectedSensorPosition(0));
+    SmartDashboard.putNumber("FrontRD Encoder Value:", RobotMap.frontRD.getSelectedSensorPosition(0));
+    SmartDashboard.putNumber("MidRD Encoder Value:", RobotMap.midRD.getSelectedSensorPosition(0));
+    SmartDashboard.putNumber("BackRD Encoder Value:", RobotMap.backRD.getSelectedSensorPosition(0));
+
+    // SmartDashboard.putNumber("leftFrontUltrasonic Value:",
+    // RobotMap.leftFrontUltraSonic.);
+
+    SmartDashboard.putBoolean("bottomArmLimitSwitch Value:", limitswitches.isArmDown());
+    SmartDashboard.putBoolean("ball Limit Switch Value:", limitswitches.isBallIn());
+
+    SmartDashboard.putNumber("ElevatorArmPot Value:", elevatorPot.getPosition());
+    SmartDashboard.putNumber("ArmPot Value:", armPot.getPosition());
   }
 
   /**
@@ -159,7 +175,6 @@ public class Robot extends TimedRobot {
   public void testPeriodic() {
   }
 
-public static void gripper(Gripper gripper2) {
-}
+
 
 }
