@@ -47,7 +47,7 @@ public class Arm extends Subsystem
     //check the armExtend
     public void stop()
     {
-        RobotMap.dartL.stopMotor();
+        RobotMap.leftDart.stopMotor();
     }
 
     @Override
