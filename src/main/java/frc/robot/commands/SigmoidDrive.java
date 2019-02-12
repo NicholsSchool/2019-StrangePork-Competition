@@ -5,6 +5,11 @@ import frc.robot.Robot;
 
 public class SigmoidDrive extends Command
 {
+    public SigmoidDrive()
+    {
+        requires(Robot.driveTrain);
+    }
+
     @Override
     protected void initialize() {
         

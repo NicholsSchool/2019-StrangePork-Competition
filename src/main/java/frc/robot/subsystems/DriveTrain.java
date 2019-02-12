@@ -33,12 +33,12 @@ public class DriveTrain extends Subsystem
     public DriveTrain()
     {
         motors = new WPI_TalonSRX[6];
-        motors[0] = RobotMap.frontLD;
-        motors[1] = RobotMap.midLD;
-        motors[2] = RobotMap.backLD;
-        motors[3] = RobotMap.frontRD;
-        motors[4] = RobotMap.midRD;
-        motors[5] = RobotMap.backLD;
+        motors[0] = RobotMap.lFrontDrive;
+        motors[1] = RobotMap.lMidDrive;
+        motors[2] = RobotMap.lBackDrive;
+        motors[3] = RobotMap.rFrontDrive;
+        motors[4] = RobotMap.rMidDrive;
+        motors[5] = RobotMap.lBackDrive;
         reset();
     }
 
@@ -53,7 +53,7 @@ public class DriveTrain extends Subsystem
      */
     public void sigmoidDrive()
     {
-        sigmoidMove(Robot.oi.j0.getY(), Robot.oi.j1.getY());
+        sigmoidMove(-Robot.oi.j0.getY(), -Robot.oi.j1.getY());
     }
 
     /**
