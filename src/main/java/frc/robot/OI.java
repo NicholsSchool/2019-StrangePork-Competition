@@ -10,7 +10,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.*;
+import frc.robot.util.Controller;
 import frc.robot.autonomous.*;
+
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -22,6 +24,9 @@ public class OI {
   public Joystick j2;
   
   public JoystickButton j0b1, j0b2, j0b3, j0b4, j0b5, j0b6, j0b7, j0b8, j0b9, j0b10, j0b11, j0b12;
+
+  public Controller driver;
+  public Controller operator;
 
   public OI()
   {
@@ -35,6 +40,10 @@ public class OI {
     j0b4 = new JoystickButton(j0, 4);
     j0b5 = new JoystickButton(j0, 5);
     j0b6 = new JoystickButton(j0, 6);
+
+    driver = new Controller(3);
+    operator = new Controller(4);
+
   /*  
     j0b3.whenPressed(new WallAllign(.5));
     j0b2.whenPressed(new JumpJacksRaise());

@@ -12,7 +12,6 @@ public class ArmPot extends Pot
     public ArmPot(WPI_TalonSRX talonWithArmPot)
     {
        super(talonWithArmPot);
-    
     }
 
     public int isAtExtremes()

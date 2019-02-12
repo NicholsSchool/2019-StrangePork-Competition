@@ -63,6 +63,7 @@ public class RobotMap
   public static WPI_TalonSRX leftGrip;
   public static WPI_TalonSRX rightGrip;
   public static WPI_TalonSRX armExtend;
+  
 
   public static AnalogPotentiometer pot;
 
@@ -147,7 +148,7 @@ public class RobotMap
     
     //Making Limit Switches
     //Ball LS
-    leftGrip.configForwardLimitSwitchSource(LimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyOpen);
+    leftGrip.configLimitSwitchDisableNeutralOnLOS(true, 100);
     //Arm Down LS
     leftDart.configForwardLimitSwitchSource(LimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyOpen);
 
