@@ -42,6 +42,7 @@ public class Robot extends TimedRobot {
   public static Gripper gripper;
   public static LimitSwitch limitswitches;
   public static Elevator elevator;
+  public static Arm arm;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -63,14 +64,16 @@ public class Robot extends TimedRobot {
     driveTrain = new DriveTrain();
     dustpan = new DustPan();
     gripper = new Gripper();
+    elevator = new Elevator();
+    arm = new Arm();
 
     //sensors
     Vision.init();
 
     navX = new NavX(RobotMap.ahrs);
     ultrasonic = new Ultrasonic();
-    limitswitches = new LimitSwitch(RobotMap.leftGrip, RobotMap.dartL);
-    armPot = new ArmPot(RobotMap.dartL);
+    limitswitches = new LimitSwitch(RobotMap.leftGrip, RobotMap.leftDart);
+    armPot = new ArmPot(RobotMap.leftDart);
     elevatorPot = new ElevatorPot(RobotMap.armExtend);
     //OI gets Instantiated LAST!
     oi = new OI();
