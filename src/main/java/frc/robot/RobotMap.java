@@ -133,8 +133,8 @@ public class RobotMap
 
     pot = new AnalogPotentiometer(0);
 
-    leftSide = new SpeedControllerGroup(lFrontDrive, lMidDrive, lBackDrive);
-    rightSide = new SpeedControllerGroup(rFrontDrive, rMidDrive, rBackDrive);
+    leftSide = new SpeedControllerGroup(lFrontDrive, lBackDrive);
+    rightSide = new SpeedControllerGroup(rFrontDrive, rBackDrive);
 
     driveBase = new DifferentialDrive(leftSide, rightSide);
 

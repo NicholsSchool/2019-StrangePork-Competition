@@ -51,8 +51,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    // chooser.addOption("My Auto", new MyAutoCommand());
-    SmartDashboard.putData("Auto mode", m_chooser);
+    //RobotMap init should be first
+    RobotMap.init();
 
     //subsystems
     jumpJacks = new JumpJacks();
@@ -62,7 +62,7 @@ public class Robot extends TimedRobot {
 
     //sensors
     Vision.init();
-    RobotMap.init();
+
     navX = new NavX(RobotMap.ahrs);
    // ultrasonic = new Ultrasonic();
    // limitswitches = new LimitSwitch(RobotMap.leftGrip, RobotMap.dartL);
@@ -144,6 +144,9 @@ public class Robot extends TimedRobot {
       m_autonomousCommand.cancel();
     }
  //   driveTrain.resetEncoders();
+ 
+ // DO NOT DELETE THIS 
+      driveTrain.reset();
   }
 
   /**
@@ -152,13 +155,16 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-   // RobotMap.rBackDrive.set(0.1);
-    SmartDashboard.putNumber("FrontLD Encoder Value:", RobotMap.lFrontDrive.getSelectedSensorPosition(0));
-    SmartDashboard.putNumber("MidLD Encoder Value:", RobotMap.lMidDrive.getSelectedSensorPosition(0));
-    SmartDashboard.putNumber("BackLD Encoder Value:", RobotMap.lBackDrive.getSelectedSensorPosition(0));
-    SmartDashboard.putNumber("FrontRD Encoder Value:", RobotMap.rFrontDrive.getSelectedSensorPosition(0));
-    SmartDashboard.putNumber("MidRD Encoder Value:", RobotMap.rMidDrive.getSelectedSensorPosition(0));
-    SmartDashboard.putNumber("BackRD Encoder Value:", RobotMap.rBackDrive.getSelectedSensorPosition(0));
+   // RobotMap.rBackDrive.set(0.5);
+   if(oi.j0.getRawButtonPressed(1))
+      driveTrain.moveTest = !driveTrain.moveTest;
+    driveTrain.displayInfo();
+    // SmartDashboard.putNumber("FrontLD Encoder Value:", RobotMap.lFrontDrive.getSelectedSensorPosition(0));
+    // SmartDashboard.putNumber("MidLD Encoder Value:", RobotMap.lMidDrive.getSelectedSensorPosition(0));
+    // SmartDashboard.putNumber("BackLD Encoder Value:", RobotMap.lBackDrive.getSelectedSensorPosition(0));
+    // SmartDashboard.putNumber("FrontRD Encoder Value:", RobotMap.rFrontDrive.getSelectedSensorPosition(0));
+    // SmartDashboard.putNumber("MidRD Encoder Value:", RobotMap.rMidDrive.getSelectedSensorPosition(0));
+    // SmartDashboard.putNumber("BackRD Encoder Value:", RobotMap.rBackDrive.getSelectedSensorPosition(0));
 
     // SmartDashboard.putNumber("leftFrontUltrasonic Value:",
     // RobotMap.leftFrontUltraSonic.);

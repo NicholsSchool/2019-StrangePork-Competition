@@ -4,6 +4,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
@@ -13,8 +14,10 @@ public class DriveTrain extends Subsystem
 {
     private WPI_TalonSRX[] motors;
     private double[] desiredSpeeds;
+    private boolean[] speedsReached;
     public double[] currentSpeeds;
 
+    public boolean moveTest;
 
     /**
      * Our Drivetrain class uses the wpilibj Differential Drive, along with having 
@@ -40,6 +43,7 @@ public class DriveTrain extends Subsystem
         motors[4] = RobotMap.rMidDrive;
         motors[5] = RobotMap.lBackDrive;
         reset();
+        moveTest = true;
     }
 
     @Override
@@ -80,7 +84,14 @@ public class DriveTrain extends Subsystem
     {
         leftSpeed = getSideSigValue(leftSpeed, false, a);
         rightSpeed = getSideSigValue(rightSpeed, true, a);
+ 
         move(leftSpeed, rightSpeed);
+        moveMiddle(leftSpeed, rightSpeed);
+    /*    if(speedsReached[0])
+            checkForSpinning(false);
+        if(speedsReached[1])
+            checkForSpinning(true);
+    */
     }
 
     
@@ -106,7 +117,9 @@ public class DriveTrain extends Subsystem
         //Records the desired speed, and if that has been roughly reached by
         //the function, return the desired speed. 
         desiredSpeeds[index] = speed;
+        speedsReached[index] = false;
         if (Math.abs(desiredSpeeds[index] - currentSpeeds[index]) < 0.01) {
+            speedsReached[index] = true;
             return desiredSpeeds[index];
         } 
 
@@ -151,9 +164,28 @@ public class DriveTrain extends Subsystem
      */
     public void move(double leftSpeed, double rightSpeed)
     {
+
         RobotMap.driveBase.tankDrive(leftSpeed, rightSpeed);
         currentSpeeds[0] = leftSpeed;
         currentSpeeds[1] = rightSpeed;
+    }
+
+    public void moveMiddle()
+    {
+        moveMiddle(currentSpeeds[0], currentSpeeds[1]);
+    }
+
+    public void moveMiddle(double leftSpeed, double rightSpeed)
+    {
+
+        System.out.println("Left: " + leftSpeed + "\nright: " + rightSpeed);
+        leftSpeed = applyDeadband(leftSpeed, 0.02);
+        rightSpeed = applyDeadband(rightSpeed, 0.02);
+
+        leftSpeed = Math.copySign(leftSpeed * leftSpeed, leftSpeed);
+        rightSpeed = Math.copySign(rightSpeed * rightSpeed, rightSpeed);
+        motors[1].set(leftSpeed);
+        motors[4].set(-rightSpeed);
     }
     
     /**
@@ -179,6 +211,7 @@ public class DriveTrain extends Subsystem
     public void reset() {
         desiredSpeeds = new double[2];
         currentSpeeds = new double[2];
+        speedsReached = new boolean[]{true, true}; // Desired and current speed should be 0
     }
 
     /**
@@ -207,4 +240,88 @@ public class DriveTrain extends Subsystem
         motors[index].stopMotor();
     }
 
+
+    //Try this, if the robot not being smooth, delete it 
+    public void set(double leftSpeed, double rightSpeed)
+    {
+        currentSpeeds[0] = leftSpeed;
+        currentSpeeds[1] = rightSpeed;
+
+        leftSpeed = applyDeadband(leftSpeed, 0.02);
+        rightSpeed = applyDeadband(rightSpeed, 0.02);
+
+        leftSpeed = Math.copySign(leftSpeed * leftSpeed, leftSpeed);
+        rightSpeed = Math.copySign(rightSpeed * rightSpeed, rightSpeed);
+        System.out.println("Set is running");
+        motors[0].set(leftSpeed);
+        motors[1].set(leftSpeed);
+        motors[2].set(leftSpeed);
+        motors[3].set(-rightSpeed);
+        motors[4].set(-rightSpeed);
+        motors[5].set(-rightSpeed);
+/*        for(int i = 0; i < motors.length; i ++)
+        {
+            if(i < motors.length/2)
+                motors[i].set(leftSpeed);
+            else   
+                motors[i].set(-rightSpeed);
+
+            motors[i].feed();
+        } */
+    }
+
+    protected double applyDeadband(double value, double deadband) {
+        if (Math.abs(value) > deadband) {
+            if (value > 0.0) {
+                return (value - deadband) / (1.0 - deadband);
+            } else {
+                return (value + deadband) / (1.0 - deadband);
+            }
+        } else {
+            return 0.0;
+        }
+    }
+
+    public void checkForSpinning(boolean isRight)
+    {
+        double avg = average(isRight);
+        int index = 1;
+        if(isRight)
+            index =4;
+            
+
+    }
+
+    public double average(boolean isRight)
+    {
+        int start = 0;
+        int end = motors.length/2;
+        if(isRight)
+        {
+            start = end;
+            end = motors.length;
+        }
+        double avg = 0;
+        for(int i = start; i < end; i ++)
+            avg += motors[i].getSelectedSensorVelocity(); //This may have to change
+        return avg/(motors.length/2);
+    }
+
+    public void displayInfo()
+    {
+        String[] names = {"Left Front Motor ", "Left Middle Motor ", "Left Back Motor ",
+                          "Right Front Motor ", "Right Middle Motor ", "Right Back Motor " };
+
+        for(int i = 0; i < motors.length; i ++)
+        {
+            SmartDashboard.putNumber(names[i] + "Encoder", motors[i].getSelectedSensorPosition());
+            SmartDashboard.putNumber(names[i] + "Velocity", motors[i].getSelectedSensorVelocity());
+            SmartDashboard.putNumber(names[i] + "Current", motors[i].getOutputCurrent());
+            SmartDashboard.putNumber(names[i] + "Voltage", motors[i].getMotorOutputVoltage());
+            SmartDashboard.putNumber(names[i] + "Percent", motors[i].getMotorOutputPercent());
+        }
+
+        SmartDashboard.putNumber("Left Velocity Average", average(false));
+        SmartDashboard.putNumber("Right Velocity Average", average(true));
+    }
 }
