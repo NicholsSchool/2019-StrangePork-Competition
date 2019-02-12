@@ -52,6 +52,9 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     // chooser.addOption("My Auto", new MyAutoCommand());
+    //RobotMap should be first
+    RobotMap.init();
+
     SmartDashboard.putData("Auto mode", m_chooser);
 
     //subsystems
@@ -62,7 +65,7 @@ public class Robot extends TimedRobot {
 
     //sensors
     Vision.init();
-    RobotMap.init();
+
     navX = new NavX(RobotMap.ahrs);
    // ultrasonic = new Ultrasonic();
    // limitswitches = new LimitSwitch(RobotMap.leftGrip, RobotMap.dartL);
