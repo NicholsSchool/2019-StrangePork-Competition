@@ -5,28 +5,29 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.sensors.Pot;
 
-public class Arm extends Subsystem
+public class Elevator extends Subsystem
 {
-
+    
     private void set( double speed )
     {
-        RobotMap.leftDart.set(speed);
+        RobotMap.armExtend.set(speed);
     }
 
     public void move( double speed )
     {
-        int armPosition = Robot.armPot.isAtExtremes();
-        //2 == down
-        if( armPosition == Pot.AT_MIN )
+        int elevatorPosition = Robot.elevatorPot.isAtExtremes();
+
+        if( elevatorPosition == Pot.AT_MIN )
         {
             if( speed > 0 )
             {
                 set(speed);
             }
+
         }
-        else if( armPosition == Pot.AT_MAX )
+        else if( elevatorPosition == Pot.AT_MAX )
         {
-            if(speed < 0 )
+            if( speed < 0 )
             {
                 set(speed);
             }
@@ -34,26 +35,23 @@ public class Arm extends Subsystem
         else set(speed);
     }
 
-    public void armMove()
-    {
-        move(Robot.oi.j2.getY());
-    }
 
     public void resetPot()
     {
-        Robot.armPot.reset();
+        Robot.elevatorPot.reset();
     }
 
     //check the armExtend
     public void stop()
     {
-        RobotMap.dartL.stopMotor();
+        RobotMap.armExtend.stopMotor();
     }
 
     @Override
-    protected void initDefaultCommand() 
+    protected void initDefaultCommand()
     {
 
     }
 
-}   
+
+}

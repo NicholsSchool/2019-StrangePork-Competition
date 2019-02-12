@@ -6,6 +6,9 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class Pot
 {
+    public static final int AT_MAX = 1;
+    public static final int AT_MIN = 2;
+
     public SensorCollection pot;
 
     public Pot(WPI_TalonSRX talonWithArmPot)
@@ -23,9 +26,9 @@ public class Pot
 
     public int isAtExtremes(double lowExtreme, double highExtreme) {
         if (getPosition() <= lowExtreme)
-            return 2; // is down
+            return AT_MIN; // is down
         if (getPosition() >= highExtreme)
-            return 1; // is up
+            return AT_MAX; // is up
         return 0; // is inbetween
 
     }

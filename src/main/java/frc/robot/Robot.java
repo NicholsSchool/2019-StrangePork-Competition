@@ -41,6 +41,7 @@ public class Robot extends TimedRobot {
   public static NavX navX;
   public static Gripper gripper;
   public static LimitSwitch limitswitches;
+  public static Elevator elevator;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
