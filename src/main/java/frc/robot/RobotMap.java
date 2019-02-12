@@ -6,14 +6,32 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot;
-
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.Solenoid;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.LimitSwitchNormal;
+import com.ctre.phoenix.motorcontrol.LimitSwitchSource;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
+import edu.wpi.first.wpilibj.Compressor;
+
+import edu.wpi.first.wpilibj.DigitalInput;
+
 import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.AnalogInput;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 
@@ -34,46 +52,110 @@ public class RobotMap
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
-
-  public static WPI_TalonSRX frontLD;
-  public static WPI_TalonSRX midLD;
-  public static WPI_TalonSRX backLD;
-  public static WPI_TalonSRX frontRD;
-  public static WPI_TalonSRX midRD;
-  public static WPI_TalonSRX backRD;
-  public static WPI_TalonSRX dartL;
-  public static WPI_TalonSRX dartR;
+  public static WPI_TalonSRX lFrontDrive;
+  public static WPI_TalonSRX lMidDrive;
+  public static WPI_TalonSRX lBackDrive;
+  public static WPI_TalonSRX rFrontDrive;
+  public static WPI_TalonSRX rMidDrive;
+  public static WPI_TalonSRX rBackDrive;
+  public static WPI_TalonSRX leftDart;
+  public static WPI_TalonSRX rightDart;
   public static WPI_TalonSRX leftGrip;
   public static WPI_TalonSRX rightGrip;
   public static WPI_TalonSRX armExtend;
 
   public static AnalogPotentiometer pot;
+
+
+  public static SpeedControllerGroup leftSide;
+  public static SpeedControllerGroup rightSide;
+
+
+  public static DifferentialDrive driveBase;
+
+  public static AnalogInput leftFrontUltraSonic;
+  public static AnalogInput rightFrontUltraSonic;
+
   public static AHRS ahrs;
+
+  public static Compressor compressor;
+  public static Solenoid solenoid0;
+  public static Solenoid solenoid1;
+  public static Solenoid solenoid2;
 
 
   public static void init()
   {
-    frontLD = new WPI_TalonSRX(Constants.FRONTLD);
-    midLD = new WPI_TalonSRX(Constants.MIDLD);
-    backLD = new WPI_TalonSRX(Constants.BACKLD);
-    frontRD = new WPI_TalonSRX(Constants.FRONTRD);
-    midRD = new WPI_TalonSRX(Constants.MIDRD);
-    backRD = new WPI_TalonSRX(Constants.BACKRD);
-    dartL = new WPI_TalonSRX(Constants.DARTL);
-    dartR = new WPI_TalonSRX(Constants.DARTR);
-    leftGrip = new WPI_TalonSRX(Constants.LEFTGRIP);
-    rightGrip = new WPI_TalonSRX(Constants.RIGHTGRIP);
+    //Making Drive Motors
+    lFrontDrive = new WPI_TalonSRX(Constants.LEFT_FRONT_DRIVE_ID);
+    lMidDrive = new WPI_TalonSRX(Constants.LEFT_MID_DRIVE_ID);
+    lBackDrive = new WPI_TalonSRX(Constants.LEFT_BACK_DRIVE_ID);
+    rFrontDrive = new WPI_TalonSRX(Constants.RIGHT_FRONT_DRIVE_ID);
+    rMidDrive = new WPI_TalonSRX(Constants.RIGHT_MID_DRIVE_ID);
+    rBackDrive = new WPI_TalonSRX(Constants.RIGHT_BACK_DRIVE_ID);
 
-    armExtend = new WPI_TalonSRX(Constants.ARMEXTEND);
+    //Config changes
+    lFrontDrive.setInverted(true);
+    lMidDrive.setInverted(true);
+    lBackDrive.setInverted(true);
 
-    frontLD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
-    midLD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
-    backLD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
-    frontLD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
-    midRD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
-    backRD.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
+    rFrontDrive.setInverted(false);
+    rMidDrive.setInverted(true);
+    rBackDrive.setInverted(true);
+
+    //Making Dart Motors
+    leftDart = new WPI_TalonSRX(Constants.LEFT_DART_ID);
+    rightDart = new WPI_TalonSRX(Constants.RIGHT_DART_ID);
+    rightDart.set(ControlMode.Follower, Constants.LEFT_DART_ID);
+
+
+    //Making Arm Motors
+    leftGrip = new WPI_TalonSRX(Constants.LEFT_GRIPPER_ID);
+    rightGrip = new WPI_TalonSRX(Constants.RIGHT_GRIPPER_ID);
+    armExtend = new WPI_TalonSRX(Constants.ARM_EXTEND_MOTOR_ID);
     
+    //Making encoders
+    lFrontDrive.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
+    lMidDrive.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
+    lBackDrive.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
+    lFrontDrive.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
+    rMidDrive.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
+    rBackDrive.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
+
+    lFrontDrive.setSensorPhase(true);
+    lMidDrive.setSensorPhase(true);
+    lBackDrive.setSensorPhase(true);
+
+    rFrontDrive.setSensorPhase(true);
+    rMidDrive.setSensorPhase(false);
+    rBackDrive.setSensorPhase(false);
+    
+
     pot = new AnalogPotentiometer(0);
+
+    leftSide = new SpeedControllerGroup(lFrontDrive, lMidDrive, lBackDrive);
+    rightSide = new SpeedControllerGroup(rFrontDrive, rMidDrive, rBackDrive);
+
+    driveBase = new DifferentialDrive(leftSide, rightSide);
+
+    //Making Gyro
     ahrs = new AHRS(SPI.Port.kMXP);
+
+    //Making Ultrasonic Sensors
+  //  leftFrontUltraSonic = new AnalogInput(0);
+  //  rightFrontUltraSonic = new AnalogInput(0);
+    
+    //Making Limit Switches
+    //Ball LS
+    leftGrip.configForwardLimitSwitchSource(LimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyOpen);
+    //Arm Down LS
+    leftDart.configForwardLimitSwitchSource(LimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyOpen);
+
+
+    compressor = new Compressor(50);
+    solenoid0 = new Solenoid(50, 0);
+    solenoid1 = new Solenoid(50, 1);
+    solenoid2 = new Solenoid(50, 2);
   }
+
 }

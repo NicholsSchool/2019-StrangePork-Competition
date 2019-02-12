@@ -21,25 +21,19 @@ public class NavX
     {
         double angle = navX.getAngle();
         if (angle < -180)
-        {
-        angle = 360 + angle;
-        }
-
+            angle = 360 + angle;
+        
         else 
         {
-        angle = 360 - angle;
-        angle *= -1;
+            angle = 360 - angle;
+            angle *= -1;
         }
 
         return angle;
     }
     public boolean atAngle(double angle)
     {
-        if(getAngle() < angle + 5 && getAngle() > angle -5){
-        return true;
-        }
-
-        return false;
+        return (getAngle() < angle + 5 && getAngle() > angle -5);
     }
     public void reset()
     {

@@ -1,17 +1,24 @@
 package frc.robot.sensors;
 
-import edu.wpi.first.wpilibj.AnalogPotentiometer;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-public class ArmPot
+import frc.robot.Constants;
+
+
+
+public class ArmPot extends Pot
 {
-    public AnalogPotentiometer potentiometer;
 
-    public ArmPot(AnalogPotentiometer pot)
+    public ArmPot(WPI_TalonSRX talonWithArmPot)
     {
-       potentiometer = pot;
+       super(talonWithArmPot);
+    
     }
 
-
+    public int isAtExtremes()
+    {
+    return isAtExtremes(Constants.ARM_POT_LOW_EXTREME_VALUE , Constants.ARM_POT_LOW_EXTREME_VALUE );
+    }
 
 
 }

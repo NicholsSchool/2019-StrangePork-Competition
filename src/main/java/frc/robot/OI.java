@@ -8,46 +8,42 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.*;
+import frc.robot.autonomous.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-  //// CREATING BUTTONS
-  // One type of button is a joystick button which is any button on a
-  //// joystick.
-  // You create one by telling it which joystick it's on and which button
-  // number it is.
-  // Joystick stick = new Joystick(port);
-  // Button button = new JoystickButton(stick, buttonNumber);
-
-  // There are a few additional built in buttons you can use. Additionally,
-  // by subclassing Button you can create custom triggers and bind those to
-  // commands the same as any other Button.
-
-  //// TRIGGERING COMMANDS WITH BUTTONS
-  // Once you have a button, it's trivial to bind it to a button in one of
-  // three ways:
-
-  // Start the command when the button is pressed and let it run the command
-  // until it is finished as determined by it's isFinished method.
-  // button.whenPressed(new ExampleCommand());
-
-  // Run the command while the button is being held down and interrupt it once
-  // the button is released.
-  // button.whileHeld(new ExampleCommand());
-
-  // Start the command when the button is released and let it run the command
-  // until it is finished as determined by it's isFinished method.
-  // button.whenReleased(new ExampleCommand());
-  public static Joystick j1;
-  public static Joystick j0;
+  public Joystick j0;
+  public Joystick j1;
+  public Joystick j2;
+  
+  public JoystickButton j0b1, j0b2, j0b3, j0b4, j0b5, j0b6, j0b7, j0b8, j0b9, j0b10, j0b11, j0b12;
 
   public OI()
   {
-    j1 = new Joystick(1);
     j0 = new Joystick(0);
-  }
+    j1 = new Joystick(1);
+    j2 = new Joystick(2);
 
+    j0b1 = new JoystickButton(j0, 1);
+    j0b2 = new JoystickButton(j0, 2);
+    j0b3 = new JoystickButton(j0, 3);
+    j0b4 = new JoystickButton(j0, 4);
+    j0b5 = new JoystickButton(j0, 5);
+    j0b6 = new JoystickButton(j0, 6);
+  /*  
+    j0b3.whenPressed(new WallAllign(.5));
+    j0b2.whenPressed(new JumpJacksRaise());
+    j0b1.whenPressed(new JumpJacksDrop());
+
+    
+    j0b4.whileHeld(new Intake());
+    j0b5.whileHeld(new Outtake());
+    
+    j0b6.whenPressed(new AngleTurn(90, 0.5)); */
+  }
 }
