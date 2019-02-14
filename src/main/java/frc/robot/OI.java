@@ -43,8 +43,10 @@ public class OI {
 
     driver = new Controller(3);
     operator = new Controller(4);
+    operator.rightBumper.whileHeld(new ElevatorMove(.5));
+    operator.leftBumper.whileHeld(new ElevatorMove(-.5));
 
-  /*  
+  /* 
     j0b3.whenPressed(new WallAllign(.5));
     j0b2.whenPressed(new JumpJacksRaise());
     j0b1.whenPressed(new JumpJacksDrop());
