@@ -146,12 +146,11 @@ public class RobotMap
   //  leftFrontUltraSonic = new AnalogInput(0);
   //  rightFrontUltraSonic = new AnalogInput(0);
     
-    //Making Limit Switches
     //Ball LS
     leftGrip.configLimitSwitchDisableNeutralOnLOS(true, 100);
     //Arm Down LS
-    leftDart.configForwardLimitSwitchSource(LimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyOpen);
-
+   // leftDart.configForwardLimitSwitchSource(LimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyOpen);
+    leftDart.configLimitSwitchDisableNeutralOnLOS(true, 100);
 
     compressor = new Compressor(50);
     solenoid0 = new Solenoid(50, 0);
