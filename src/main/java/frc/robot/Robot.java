@@ -61,7 +61,7 @@ public class Robot extends TimedRobot {
 
     //subsystems
     jumpJacks = new JumpJacks();
-    driveTrain = new DriveTrain();
+ //   driveTrain = new DriveTrain();
     dustpan = new DustPan();
     gripper = new Gripper();
     elevator = new Elevator();
@@ -159,7 +159,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-   // RobotMap.rBackDrive.set(0.1);
+   RobotMap.lFrontDrive.set(0.2);
     SmartDashboard.putNumber("FrontLD Encoder Value:", RobotMap.lFrontDrive.getSelectedSensorPosition(0));
     SmartDashboard.putNumber("MidLD Encoder Value:", RobotMap.lMidDrive.getSelectedSensorPosition(0));
     SmartDashboard.putNumber("BackLD Encoder Value:", RobotMap.lBackDrive.getSelectedSensorPosition(0));
@@ -167,6 +167,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("MidRD Encoder Value:", RobotMap.rMidDrive.getSelectedSensorPosition(0));
     SmartDashboard.putNumber("BackRD Encoder Value:", RobotMap.rBackDrive.getSelectedSensorPosition(0));
 
+    SmartDashboard.putBoolean("Bottom Limit Switch", Robot.limitswitches.isBallIn() );
     // SmartDashboard.putNumber("leftFrontUltrasonic Value:",
     // RobotMap.leftFrontUltraSonic.);
 

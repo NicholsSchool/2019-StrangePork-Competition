@@ -100,7 +100,7 @@ public class RobotMap
     lMidDrive.setInverted(true);
     lBackDrive.setInverted(true);
 
-    rFrontDrive.setInverted(false);
+    rFrontDrive.setInverted(true);
     rMidDrive.setInverted(true);
     rBackDrive.setInverted(true);
 
@@ -114,7 +114,7 @@ public class RobotMap
     leftGrip = new WPI_TalonSRX(Constants.LEFT_GRIPPER_ID);
     rightGrip = new WPI_TalonSRX(Constants.RIGHT_GRIPPER_ID);
     armExtend = new WPI_TalonSRX(Constants.ARM_EXTEND_MOTOR_ID);
-    
+    armExtend.setInverted(true);
     //Making encoders
     lFrontDrive.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
     lMidDrive.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
@@ -127,7 +127,7 @@ public class RobotMap
     lMidDrive.setSensorPhase(true);
     lBackDrive.setSensorPhase(true);
 
-    rFrontDrive.setSensorPhase(true);
+    rFrontDrive.setSensorPhase(false);
     rMidDrive.setSensorPhase(false);
     rBackDrive.setSensorPhase(false);
     

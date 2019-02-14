@@ -19,8 +19,8 @@ public class ArmMove extends Command
     @Override
     protected void execute() {
         Robot.arm.armMove();
-        if(Robot.limitswitches.isArmDown())
-            Robot.arm.resetPot();
+   //     if(Robot.limitswitches.isArmDown())
+     //       Robot.arm.resetPot();
     }
 
     protected boolean isFinished() {
