@@ -9,7 +9,7 @@ public class Pot
     public static final int AT_MAX = 1;
     public static final int AT_MIN = 2;
 
-    public SensorCollection pot;
+    private SensorCollection pot;
 
     public Pot(WPI_TalonSRX talonWithArmPot)
     {

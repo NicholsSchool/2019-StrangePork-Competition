@@ -17,18 +17,22 @@ public class Gripper extends Subsystem
      */
     public void intake()
     {
-        RobotMap.leftGrip.set(Constants.INTAKE_SPEED);
-        RobotMap.rightGrip.set(-Constants.INTAKE_SPEED);
-
-
+        if(!Robot.limitswitches.isBallIn())
+        {
+            RobotMap.leftGrip.set(Constants.INTAKE_SPEED);
+            RobotMap.rightGrip.set(-Constants.INTAKE_SPEED);
+        }
     } 
     /**
      * runs gripper motors to outtake ball.
      */
     public void outtake()
     {
-        RobotMap.leftGrip.set(-Constants.INTAKE_SPEED);
-        RobotMap.rightGrip.set(Constants.INTAKE_SPEED);
+        if(Robot.limitswitches.isBallIn())
+        {
+            RobotMap.leftGrip.set(-Constants.INTAKE_SPEED);
+            RobotMap.rightGrip.set(Constants.INTAKE_SPEED);
+        }
     }
     /**
      * Stops the gripper motors.
