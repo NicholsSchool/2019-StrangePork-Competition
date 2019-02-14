@@ -170,9 +170,24 @@ public class DriveTrain extends Subsystem
         currentSpeeds[1] = rightSpeed;
     }
 
+
+
     public void moveMiddle()
     {
-        moveMiddle(currentSpeeds[0], currentSpeeds[1]);
+        double leftSpeed = currentSpeeds[0];
+        double rightSpeed= currentSpeeds[1];
+        if(Math.abs(motors[1].getSelectedSensorVelocity()) > Math.abs(motors[0].getSelectedSensorVelocity()) + 100)
+            leftSpeed /= 2;
+        if (motors[4].getSelectedSensorVelocity() > motors[3].getSelectedSensorVelocity() + 100)
+            leftSpeed /= 2;
+
+        leftSpeed = applyDeadband(currentSpeeds[0], 0.02);
+        rightSpeed = applyDeadband(currentSpeeds[1], 0.02);
+
+        leftSpeed = Math.copySign(leftSpeed * leftSpeed, leftSpeed);
+        rightSpeed = Math.copySign(rightSpeed * rightSpeed, rightSpeed);
+        if(Math.abs(leftSpeed)
+
     }
 
     public void moveMiddle(double leftSpeed, double rightSpeed)
