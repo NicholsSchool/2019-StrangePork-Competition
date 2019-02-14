@@ -6,42 +6,43 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class ArmMove extends Command
-{
+    {
+        public double speed;
 
-@Override
-public void initialize()
-{
+    @Override
+    public void initialize()
+    {
 
-}
+    }
 
-@Override
-protected void execute() 
-{
-    Robot.arm.move(speed);
-}
+    @Override
+    protected void execute() 
+    {
+        Robot.arm.move(speed);
+    }
 
-@Override
-protected boolean isFinished()
-{
-        return false;
-       
+    @Override
+    protected boolean isFinished()
+    {
+            return false;
+        
 
 
-    
-}
+        
+    }
 
-@Override
-protected void interrupted()
-{
+    @Override
+    protected void interrupted()
+    {
 
-}
+    }
 
-@Override
-protected void end() 
-{
-    
-    end();
-}
+    @Override
+    protected void end() 
+    {
+        
+        end();
+    }
 
 
 }

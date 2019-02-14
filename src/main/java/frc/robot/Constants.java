@@ -27,7 +27,7 @@ public class Constants
     ELEVATOR_POT_LOW_EXTREME_VALUE = 0,
 
     ELEVATOR_ARM_POT = 4,
-    ARM_POT = 5;
+    ARM_POT = 5,
 
     CLIMB_ANGLE = 50;
 

@@ -3,14 +3,14 @@ package frc.robot.autonomous;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class Climb extends Command
+public class ArmDrop extends Command
 {
     public double speed;
-    public double yAngle;
+    public double desiredAngle;
 
-    public Climb(double yAgl, double spd )
+    public ArmDrop(double yAgl, double spd )
     {
-        yAgl = yAngle;
+        yAgl = desiredAngle;
         spd = speed;
     }
 
@@ -31,7 +31,7 @@ public class Climb extends Command
     {
        double currentYAngle = Robot.navX.getPitch();
 
-        if (currentYAngle > 50)
+        if (currentYAngle > desiredAngle)
 
          return true;
 
