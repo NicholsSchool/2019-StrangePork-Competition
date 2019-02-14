@@ -17,23 +17,33 @@ public class NavX
         return navX.getYaw() % 360;
     }
 
+    public double getPitch()
+    {
+        double yAngle = navX.getPitch();
+        if (yAngle < 0)
+          {
+            return yAngle * -1;
+          }
+
+        return yAngle;
+    }
     public double getAngle()
     {
-        double angle = navX.getAngle();
-        if (angle < -180)
-            angle = 360 + angle;
+        double zAngle = navX.getAngle();
+        if (zAngle < -180)
+            zAngle = 360 + zAngle;
         
         else 
         {
-            angle = 360 - angle;
-            angle *= -1;
+            zAngle = 360 - zAngle;
+            zAngle *= -1;
         }
 
-        return angle;
+        return zAngle;
     }
-    public boolean atAngle(double angle)
+    public boolean atAngle(double zAngle)
     {
-        return (getAngle() < angle + 5 && getAngle() > angle -5);
+        return (getAngle() < zAngle + 5 && getAngle() > zAngle -5);
     }
     public void reset()
     {

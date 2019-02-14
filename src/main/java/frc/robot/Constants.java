@@ -29,6 +29,8 @@ public class Constants
     ELEVATOR_ARM_POT = 4,
     ARM_POT = 5;
 
+    CLIMB_ANGLE = 50;
+
     public static final double SIGMOID_A = 25;
 
     //Need to be changed
