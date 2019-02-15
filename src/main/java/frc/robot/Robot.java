@@ -143,7 +143,7 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
- //   driveTrain.resetEncoders();
+   driveTrain.resetEncoders();
  
  // DO NOT DELETE THIS 
       driveTrain.reset();
@@ -155,9 +155,8 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-   // RobotMap.rBackDrive.set(0.5);
-   if(oi.j0.getRawButtonPressed(1))
-      driveTrain.moveTest = !driveTrain.moveTest;
+    //RobotMap.rFrontDrive.set(0.2);
+   // RobotMap.rFrontDrive.set(-0.3);
     driveTrain.displayInfo();
     // SmartDashboard.putNumber("FrontLD Encoder Value:", RobotMap.lFrontDrive.getSelectedSensorPosition(0));
     // SmartDashboard.putNumber("MidLD Encoder Value:", RobotMap.lMidDrive.getSelectedSensorPosition(0));

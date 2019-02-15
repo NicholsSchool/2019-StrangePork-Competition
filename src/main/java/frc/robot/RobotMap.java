@@ -72,6 +72,7 @@ public class RobotMap
 
 
   public static DifferentialDrive driveBase;
+  public static DifferentialDrive midDriveBase;
 
   public static AnalogInput leftFrontUltraSonic;
   public static AnalogInput rightFrontUltraSonic;
@@ -93,6 +94,13 @@ public class RobotMap
     rFrontDrive = new WPI_TalonSRX(Constants.RIGHT_FRONT_DRIVE_ID);
     rMidDrive = new WPI_TalonSRX(Constants.RIGHT_MID_DRIVE_ID);
     rBackDrive = new WPI_TalonSRX(Constants.RIGHT_BACK_DRIVE_ID);
+    lFrontDrive.configFactoryDefault();
+    lMidDrive.configFactoryDefault();
+    lBackDrive.configFactoryDefault();
+    rFrontDrive.configFactoryDefault();
+    rMidDrive.configFactoryDefault();
+    rBackDrive.configFactoryDefault();
+
 
     //Config changes
     lFrontDrive.setInverted(true);
@@ -133,10 +141,11 @@ public class RobotMap
 
     pot = new AnalogPotentiometer(0);
 
-    leftSide = new SpeedControllerGroup(lFrontDrive, lBackDrive);
-    rightSide = new SpeedControllerGroup(rFrontDrive, rBackDrive);
+    leftSide = new SpeedControllerGroup(lFrontDrive,  lBackDrive);
+    rightSide = new SpeedControllerGroup(rFrontDrive,  rBackDrive);
 
     driveBase = new DifferentialDrive(leftSide, rightSide);
+    midDriveBase = new DifferentialDrive(lMidDrive, rMidDrive);
 
     //Making Gyro
     ahrs = new AHRS(SPI.Port.kMXP);
