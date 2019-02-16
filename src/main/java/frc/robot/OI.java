@@ -11,8 +11,8 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.*;
 import frc.robot.util.Controller;
+import frc.robot.util.JoystickContoller;
 import frc.robot.autonomous.*;
-
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -22,6 +22,7 @@ public class OI {
   public Joystick j0;
   public Joystick j1;
   public Joystick j2;
+  public JoystickContoller controller1;
   
   public JoystickButton j0b1, j0b2, j0b3, j0b4, j0b5, j0b6, j0b7, j0b8, j0b9, j0b10, j0b11, j0b12;
 
@@ -34,6 +35,7 @@ public class OI {
     j0 = new Joystick(0);
     j1 = new Joystick(1);
     j2 = new Joystick(2);
+    controller1 = new JoystickContoller(j0);
 
     j0b1 = new JoystickButton(j0, 1);
     j0b2 = new JoystickButton(j0, 2);
