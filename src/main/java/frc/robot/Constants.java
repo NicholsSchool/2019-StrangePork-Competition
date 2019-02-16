@@ -85,6 +85,7 @@ public class Constants
         CONTROLLER_7_BUTTON_ID = 7,
         CONTROLLER_8_BUTTON_ID = 8,
         CONTROLLER_9_BUTTON_ID = 9,
-        CONTROLLER_10_BUTTON_ID = 10;
-
+        CONTROLLER_10_BUTTON_ID = 10,
+        CONTROLLER_11_BUTTON_ID = 11,
+        CONTROLLER_12_BUTTON_ID = 12;
 }

@@ -20,6 +20,8 @@ public class JoystickContoller
         b8 = new JoystickButton(joy, Constants.CONTROLLER_8_BUTTON_ID);
         b9 = new JoystickButton(joy, Constants.CONTROLLER_9_BUTTON_ID);
         b10 = new JoystickButton(joy, Constants.CONTROLLER_10_BUTTON_ID);
+        b11 = new JoystickButton(joy, Constants.CONTROLLER_11_BUTTON_ID);
+        b12 = new JoystickButton(joy, Constants.CONTROLLER_12_BUTTON_ID);
     }
 
     public Joystick joy;
@@ -34,4 +36,6 @@ public class JoystickContoller
 	public JoystickButton b8;
 	public JoystickButton b9;
     public JoystickButton b10; 
+    public JoystickButton b11;
+    public JoystickButton b12;
 }
