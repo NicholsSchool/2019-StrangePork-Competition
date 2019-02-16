@@ -44,6 +44,7 @@ public class Robot extends TimedRobot {
   public static LimitSwitch limitswitches;
   public static Elevator elevator;
   public static Arm arm;
+  public static Dial appDial;
 
   
 
@@ -79,6 +80,7 @@ public class Robot extends TimedRobot {
     limitswitches = new LimitSwitch(RobotMap.leftGrip, RobotMap.leftDart);
     armPot = new ArmPot(RobotMap.leftDart);
     elevatorPot = new ElevatorPot(RobotMap.armExtend);
+    appDial = new Dial(RobotMap.appPot);
     //OI gets Instantiated LAST!
     oi = new OI();
   }
@@ -114,17 +116,10 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Left Ultrasonic", ultrasonic.getRange(true));
     SmartDashboard.putNumber("Right Ultrasonic", ultrasonic.getRange(false));
     SmartDashboard.putBoolean("App Switch", RobotMap.appSwitch.get());
-    SmartDashboard.putNumber("App Pot", RobotMap.appPot.get());
+    SmartDashboard.putNumber("App pot raw", RobotMap.appPot.get());
+    SmartDashboard.putNumber("App Pot", appDial.getPosition());
 
-    if(oi.j0b1.get())
-    {
-      NetworkTableInstance.getDefault().getTable("vision").getEntry("camera").setDouble(0);
-    }
-    else
-    {
-      NetworkTableInstance.getDefault().getTable("vision").getEntry("camera").setDouble(1);
 
-    }
   }
 
   /**

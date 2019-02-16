@@ -51,7 +51,7 @@ public class Constants
     public static final boolean
         DUSTPAN_RAISED = false,
         DUSTPAN_DROPPED = !DUSTPAN_RAISED,
-        JUMPJACKS_RAISED = true,
+        JUMPJACKS_RAISED = false,
         JUMPJACKS_DROPPED = !JUMPJACKS_RAISED;
 
     public static final int
