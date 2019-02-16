@@ -25,19 +25,21 @@ public class JumpJacksDrop extends Command {
     //requires(Robot.m_subsystem);  
   @Override
   protected void initialize() {
-    Robot.jumpJacks.drop();
+   
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //j0b1.whenPressed(new dropJumpJacks());
+    System.out.println("Drop running");
+    if(Robot.oi.j1b10.get())
+      Robot.jumpJacks.drop();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
+    return false;
   }
 
   // Called once after isFinished returns true

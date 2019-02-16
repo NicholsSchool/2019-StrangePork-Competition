@@ -24,18 +24,20 @@ public class JumpJacksRaise extends Command {
   }
   @Override
   protected void initialize() {
-      Robot.jumpJacks.raise();
+      
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    if(Robot.oi.j1b9.get())
+      Robot.jumpJacks.raise();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
+    return false;
   }
 
   // Called once after isFinished returns true

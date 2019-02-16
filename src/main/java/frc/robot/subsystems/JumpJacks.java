@@ -23,11 +23,11 @@ public class JumpJacks extends Subsystem {
   public void initDefaultCommand() {
   }
   public void drop() {
-    RobotMap.solenoid1.set(Constants.JUMPJACKS_DROPPED);
+    RobotMap.jumpJacksSolenoid.set(Constants.JUMPJACKS_DROPPED);
     Robot.dropped = true;
   }
   public void raise() {
-    RobotMap.solenoid1.set(Constants.JUMPJACKS_RAISED);
+    RobotMap.jumpJacksSolenoid.set(Constants.JUMPJACKS_RAISED);
     Robot.dropped = false;
 	}
 }
