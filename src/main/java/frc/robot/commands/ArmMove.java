@@ -1,40 +1,46 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 
 public class ArmMove extends Command
 {
 
-@Override
-public void initialize()
-{
+    public ArmMove()
+    {
+        requires(Robot.arm);
+    }
 
-}
+    @Override
+    public void initialize()
+    {
 
-@Override
-protected void execute() 
-{
-    
-}
+    }
 
-@Override
-protected boolean isFinished()
-{
-    return false;
-}
+    @Override
+    protected void execute() 
+    {
+        Robot.arm.armMove();
+    }
 
-@Override
-protected void interrupted()
-{
+    @Override
+    protected boolean isFinished()
+    {
+        return false;
+    }
 
-}
+    @Override
+    protected void interrupted()
+    {
+        end();
+    }
 
-@Override
-protected void end() 
-{
-    
-    end();
-}
+    @Override
+    protected void end() 
+    {
+        
+       Robot.arm.stop();
+    }
 
 
 }

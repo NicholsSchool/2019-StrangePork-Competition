@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot;
+
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -15,6 +16,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.LimitSwitchNormal;
 import com.ctre.phoenix.motorcontrol.LimitSwitchSource;
+import com.ctre.phoenix.motorcontrol.RemoteLimitSwitchSource;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -114,7 +116,7 @@ public class RobotMap
     leftGrip = new WPI_TalonSRX(Constants.LEFT_GRIPPER_ID);
     rightGrip = new WPI_TalonSRX(Constants.RIGHT_GRIPPER_ID);
     armExtend = new WPI_TalonSRX(Constants.ARM_EXTEND_MOTOR_ID);
-    
+    armExtend.setInverted(true);
     //Making encoders
     lFrontDrive.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
     lMidDrive.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder,0,100);
@@ -149,9 +151,12 @@ public class RobotMap
     //Making Limit Switches
     //Ball LS
     leftGrip.configLimitSwitchDisableNeutralOnLOS(true, 100);
+    leftGrip.configForwardLimitSwitchSource(RemoteLimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyOpen,100);
+    leftGrip.configForwardSoftLimitEnable(false);
     //Arm Down LS
-    leftDart.configForwardLimitSwitchSource(LimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyOpen);
-
+    leftDart.configLimitSwitchDisableNeutralOnLOS(true, 100);
+    leftDart.configForwardLimitSwitchSource(RemoteLimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyOpen, 100);
+    leftDart.configForwardSoftLimitEnable(false);
 
     compressor = new Compressor(50);
     solenoid0 = new Solenoid(50, 0);

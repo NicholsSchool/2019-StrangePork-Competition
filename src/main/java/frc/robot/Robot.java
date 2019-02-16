@@ -103,6 +103,7 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledPeriodic() {
     Scheduler.getInstance().run();
+    SmartDashboard.putNumber("POV", oi.j2.getPOV());
   }
 
   /**
@@ -167,14 +168,16 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("MidRD Encoder Value:", RobotMap.rMidDrive.getSelectedSensorPosition(0));
     SmartDashboard.putNumber("BackRD Encoder Value:", RobotMap.rBackDrive.getSelectedSensorPosition(0));
 
-    // SmartDashboard.putNumber("leftFrontUltrasonic Value:",
-    // RobotMap.leftFrontUltraSonic.);
-
- /*   SmartDashboard.putBoolean("bottomArmLimitSwitch Value:", limitswitches.isArmDown());
+    SmartDashboard.putBoolean("bottomArmLimitSwitch Value:", limitswitches.isArmDown());
     SmartDashboard.putBoolean("ball Limit Switch Value:", limitswitches.isBallIn());
 
     SmartDashboard.putNumber("ElevatorArmPot Value:", elevatorPot.getPosition());
-    SmartDashboard.putNumber("ArmPot Value:", armPot.getPosition()); */
+    SmartDashboard.putNumber("ArmPot Value:", armPot.getPosition());
+
+    // SmartDashboard.putNumber("leftFrontUltrasonic Value:",
+    // RobotMap.leftFrontUltraSonic.);
+
+
   }
 
   /**
@@ -182,6 +185,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
+
   }
 
 

@@ -3,6 +3,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
+import frc.robot.commands.ArmMove;
 import frc.robot.sensors.Pot;
 
 public class Arm extends Subsystem
@@ -17,19 +18,20 @@ public class Arm extends Subsystem
     {
         int armPosition = Robot.armPot.isAtExtremes();
         //2 == down
-        if( armPosition == Pot.AT_MIN )
+        if( armPosition == Pot.AT_MIN || Robot.limitswitches.isArmDown() )
         {
             if( speed > 0 )
-            {
                 set(speed);
-            }
+            else
+                set(0);
+            
         }
         else if( armPosition == Pot.AT_MAX )
         {
             if(speed < 0 )
-            {
                 set(speed);
-            }
+            else
+                set(0);
         }
         else set(speed);
     }
@@ -53,7 +55,7 @@ public class Arm extends Subsystem
     @Override
     protected void initDefaultCommand() 
     {
-
+        setDefaultCommand(new ArmMove());
     }
 
 }   
