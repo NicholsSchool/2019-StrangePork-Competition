@@ -38,6 +38,12 @@ public class Constants
     WHEEL_DIAMETER_IN_FEET = 0.5,
     TICKS_PER_ROTATION = 1128;
 
+    //Need to be changed
+    public static final double
+    LEVEL_1_POT_VALUE = 20,
+    LEVEL_2_POT_VALUE = 2000,
+    LEVEL_3_POT_VALUE = 10000;
+
     public static double INTAKE_SPEED=0.5;
     public static final boolean
         DUSTPAN_RAISED = true,

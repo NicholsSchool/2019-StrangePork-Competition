@@ -30,17 +30,12 @@ public class ArmMove extends Command
     }
 
     @Override
-    protected void interrupted()
-    {
-        end();
+    protected void end() {
+        Robot.arm.stop();
     }
 
     @Override
-    protected void end() 
-    {
-        
-       Robot.arm.stop();
+    protected void interrupted() {
+        end();
     }
-
-
 }
