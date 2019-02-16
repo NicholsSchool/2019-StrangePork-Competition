@@ -20,7 +20,9 @@ public class DriveTrain extends Subsystem
     private boolean[] speedsReached;
     public double[] currentSpeeds;
     private double[] lastCheck;
-    private boolean[] motorSpinning;
+
+    private double[] motorSpeeds;
+
     public boolean moveTest;
     private boolean m_reported;
 
@@ -50,7 +52,7 @@ public class DriveTrain extends Subsystem
         reset();
         config();
         moveTest = true;
-        motorSpinning = new boolean[6];
+        motorSpeeds = new double[6];
     }
 
     @Override
@@ -108,8 +110,21 @@ public class DriveTrain extends Subsystem
     {
         leftSpeed = getSideSigValue(leftSpeed, false, a);
         rightSpeed = getSideSigValue(rightSpeed, true, a);
- 
+        currentSpeeds[0] = leftSpeed;
+        currentSpeeds[1] = rightSpeed;
         set(leftSpeed, rightSpeed);
+        /*
+            double[] speeds = new double[6]
+
+            if(left speed is reached)
+                getSpeedValues for left  --> [front, mid, back] can either be current value,
+                                             or sigmoid down to half the current value
+            if(right speed is reach)
+                getSpeedvalues for right
+
+            set()
+        */
+
     //    move(leftSpeed, rightSpeed);
        // velocityLoop(leftSpeed, rightSpeed);
     //    move(leftSpeed, rightSpeed);
@@ -122,11 +137,66 @@ public class DriveTrain extends Subsystem
     
     }
 
-    /*
-        Note: Could do 
-    */
+    public void getSpeedValues(boolean isRight)
+    {
+        int start = 0;
+        int end = motors.length/3;
+        if(isRight)
+        {
+            start = end;
+            end = motors.length;
+        }
 
+       // for(int i = start; i < end; i ++)
+            
+    }
     
+    public void set(double leftSpeed, double rightSpeed) {
+        if (!m_reported) {
+            HAL.report(tResourceType.kResourceType_RobotDrive, 2, tInstances.kRobotDrive2_DifferentialTank);
+            m_reported = true;
+        }
+
+
+        leftSpeed = applyDeadband(leftSpeed, 0.02);
+
+        rightSpeed = applyDeadband(rightSpeed, 0.02);
+
+        leftSpeed = Math.copySign(leftSpeed * leftSpeed, leftSpeed);
+        rightSpeed = Math.copySign(rightSpeed * rightSpeed, rightSpeed);
+        // System.out.println("Right Speed: " + rightSpeed);
+        double rightAvg = average(true);
+        double leftAvg = average(false);
+        for (int i = 0; i < 3; i++) {
+            System.out.println("Reached: " + speedsReached[0] + "Check: " + lastCheck(false) + "Avg: "
+                    + (Math.abs(motors[i].getSelectedSensorVelocity()) > Math.abs(rightAvg) + 100));
+            // if(speedsReached[0]) && lastCheck(false) &&
+            // (Math.abs(motors[i].getSelectedSensorVelocity()) > Math.abs(rightAvg) + 100)
+            // )
+            // {
+
+            // motors[i].set(0);
+            // System.out.println("Stopping " + i);
+            // }
+            // else
+            // {
+            // motors[i].set(leftSpeed);
+            // }
+        }
+        // motors[3].set(-rightSpeed);
+        motors[4].set(-rightSpeed);
+        motors[5].set(-rightSpeed);
+
+        // for(int i = 0; i < motors.length; i++) {
+        // if (i < motors.length / 2)
+        // motors[i].set(leftSpeed);
+        // else
+        // motors[i].set(-rightSpeed);
+
+        // motors[i].feed();
+        // }
+    }
+
     /**
      * Gets the current speed on the sigmoid graph
      * 
@@ -202,64 +272,7 @@ public class DriveTrain extends Subsystem
         currentSpeeds[1] = rightSpeed;
     }
 
-
-
-    public void moveMiddle()
-    {
-        double leftSpeed = currentSpeeds[0];
-        double rightSpeed= currentSpeeds[1];
-        if(Math.abs(motors[1].getSelectedSensorVelocity()) > Math.abs(motors[0].getSelectedSensorVelocity()) + 100)
-        {
-            System.out.println("Half Left");
-            leftSpeed /= 2;
-        }
-        if (Math.abs(motors[4].getSelectedSensorVelocity()) > Math.abs(motors[3].getSelectedSensorVelocity())+ 100)
-        {
-            System.out.println("Half right");
-            rightSpeed /= 2;
-        }
-
-        // leftSpeed = applyDeadband(leftSpeed, 0.02);
-        // rightSpeed = applyDeadband(rightSpeed, 0.02);
-
-        // leftSpeed = Math.copySign(leftSpeed * leftSpeed, leftSpeed);
-        // rightSpeed = Math.copySign(rightSpeed * rightSpeed, rightSpeed);
-        // motors[1].set(leftSpeed);
-        // motors[4].set(-rightSpeed);
-        RobotMap.midDriveBase.tankDrive(leftSpeed, rightSpeed);
-
-    }
-
-    public void moveMiddle(double leftSpeed, double rightSpeed)
-    {
-
-        System.out.println("Left: " + leftSpeed + "\nright: " + rightSpeed);
-        leftSpeed = applyDeadband(leftSpeed, 0.02);
-        rightSpeed = applyDeadband(rightSpeed, 0.02);
-
-        leftSpeed = Math.copySign(leftSpeed * leftSpeed, leftSpeed);
-        rightSpeed = Math.copySign(rightSpeed * rightSpeed, rightSpeed);
-        motors[1].set(leftSpeed);
-        motors[4].set(-rightSpeed);
-    }
-    
-    /**
-     * Runs a PID distance loop on the talons
-     * @param distance - the distance to travel
-     */
-    public void setDistance(double distance) {
-        
-        for (int i = 0; i < motors.length; i++) {
-
-            //This code is assuming that the right side is reversed, must be verified
-            int direction = 1;
-            if (i >= 2)
-                direction *= -1;
-
-            motors[i].set(ControlMode.Position, distance * direction);
-        }
-    }
-
+   
     /**
      * Resets the desired and current speeds to 0
      */
@@ -297,27 +310,6 @@ public class DriveTrain extends Subsystem
     }
 
 
-    public void velocityLoop(double leftSpeed, double rightSpeed)
-    {
-        currentSpeeds[0] = leftSpeed;
-        currentSpeeds[1] = rightSpeed;
-        leftSpeed = Math.copySign(leftSpeed * leftSpeed, leftSpeed);
-        rightSpeed = Math.copySign(rightSpeed * rightSpeed, rightSpeed);
-        System.out.println("Left: " + leftSpeed + "Right: " + rightSpeed);
-        leftSpeed = leftSpeed * 500.0 * 4096 / 600;
-        rightSpeed = rightSpeed * 500.0 * 4096 / 600; 
-        System.out.println("Velocity Looping LeftSpeed: " + leftSpeed + " RightSpeed: " + rightSpeed + "\n"); 
-        
-        for(int i = 0; i < motors.length; i ++)
-        {
-            if(i < motors.length/2)
-                motors[i].set(ControlMode.Velocity, leftSpeed);
-            else
-                motors[i].set(ControlMode.Velocity, rightSpeed);
-        }
-    }
-
-
     public boolean lastCheck(boolean isRight)
     {
         int index = 0;
@@ -337,54 +329,7 @@ public class DriveTrain extends Subsystem
     }
 
 
-    public void set(double leftSpeed, double rightSpeed) {
-        if (!m_reported) {
-            HAL.report(tResourceType.kResourceType_RobotDrive, 2, tInstances.kRobotDrive2_DifferentialTank);
-            m_reported = true;
-        }
-        currentSpeeds[0] = leftSpeed;
-        currentSpeeds[1] = rightSpeed;
 
-        leftSpeed = applyDeadband(leftSpeed, 0.02);
-
-        rightSpeed = applyDeadband(rightSpeed, 0.02);
-
-        leftSpeed = Math.copySign(leftSpeed * leftSpeed, leftSpeed);
-        rightSpeed = Math.copySign(rightSpeed * rightSpeed, rightSpeed);
-    //    System.out.println("Right Speed: " + rightSpeed);
-        double rightAvg = average(true);
-        double leftAvg = average(false);
-        for(int i = 0; i < 3; i++)
-        {
-            System.out.println(
-                "Reached: " + speedsReached[0] 
-                +"Check: " + lastCheck(false)
-                + "Avg: " + (Math.abs(motors[i].getSelectedSensorVelocity()) > Math.abs(rightAvg) + 100)
-            );
-            // if(speedsReached[0]) && lastCheck(false) && (Math.abs(motors[i].getSelectedSensorVelocity()) > Math.abs(rightAvg) + 100) ) 
-            // {
-  
-            //     motors[i].set(0); 
-            //     System.out.println("Stopping " + i);
-            // }
-            // else
-            // {
-            //     motors[i].set(leftSpeed);
-            // }
-        }
-    //     motors[3].set(-rightSpeed);
-         motors[4].set(-rightSpeed);
-         motors[5].set(-rightSpeed);
-
-        // for(int i = 0; i < motors.length; i++) {
-        //     if (i < motors.length / 2)
-        //         motors[i].set(leftSpeed);
-        //     else
-        //         motors[i].set(-rightSpeed);
-
-        //     motors[i].feed();
-        // }
-    }
 
     protected double applyDeadband(double value, double deadband) {
         if (Math.abs(value) > deadband) {
@@ -398,15 +343,6 @@ public class DriveTrain extends Subsystem
         }
     }
 
-    public void moveMotor(double speed, int motorIndex)
-    {
-        System.out.println("Moving the specific motor: " + motorIndex + " Speed: " + speed + "\n");
-        speed = Math.copySign(speed * speed, speed);
-        if(motorIndex >= motors.length/2)
-            speed = -speed;
-        motors[motorIndex].set(speed);
-        RobotMap.driveBase.feed();
-    }
 
     public void checkForSpinning(boolean isRight)
     {
@@ -422,8 +358,7 @@ public class DriveTrain extends Subsystem
         }
         for(int i = start; i < end; i++)
         {
-            if(Math.abs(motors[i].getSelectedSensorVelocity()) > Math.abs(avg) + 100 )
-                moveMotor(0, i);
+        
         }
 
     }

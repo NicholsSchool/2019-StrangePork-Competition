@@ -41,7 +41,7 @@ public class Robot extends TimedRobot {
   public static NavX navX;
   public static Gripper gripper;
   public static LimitSwitch limitswitches;
-
+  public static NewDriveTrain newDriveTrain;
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -56,7 +56,8 @@ public class Robot extends TimedRobot {
 
     //subsystems
     jumpJacks = new JumpJacks();
-    driveTrain = new DriveTrain();
+  //  driveTrain = new DriveTrain();
+     newDriveTrain = new NewDriveTrain();
     dustpan = new DustPan();
     gripper = new Gripper();
 
@@ -143,10 +144,11 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
-   driveTrain.resetEncoders();
+ //  driveTrain.resetEncoders();
  
  // DO NOT DELETE THIS 
-      driveTrain.reset();
+  //    driveTrain.reset();
+    newDriveTrain.reset();
   }
 
   /**
@@ -157,7 +159,8 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
     //RobotMap.rFrontDrive.set(0.2);
    // RobotMap.rFrontDrive.set(-0.3);
-    driveTrain.displayInfo();
+   // driveTrain.displayInfo();
+    newDriveTrain.displayInfo();
     // SmartDashboard.putNumber("FrontLD Encoder Value:", RobotMap.lFrontDrive.getSelectedSensorPosition(0));
     // SmartDashboard.putNumber("MidLD Encoder Value:", RobotMap.lMidDrive.getSelectedSensorPosition(0));
     // SmartDashboard.putNumber("BackLD Encoder Value:", RobotMap.lBackDrive.getSelectedSensorPosition(0));
