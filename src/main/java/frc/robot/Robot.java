@@ -44,6 +44,10 @@ public class Robot extends TimedRobot {
   public static Elevator elevator;
   public static Arm arm;
 
+  public static boolean isBallIn;
+
+  
+
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -69,6 +73,8 @@ public class Robot extends TimedRobot {
 
     //sensors
     Vision.init();
+    isBallIn = false;
+
 
     navX = new NavX(RobotMap.ahrs);
     ultrasonic = new Ultrasonic();
@@ -167,6 +173,9 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("FrontRD Encoder Value:", RobotMap.rFrontDrive.getSelectedSensorPosition(0));
     SmartDashboard.putNumber("MidRD Encoder Value:", RobotMap.rMidDrive.getSelectedSensorPosition(0));
     SmartDashboard.putNumber("BackRD Encoder Value:", RobotMap.rBackDrive.getSelectedSensorPosition(0));
+      if(oi.j0.getRawButton(1)){
+        isBallIn =!isBallIn; 
+      }
 
     SmartDashboard.putBoolean("bottomArmLimitSwitch Value:", limitswitches.isArmDown());
     SmartDashboard.putBoolean("ball Limit Switch Value:", limitswitches.isBallIn());
@@ -174,11 +183,12 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("ElevatorArmPot Value:", elevatorPot.getPosition());
     SmartDashboard.putNumber("ArmPot Value:", armPot.getPosition());
 
+
     // SmartDashboard.putNumber("leftFrontUltrasonic Value:",
     // RobotMap.leftFrontUltraSonic.);
 
-
   }
+  
 
   /**
    * This function is called periodically during test mode.

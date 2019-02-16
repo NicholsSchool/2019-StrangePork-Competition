@@ -45,6 +45,7 @@ public class Constants
     LEVEL_3_POT_VALUE = 10000;
 
     public static double INTAKE_SPEED=0.5;
+    public static double OUTTAKE_SPEED=0.5; 
     public static final boolean
         DUSTPAN_RAISED = true,
         DUSTPAN_DROPPED = !DUSTPAN_RAISED,

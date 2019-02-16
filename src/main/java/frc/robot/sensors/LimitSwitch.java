@@ -3,6 +3,7 @@ package frc.robot.sensors;
 import com.ctre.phoenix.motorcontrol.SensorCollection;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class LimitSwitch
@@ -17,7 +18,8 @@ public class LimitSwitch
 
     public boolean isBallIn()
     {
-        return ballLM.isFwdLimitSwitchClosed();
+        return Robot.isBallIn;
+        //return ballLM.isFwdLimitSwitchClosed();
     }
 
     public boolean isArmDown()
