@@ -42,9 +42,14 @@ public class Constants
 
     //Need to be changed
     public static final double
-    LEVEL_1_POT_VALUE = 20,
-    LEVEL_2_POT_VALUE = 2000,
-    LEVEL_3_POT_VALUE = 10000;
+    LEVEL_1_HATCH_VALUE = 989,
+    LEVEL_2_HATCH_VALUE = 999,
+    LEVEL_3_HATCH_VALUE = 1009;
+
+    public static final double
+    LEVEL_1_BALL_VALUE = 985,
+    LEVEL_2_BALL_VALUE = 995,
+    LEVEL_3_BALL_VALUE = 1005;
 
     public static double INTAKE_SPEED=1;
     public static double OUTTAKE_SPEED=-1; 

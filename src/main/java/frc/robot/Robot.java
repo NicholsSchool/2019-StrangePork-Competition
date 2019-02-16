@@ -191,6 +191,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("ElevatorArmPot Value:", elevatorPot.getPosition());
     SmartDashboard.putNumber("ArmPot Value:", armPot.getPosition());
 
+    SmartDashboard.putNumber("Left Ultrasonic", ultrasonic.getRange(true));
+    SmartDashboard.putNumber("Right Ultrasonic", ultrasonic.getRange(false));
 
     // SmartDashboard.putNumber("leftFrontUltrasonic Value:",
     // RobotMap.leftFrontUltraSonic.);

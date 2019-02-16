@@ -43,7 +43,11 @@ public class OI {
     j0b6 = new JoystickButton(j0, 6);
     j0b7 = new JoystickButton(j0, 7);
     j0b8 = new JoystickButton(j0, 8);
+    j0b9 = new JoystickButton(j0, 9);
+    j0b10 = new JoystickButton(j0, 10);
     j0b11 = new JoystickButton(j0, 11);
+    j0b11 = new JoystickButton(j0, 11);
+    j0b12 = new JoystickButton(j0, 12);
 
     j1b1 = new JoystickButton(j1, 1); 
     j1b2 = new JoystickButton(j1, 2);
@@ -65,15 +69,16 @@ public class OI {
     j1b7.whileHeld(new JumpJacksRaise()); 
     j1b8.whileHeld(new JumpJacksDrop());
 
-    j0b11.whenPressed(new Place());
+    j0b9.whenPressed(new Place());
 
-  /*  
-    j0b3.whenPressed(new WallAllign(.5));
+    j0b10.whenPressed(new ArmMoveToLevel(1, 0.5));
+    j0b11.whenPressed(new ArmMoveToLevel(2, 0.5));
+    j0b12.whenPressed(new ArmMoveToLevel(3, 0.5));
+
+    j0b3.whenPressed(new WallAllign(0.5));
  
 
-    
-
-    
-    j0b6.whenPressed(new AngleTurn(90, 0.5)); */
+  
+  //  j0b6.whenPressed(new AngleTurn(90, 0.5)); 
   }
 }

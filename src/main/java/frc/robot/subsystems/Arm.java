@@ -9,13 +9,21 @@ import frc.robot.sensors.Pot;
 
 public class Arm extends Subsystem
 {
-    public double[] armLevelValues;
+    public double[] hatchLevelValues;
+    public double[] ballLevelValues;
     public Arm()
     {
-        armLevelValues = new double[3];
-        armLevelValues[0] = Constants.LEVEL_1_POT_VALUE;
-        armLevelValues[1] = Constants.LEVEL_2_POT_VALUE;
-        armLevelValues[2] = Constants.LEVEL_3_POT_VALUE;
+        hatchLevelValues = new double[3];
+        hatchLevelValues[0] = Constants.LEVEL_1_HATCH_VALUE;
+        hatchLevelValues[1] = Constants.LEVEL_2_HATCH_VALUE;
+        hatchLevelValues[2] = Constants.LEVEL_3_HATCH_VALUE;
+
+        ballLevelValues = new double[3];
+        ballLevelValues[0] = Constants.LEVEL_1_BALL_VALUE;
+        ballLevelValues[1] = Constants.LEVEL_2_BALL_VALUE;
+        ballLevelValues[2] = Constants.LEVEL_3_BALL_VALUE;
+
+
     }
 
     private void set( double speed )
