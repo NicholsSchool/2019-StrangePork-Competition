@@ -40,18 +40,22 @@ public class OI {
     j0b4 = new JoystickButton(j0, 4);
     j0b5 = new JoystickButton(j0, 5);
     j0b6 = new JoystickButton(j0, 6);
+    j0b7 = new JoystickButton(j0, 7);
+    j0b8 = new JoystickButton(j0, 8);
 
     driver = new Controller(3);
     operator = new Controller(4);
     
-  /*  
-    j0b3.whenPressed(new WallAllign(.5));
-    j0b2.whenPressed(new JumpJacksRaise());
-    j0b1.whenPressed(new JumpJacksDrop());
-
-    
     j0b4.whileHeld(new Intake());
     j0b5.whileHeld(new Outtake());
+    j0b7.whenPressed(new DustpanRaise()); //switch
+    j0b8.whenPressed(new DustpanDrop());
+  /*  
+    j0b3.whenPressed(new WallAllign(.5));
+ 
+
+    
+
     
     j0b6.whenPressed(new AngleTurn(90, 0.5)); */
   }

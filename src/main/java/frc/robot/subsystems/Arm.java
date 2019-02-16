@@ -12,6 +12,7 @@ public class Arm extends Subsystem
     public double[] armLevelValues;
     public Arm()
     {
+        armLevelValues = new double[3];
         armLevelValues[0] = Constants.LEVEL_1_POT_VALUE;
         armLevelValues[1] = Constants.LEVEL_2_POT_VALUE;
         armLevelValues[2] = Constants.LEVEL_3_POT_VALUE;

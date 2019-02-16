@@ -13,8 +13,8 @@ import frc.robot.RobotMap;
 public class Gripper extends Subsystem
 {
     public void setSpeed (double speed){
-        RobotMap.leftGrip.set(speed);
-        RobotMap.rightGrip.set(-speed);
+        RobotMap.leftGrip.set(-speed);
+        RobotMap.rightGrip.set(speed);
     }
     /**
      * Runs the gripper motors to intake a ball.
@@ -23,8 +23,7 @@ public class Gripper extends Subsystem
     {
         if(!Robot.limitswitches.isBallIn())
         {
-            RobotMap.leftGrip.set(Constants.INTAKE_SPEED);
-            RobotMap.rightGrip.set(-Constants.INTAKE_SPEED);
+          setSpeed(Constants.INTAKE_SPEED);
         }
     } 
     /**
@@ -34,8 +33,7 @@ public class Gripper extends Subsystem
     {
         if(Robot.limitswitches.isBallIn())
         {
-            RobotMap.leftGrip.set(-Constants.OUTTAKE_SPEED);
-            RobotMap.rightGrip.set(Constants.OUTTAKE_SPEED);
+            setSpeed(Constants.OUTTAKE_SPEED);
         }
     }
     /**

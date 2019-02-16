@@ -10,13 +10,13 @@ public class DustPan
      */
     public void raise()
     {
-        RobotMap.solenoid0.set(Constants.DUSTPAN_RAISED);
+        RobotMap.dustPanSolenoid.set(Constants.DUSTPAN_RAISED);
     }
     /**
      * Uses solenoid to drop the DustPan
      */
     public void drop()
     {
-        RobotMap.solenoid0.set(Constants.DUSTPAN_DROPPED);
+        RobotMap.dustPanSolenoid.set(Constants.DUSTPAN_DROPPED);
     } 
 }                                        

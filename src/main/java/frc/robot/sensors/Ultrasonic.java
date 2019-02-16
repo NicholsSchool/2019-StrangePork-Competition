@@ -7,12 +7,11 @@ import frc.robot.RobotMap;
  */
 public class Ultrasonic {
 
-    public double getRange(char side) {
-        if (side == 'L')
+    public double getRange(boolean isLeft) {
+        if (isLeft)
             return RobotMap.leftFrontUltraSonic.getValue();
-        if (side == 'R')
+        else
             return RobotMap.rightFrontUltraSonic.getValue();
-        return 0;
 
     }
 

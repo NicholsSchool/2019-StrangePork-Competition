@@ -21,8 +21,10 @@ public class Constants
     TOP_ARM_LIMIT_SWITCH = 2,
     RETRACTED_JJ_LIMIT_SWITCH = 3,
 
-    ARM_POT_HIGH_EXTREME_VALUE = 90,
-    ARM_POT_LOW_EXTREME_VALUE = 0,
+    ARM_POT_HIGH_BUFFER = 10,
+    ARM_POT_LOW_BUFFER = 5,
+    ARM_POT_HIGH_EXTREME_VALUE = 1016 - ARM_POT_HIGH_BUFFER ,
+    ARM_POT_LOW_EXTREME_VALUE = 990 + ARM_POT_LOW_BUFFER ,
     ELEVATOR_POT_HIGH_BUFFER = 10, 
     ELEVATOR_POT_LOW_BUFFER = 1,
     ELEVATOR_POT_HIGH_EXTREME_VALUE = 1023 - ELEVATOR_POT_HIGH_BUFFER,
@@ -45,9 +47,9 @@ public class Constants
     LEVEL_3_POT_VALUE = 10000;
 
     public static double INTAKE_SPEED=0.5;
-    public static double OUTTAKE_SPEED=0.5; 
+    public static double OUTTAKE_SPEED=-0.5; 
     public static final boolean
-        DUSTPAN_RAISED = true,
+        DUSTPAN_RAISED = false,
         DUSTPAN_DROPPED = !DUSTPAN_RAISED,
         JUMPJACKS_RAISED = true,
         JUMPJACKS_DROPPED = !JUMPJACKS_RAISED;

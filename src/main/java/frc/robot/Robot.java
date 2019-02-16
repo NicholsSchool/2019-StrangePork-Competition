@@ -9,6 +9,7 @@ package frc.robot;
 
 import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -44,8 +45,6 @@ public class Robot extends TimedRobot {
   public static Elevator elevator;
   public static Arm arm;
 
-  public static boolean isBallIn;
-
   
 
   Command m_autonomousCommand;
@@ -73,7 +72,6 @@ public class Robot extends TimedRobot {
 
     //sensors
     Vision.init();
-    isBallIn = false;
 
 
     navX = new NavX(RobotMap.ahrs);
@@ -110,6 +108,23 @@ public class Robot extends TimedRobot {
   public void disabledPeriodic() {
     Scheduler.getInstance().run();
     SmartDashboard.putNumber("POV", oi.j2.getPOV());
+    SmartDashboard.putNumber("Navx Yaw ", RobotMap.ahrs.getYaw());
+    SmartDashboard.putNumber("Navx Roll ", RobotMap.ahrs.getYaw());
+    SmartDashboard.putNumber("Navx Pitch ", RobotMap.ahrs.getPitch());
+    SmartDashboard.putNumber("Left Ultrasonic", ultrasonic.getRange(true));
+    SmartDashboard.putNumber("Right Ultrasonic", ultrasonic.getRange(false));
+    SmartDashboard.putBoolean("App Switch", RobotMap.appSwitch.get());
+    SmartDashboard.putNumber("App Pot", RobotMap.appPot.get());
+
+    if(oi.j0b1.get())
+    {
+      NetworkTableInstance.getDefault().getTable("vision").getEntry("camera").setDouble(0);
+    }
+    else
+    {
+      NetworkTableInstance.getDefault().getTable("vision").getEntry("camera").setDouble(1);
+
+    }
   }
 
   /**
@@ -166,16 +181,14 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-   // RobotMap.rBackDrive.set(0.1);
+   // RobotMap.leftGrip.set(0.1);
     SmartDashboard.putNumber("FrontLD Encoder Value:", RobotMap.lFrontDrive.getSelectedSensorPosition(0));
     SmartDashboard.putNumber("MidLD Encoder Value:", RobotMap.lMidDrive.getSelectedSensorPosition(0));
     SmartDashboard.putNumber("BackLD Encoder Value:", RobotMap.lBackDrive.getSelectedSensorPosition(0));
     SmartDashboard.putNumber("FrontRD Encoder Value:", RobotMap.rFrontDrive.getSelectedSensorPosition(0));
     SmartDashboard.putNumber("MidRD Encoder Value:", RobotMap.rMidDrive.getSelectedSensorPosition(0));
     SmartDashboard.putNumber("BackRD Encoder Value:", RobotMap.rBackDrive.getSelectedSensorPosition(0));
-      if(oi.j0.getRawButton(1)){
-        isBallIn =!isBallIn; 
-      }
+
 
     SmartDashboard.putBoolean("bottomArmLimitSwitch Value:", limitswitches.isArmDown());
     SmartDashboard.putBoolean("ball Limit Switch Value:", limitswitches.isBallIn());

@@ -19,7 +19,7 @@ public class NavX
 
     public double getAngle()
     {
-        double angle = navX.getAngle();
+        double angle = navX.getRoll();
         if (angle < -180)
             angle = 360 + angle;
         

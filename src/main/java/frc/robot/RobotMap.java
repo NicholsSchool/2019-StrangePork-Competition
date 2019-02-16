@@ -65,9 +65,6 @@ public class RobotMap
   public static WPI_TalonSRX leftGrip;
   public static WPI_TalonSRX rightGrip;
   public static WPI_TalonSRX armExtend;
-  
-
-  public static AnalogPotentiometer pot;
 
 
   public static SpeedControllerGroup leftSide;
@@ -79,12 +76,15 @@ public class RobotMap
   public static AnalogInput leftFrontUltraSonic;
   public static AnalogInput rightFrontUltraSonic;
 
+  public static AnalogPotentiometer appPot;
+  public static DigitalInput appSwitch;
+
   public static AHRS ahrs;
 
   public static Compressor compressor;
   public static Solenoid solenoid0;
   public static Solenoid solenoid1;
-  public static Solenoid solenoid2;
+  public static Solenoid dustPanSolenoid;
 
 
   public static void init()
@@ -134,7 +134,6 @@ public class RobotMap
     rBackDrive.setSensorPhase(false);
     
 
-    pot = new AnalogPotentiometer(0);
 
     leftSide = new SpeedControllerGroup(lFrontDrive, lMidDrive, lBackDrive);
     rightSide = new SpeedControllerGroup(rFrontDrive, rMidDrive, rBackDrive);
@@ -145,23 +144,27 @@ public class RobotMap
     ahrs = new AHRS(SPI.Port.kMXP);
 
     //Making Ultrasonic Sensors
-  //  leftFrontUltraSonic = new AnalogInput(0);
-  //  rightFrontUltraSonic = new AnalogInput(0);
+    rightFrontUltraSonic = new AnalogInput(0);
+    leftFrontUltraSonic = new AnalogInput(1);
     
     //Making Limit Switches
     //Ball LS
     leftGrip.configLimitSwitchDisableNeutralOnLOS(true, 100);
-    leftGrip.configForwardLimitSwitchSource(RemoteLimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyOpen,100);
+    leftGrip.configForwardLimitSwitchSource(LimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyOpen);
     leftGrip.configForwardSoftLimitEnable(false);
     //Arm Down LS
     leftDart.configLimitSwitchDisableNeutralOnLOS(true, 100);
-    leftDart.configForwardLimitSwitchSource(RemoteLimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyOpen, 100);
+    leftDart.configForwardLimitSwitchSource(LimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyOpen);
     leftDart.configForwardSoftLimitEnable(false);
+
+    //Make A.P.P. sensors
+    appPot = new AnalogPotentiometer(2);
+    appSwitch = new DigitalInput(0);
 
     compressor = new Compressor(50);
     solenoid0 = new Solenoid(50, 0);
-    solenoid1 = new Solenoid(50, 1);
-    solenoid2 = new Solenoid(50, 2);
+    solenoid1 = new Solenoid(50, 2);
+    dustPanSolenoid = new Solenoid(50, 1);
   }
 
 }
