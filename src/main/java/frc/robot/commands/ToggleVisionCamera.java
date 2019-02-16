@@ -7,28 +7,25 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.networktables.NetworkTableEntry;
-import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.sensors.Vision;
 
 public class ToggleVisionCamera extends Command {
-    private NetworkTableEntry entry;
 
     public ToggleVisionCamera() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        entry = NetworkTableInstance.getDefault().getTable("vision").getEntry("camera");
     }
 
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        switch ((int) entry.getDouble(0)) {
+        switch (Vision.camera) {
         case 0:
-            entry.setDouble(1);
+            Vision.switchCamera(1);
             break;
         case 1:
-            entry.setDouble(0);
+            Vision.switchCamera(0);
             break;
         }
     }
