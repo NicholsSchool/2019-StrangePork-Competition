@@ -3,6 +3,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
+import frc.robot.commands.ElevatorMove;
 import frc.robot.sensors.Pot;
 
 public class Elevator extends Subsystem
@@ -20,28 +21,40 @@ public class Elevator extends Subsystem
         if( elevatorPosition == Pot.AT_MIN )
         {
             if( speed > 0 )
-            {
                 set(speed);
-            }
+            
+            else
+                set(0);
 
         }
         else if( elevatorPosition == Pot.AT_MAX )
         {
             if( speed < 0 )
-            {
                 set(speed);
-            }
+            else
+                set(0);
+            
         }
         else set(speed);
     }
 
+    public void elevatorMove()
+    {
+        int pov = Robot.oi.j2.getPOV();
+        if(pov == 315 || pov == 0 || pov ==45)
+            move(0.5);
+        else if(pov == 225 || pov == 180 || pov == 135)
+            move(-0.5);
+        else
+            move(0);
+
+    }
 
     public void resetPot()
     {
         Robot.elevatorPot.reset();
     }
 
-    //check the armExtend
     public void stop()
     {
         RobotMap.armExtend.stopMotor();
@@ -50,7 +63,7 @@ public class Elevator extends Subsystem
     @Override
     protected void initDefaultCommand()
     {
-        
+        setDefaultCommand(new ElevatorMove());
     }
 
 

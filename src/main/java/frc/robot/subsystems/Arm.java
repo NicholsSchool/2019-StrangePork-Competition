@@ -25,15 +25,21 @@ public class Arm extends Subsystem
     public void move( double speed )
     {
         int armPosition = Robot.armPot.isAtExtremes();
-        if( armPosition == Pot.AT_MIN )
-        {   
+        //2 == down
+        if( armPosition == Pot.AT_MIN || Robot.limitswitches.isArmDown() )
+        {
             if( speed > 0 )
                 set(speed);
+            else
+                set(0);
+            
         }
         else if( armPosition == Pot.AT_MAX )
         {
-            if( speed < 0 )
+            if(speed < 0 )
                 set(speed);
+            else
+                set(0);
         }
         else 
             set(speed);

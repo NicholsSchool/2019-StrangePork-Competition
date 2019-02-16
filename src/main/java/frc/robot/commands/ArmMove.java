@@ -12,18 +12,20 @@ public class ArmMove extends Command
     }
 
     @Override
-    protected void initialize() {
-        
+    public void initialize()
+    {
+
     }
 
     @Override
-    protected void execute() {
+    protected void execute() 
+    {
         Robot.arm.armMove();
-        if(Robot.limitswitches.isArmDown())
-            Robot.arm.resetPot();
     }
 
-    protected boolean isFinished() {
+    @Override
+    protected boolean isFinished()
+    {
         return false;
     }
 
