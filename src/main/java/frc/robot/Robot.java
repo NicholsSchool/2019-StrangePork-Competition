@@ -104,15 +104,15 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
+    navX.reset();
   }
 
   @Override
   public void disabledPeriodic() {
     Scheduler.getInstance().run();
     SmartDashboard.putNumber("POV", oi.j2.getPOV());
-    SmartDashboard.putNumber("Navx Yaw ", RobotMap.ahrs.getYaw());
-    SmartDashboard.putNumber("Navx Roll ", RobotMap.ahrs.getYaw());
-    SmartDashboard.putNumber("Navx Pitch ", RobotMap.ahrs.getPitch());
+    SmartDashboard.putNumber("NavX raw", RobotMap.ahrs.getYaw());
+    SmartDashboard.putNumber("Navx ", navX.getAngle());
     SmartDashboard.putNumber("Left Ultrasonic", ultrasonic.getRange(true));
     SmartDashboard.putNumber("Right Ultrasonic", ultrasonic.getRange(false));
     SmartDashboard.putBoolean("App Switch", RobotMap.appSwitch.get());
@@ -176,7 +176,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-   // RobotMap.leftGrip.set(0.1);
+  //  RobotMap.leftGrip.set(0.1);
     SmartDashboard.putNumber("FrontLD Encoder Value:", RobotMap.lFrontDrive.getSelectedSensorPosition(0));
     SmartDashboard.putNumber("MidLD Encoder Value:", RobotMap.lMidDrive.getSelectedSensorPosition(0));
     SmartDashboard.putNumber("BackLD Encoder Value:", RobotMap.lBackDrive.getSelectedSensorPosition(0));

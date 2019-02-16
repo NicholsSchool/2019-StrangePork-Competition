@@ -12,14 +12,9 @@ public class NavX
         this.navX = ahrs;
     }
 
-    public double getYaw()
-    {
-        return navX.getYaw() % 360;
-    }
-
     public double getAngle()
     {
-        double angle = navX.getRoll();
+        double angle = navX.getYaw();
         if (angle < -180)
             angle = 360 + angle;
         

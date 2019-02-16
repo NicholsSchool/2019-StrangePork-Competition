@@ -18,6 +18,7 @@ public class DustpanDrop extends Command
     @Override
     protected void execute() 
     {
+        System.out.println("Dropping");
         Robot.dustpan.drop();
     }
 
