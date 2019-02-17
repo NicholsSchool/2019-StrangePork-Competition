@@ -28,7 +28,7 @@ public class DustpanDrop extends Command
         System.out.println("Dropping");
 
         if(Robot.armPot.getPosition() < Constants.ARM_INTERFERENCE_WITH_DUSTPAN)
-        Robot.arm.move(0.3);
+        Robot.arm.move(1.0);
         else 
         Robot.dustpan.drop();
     }

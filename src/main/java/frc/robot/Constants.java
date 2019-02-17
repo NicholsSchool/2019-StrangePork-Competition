@@ -95,5 +95,5 @@ public class Constants
         CONTROLLER_12_BUTTON_ID = 12;
 
         public static final int
-        ARM_INTERFERENCE_WITH_DUSTPAN = 1004;
+        ARM_INTERFERENCE_WITH_DUSTPAN = 999;
 }
