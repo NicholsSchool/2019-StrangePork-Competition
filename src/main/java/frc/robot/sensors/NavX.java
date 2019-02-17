@@ -14,17 +14,8 @@ public class NavX
 
     public double getAngle()
     {
-        double angle = navX.getYaw();
-        if (angle < -180)
-            angle = 360 + angle;
-        
-        else 
-        {
-            angle = 360 - angle;
-            angle *= -1;
-        }
+        return navX.getYaw();
 
-        return angle;
     }
     public boolean atAngle(double angle)
     {

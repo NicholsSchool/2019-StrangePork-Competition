@@ -41,6 +41,9 @@ public class AlignWithLineBB extends Command {
         System.out.println("\n\n[VISION]: Starting...\n\n");
         Robot.navX.reset();
         angleToLine = Vision.angleToLine;
+        distanceToLine = Vision.distanceToLine / Constants.WHEEL_DIAMETER_IN_FEET / Math.PI
+                * Constants.TICKS_PER_ROTATION;
+        angleToWall = Vision.angleToWall - Vision.angleToLine;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -56,9 +59,10 @@ public class AlignWithLineBB extends Command {
                 System.out.println("\n\n[VISION]: Faced Line\n\n");
                 isFacingLine = true;
 
-                distanceToLine = Vision.distanceToLine / Constants.WHEEL_DIAMETER_IN_FEET / Math.PI
-                        * Constants.TICKS_PER_ROTATION;
-                angleToWall = Vision.angleToWall;
+                // distanceToLine = Vision.distanceToLine / Constants.WHEEL_DIAMETER_IN_FEET /
+                // Math.PI
+                // * Constants.TICKS_PER_ROTATION;
+                // angleToWall = Vision.angleToWall;
 
                 Robot.driveTrain.resetEncoders();
             }
