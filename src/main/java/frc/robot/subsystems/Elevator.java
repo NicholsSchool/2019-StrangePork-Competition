@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.Constants;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.commands.ElevatorMove;
@@ -40,6 +41,18 @@ public class Elevator extends Subsystem
 
     public void elevatorMove()
     {
+        double elevatorPos = Robot.elevatorPot.getPosition() - Constants.ELEVATOR_POT_LOW_EXTREME_VALUE;
+        elevatorPos /= Constants.ELEVATOR_POT_HIGH_EXTREME_VALUE - Constants.ELEVATOR_POT_LOW_EXTREME_VALUE;
+
+        double armPos = Robot.armPot.getPosition() - Constants.ARM_POT_LOW_EXTREME_VALUE;
+        armPos /= Constants.ARM_POT_HIGH_EXTREME_VALUE - Constants.ARM_POT_LOW_EXTREME_VALUE;
+
+        if(armPos < Constants.THIRTY_INCH_RULE_THRESH && elevatorPos > Constants.THIRTY_INCH_RULE_RATIO * armPos)
+        {
+            move(-0.5);
+            return;
+        }
+
         int pov = Robot.oi.j2.getPOV();
         if(pov == 315 || pov == 0 || pov ==45)
             move(0.5);
