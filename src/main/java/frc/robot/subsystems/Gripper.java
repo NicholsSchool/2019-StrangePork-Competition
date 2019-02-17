@@ -22,19 +22,16 @@ public class Gripper extends Subsystem
     public void intake()
     {
         if(!Robot.limitswitches.isBallIn())
-        {
           setSpeed(Constants.INTAKE_SPEED);
-        }
+        else
+            setSpeed(0);
     } 
     /**
      * runs gripper motors to outtake ball.
      */
     public void outtake()
     {
-        if(Robot.limitswitches.isBallIn())
-        {
-            setSpeed(Constants.OUTTAKE_SPEED);
-        }
+        setSpeed(Constants.OUTTAKE_SPEED);
     }
     /**
      * Stops the gripper motors.
