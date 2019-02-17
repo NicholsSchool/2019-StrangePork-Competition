@@ -4,6 +4,7 @@ import com.ctre.phoenix.motorcontrol.SensorCollection;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import frc.robot.Constants;
+import frc.robot.Robot;
 
 
 public class Pot
@@ -27,10 +28,13 @@ public class Pot
     }
 
     public int isAtExtremes(double lowExtreme, double highExtreme) {
+        if(!Robot.sensorOverride)
+        {
          if (getPosition() <= lowExtreme)
              return AT_MIN; // is down
          if (getPosition() >= highExtreme)
              return AT_MAX; // is up
+        }
         return 0; // is inbetween
 
     }

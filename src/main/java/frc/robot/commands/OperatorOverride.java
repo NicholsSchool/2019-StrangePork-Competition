@@ -22,9 +22,7 @@ public class OperatorOverride extends Command {
     protected void initialize() {
         if (Robot.oi.j1.b11.get()) {
             Scheduler.getInstance().removeAll();
-            // Robot.arm.getDefaultCommand().start();
-            // Robot.elevator.getDefaultCommand().start();
-            // Robot.driveTrain.getDefaultCommand().start();
+            Robot.sensorOverride = !Robot.sensorOverride;
         }
     }
 
