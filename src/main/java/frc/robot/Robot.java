@@ -168,6 +168,8 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    RobotMap.jumpJacksSolenoid.set(Constants.JUMPJACKS_RAISED);
+    RobotMap.dustPanSolenoid.set(Constants.DUSTPAN_RAISED);
  //   driveTrain.resetEncoders();
   }
 

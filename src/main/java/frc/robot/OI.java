@@ -38,6 +38,7 @@ public class OI {
     j0.b11.whenPressed(new ArmMoveToLevel(2, armMoveSpeed));
     j0.b12.whenPressed(new ArmMoveToLevel(3, armMoveSpeed));
 
+    j0.b8.whenPressed(new ClimbSequence());
     j0.b3.whenPressed(new WallAllign(0.5));
 
     j1.b1.whileHeld(new Intake());
@@ -46,9 +47,6 @@ public class OI {
     j1.b2.whenPressed(new DustpanDrop());
     j1.b2.whenReleased(new DustpanRaise());
     j2.b2.whenPressed(new ToggleVisionCamera());
-
-    j1.b7.whileHeld(new JumpJacksRaise()); 
-    j1.b8.whileHeld(new JumpJacksDrop());
 
     j2.b3.whenPressed(new ToggleVisionCamera());
     j2.b4.whenPressed(new AlignWithLineBB(0.7));

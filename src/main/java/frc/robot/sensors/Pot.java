@@ -3,6 +3,8 @@ package frc.robot.sensors;
 import com.ctre.phoenix.motorcontrol.SensorCollection;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import frc.robot.Constants;
+
 
 public class Pot
 {
@@ -17,7 +19,7 @@ public class Pot
     }
 
     public void reset() {
-        pot.setAnalogPosition(0, 100);
+        pot.setAnalogPosition(Constants.ARM_POT_HIGH_EXTREME_VALUE, 100);
     }
 
     public double getPosition() {

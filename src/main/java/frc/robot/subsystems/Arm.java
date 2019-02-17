@@ -35,8 +35,9 @@ public class Arm extends Subsystem
     {
         int armPosition = Robot.armPot.isAtExtremes();
         //2 == down
-        if( armPosition == Pot.AT_MIN || Robot.limitswitches.isArmDown() )
+        if( /*armPosition == Pot.AT_MIN || */ Robot.limitswitches.isArmDown() )
         {
+            resetPot();
             if( speed > 0 )
                 set(speed);
             else

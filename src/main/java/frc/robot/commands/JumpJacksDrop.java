@@ -18,8 +18,10 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 
 public class JumpJacksDrop extends Command {
-  public JumpJacksDrop() {
+ 
 
+  public JumpJacksDrop() {
+    
   }
     // Use requires() here to declare subsystem dependencies
     //requires(Robot.m_subsystem);  
@@ -31,15 +33,13 @@ public class JumpJacksDrop extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    System.out.println("Drop running");
-    if(Robot.oi.j1.b10.get())
       Robot.jumpJacks.drop();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true
