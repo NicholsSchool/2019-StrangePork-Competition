@@ -25,8 +25,8 @@ public class OI {
   
   public JoystickButton j0b1, j0b2, j0b3, j0b4, j0b5, j0b6, j0b7, j0b8, j0b9, j0b10, j0b11, j0b12;
 
-  public JoystickButton j2b2;
   public JoystickButton j1b7, j1b8, j1b9, j1b10;
+  public JoystickButton j2b3, j2b4;
 
   public Controller driver;
   public Controller operator;
@@ -52,7 +52,8 @@ public class OI {
     j1b9 = new JoystickButton(j1, 9);
     j1b10 = new JoystickButton(j1, 10);
 
-    j2b2 = new JoystickButton(j2, 2);
+    j2b3 = new JoystickButton(j2, 3);
+    j2b4 = new JoystickButton(j2, 4);
 
     driver = new Controller(3);
     operator = new Controller(4);
@@ -61,10 +62,12 @@ public class OI {
     j0b5.whileHeld(new Outtake());
     j0b7.whenPressed(new DustpanRaise()); 
     j0b8.whenPressed(new DustpanDrop());
-    j2b2.whenPressed(new ToggleVisionCamera());
 
     j1b7.whileHeld(new JumpJacksRaise()); 
     j1b8.whileHeld(new JumpJacksDrop());
+
+    j2b3.whenPressed(new ToggleVisionCamera());
+    j2b4.whenPressed(new AlignWithLineBB(0.7));
 
   /*  
     j0b3.whenPressed(new WallAllign(.5));

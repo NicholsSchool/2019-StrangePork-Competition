@@ -19,17 +19,7 @@ public class NavX
 
     public double getAngle()
     {
-        double angle = navX.getRoll();
-        if (angle < -180)
-            angle = 360 + angle;
-        
-        else 
-        {
-            angle = 360 - angle;
-            angle *= -1;
-        }
-
-        return angle;
+        return navX.getYaw();
     }
     public boolean atAngle(double angle)
     {
