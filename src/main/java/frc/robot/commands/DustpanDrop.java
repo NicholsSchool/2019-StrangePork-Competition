@@ -7,6 +7,12 @@ import frc.robot.Robot;
 public class DustpanDrop extends Command
 {
 
+    public DustpanDrop()
+    {
+        requires(Robot.dustpan);
+        requires(Robot.arm);
+    }
+
     @Override
     public void initialize()
     {
@@ -20,10 +26,9 @@ public class DustpanDrop extends Command
     protected void execute() 
     {
         System.out.println("Dropping");
-        Robot.dustpan.drop();
 
         if(Robot.armPot.getPosition() < Constants.ARM_INTERFERENCE_WITH_DUSTPAN)
-        Robot.arm.armMove();
+        Robot.arm.move(0.3);
         else 
         Robot.dustpan.drop();
     }
