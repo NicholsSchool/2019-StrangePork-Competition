@@ -40,6 +40,8 @@ public class OI {
 
     //j1b11 then j0b11 to override everything
     // j1b3 and j1b4 switch between cameras
+    j1.b3.whenPressed(new SwitchVisionCamera(0));
+    j1.b4.whenPressed(new SwitchVisionCamera(1));
 
     j1.b1.whileHeld(new Intake());
     
