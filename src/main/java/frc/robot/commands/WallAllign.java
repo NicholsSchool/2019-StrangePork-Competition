@@ -12,10 +12,13 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class WallAllign extends Command {
   double speed;
-  double lspeed;
-  double rspeed;
+  double lSpeed;
+  double rSpeed;
   public WallAllign(double speed) {
+    requires(Robot.driveTrain);
     this.speed = speed;
+    lSpeed = 0;
+    rSpeed = 0;
   }
   /**
    * tells which side is further from wall and runs the wheels on 
@@ -26,22 +29,26 @@ public class WallAllign extends Command {
     double left = RobotMap.leftFrontUltraSonic.getValue();
     double right = RobotMap.rightFrontUltraSonic.getValue();
     if(right < left)
-      lspeed = speed;
+      lSpeed = speed;
     else
-      rspeed = speed;
+      lSpeed = -speed;
+
+    rSpeed = -lSpeed;
   }
   
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.driveTrain.sigmoidMove(lspeed, rspeed);     
+    System.out.println("LeftSpeed: " + lSpeed + " RightSpeed: " + rSpeed);
+    Robot.driveTrain.sigmoidMove(lSpeed, rSpeed);     
   }
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
+    System.out.println("Aligning");
     double left = RobotMap.leftFrontUltraSonic.getValue();
     double right = RobotMap.rightFrontUltraSonic.getValue();
-   return (Math.abs(left - right)<=10); 
+    return (Math.abs(left - right)<=10); 
   }
   // Called once after isFinished returns true
   @Override

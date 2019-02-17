@@ -7,9 +7,11 @@ public class ArmMoveToLevel extends Command
 {
     private int level;
     private double speed;
+    private double originalSpeed;
 
+    private double value;
     //Change value
-    private final int ARM_OFFSET = 100;
+    private final int ARM_OFFSET = 1;
 
     //Speed should always be positive
     public ArmMoveToLevel(int level, double speed)
@@ -17,14 +19,23 @@ public class ArmMoveToLevel extends Command
         requires(Robot.arm);
         this.level = level;
         this.speed = speed;
+        originalSpeed = speed;
+
     }
 
     @Override
     public void initialize()
     {
+        if(Robot.limitswitches.isBallIn())
+            value = Robot.arm.hatchLevelValues[level - 1];
+        else
+            value = Robot.arm.ballLevelValues[level - 1];
+        speed = originalSpeed;
         double currentValue = Robot.armPot.getPosition();
-        if(currentValue > Robot.arm.armLevelValues[level -1])
+        System.out.println("Value is: " + value + " CurrentValue: " + currentValue);
+        if(currentValue > value)
             speed = -speed;
+        System.out.println("Speed is: " + speed);
     }
 
     @Override
@@ -36,8 +47,8 @@ public class ArmMoveToLevel extends Command
     @Override
     protected boolean isFinished()
     {
-        return Robot.armPot.getPosition() > Robot.arm.armLevelValues[level - 1 ] - ARM_OFFSET
-            && Robot.armPot.getPosition() < Robot.arm.armLevelValues[level - 1 ] + ARM_OFFSET;
+        return Robot.armPot.getPosition() > value - ARM_OFFSET
+            && Robot.armPot.getPosition() < value + ARM_OFFSET;
     }
 
     @Override

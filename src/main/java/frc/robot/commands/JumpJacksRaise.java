@@ -30,7 +30,7 @@ public class JumpJacksRaise extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(Robot.oi.j1b9.get())
+    if(Robot.oi.j1.b9.get())
       Robot.jumpJacks.raise();
   }
 

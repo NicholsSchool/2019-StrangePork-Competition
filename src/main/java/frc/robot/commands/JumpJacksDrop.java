@@ -32,7 +32,7 @@ public class JumpJacksDrop extends Command {
   @Override
   protected void execute() {
     System.out.println("Drop running");
-    if(Robot.oi.j1b10.get())
+    if(Robot.oi.j1.b10.get())
       Robot.jumpJacks.drop();
   }
 

@@ -42,12 +42,17 @@ public class Constants
 
     //Need to be changed
     public static final double
-    LEVEL_1_POT_VALUE = 20,
-    LEVEL_2_POT_VALUE = 2000,
-    LEVEL_3_POT_VALUE = 10000;
+    LEVEL_1_HATCH_VALUE = 989,
+    LEVEL_2_HATCH_VALUE = 999,
+    LEVEL_3_HATCH_VALUE = 1009;
 
-    public static double INTAKE_SPEED=0.5;
-    public static double OUTTAKE_SPEED=-0.5; 
+    public static final double
+    LEVEL_1_BALL_VALUE = 985,
+    LEVEL_2_BALL_VALUE = 995,
+    LEVEL_3_BALL_VALUE = 1005;
+
+    public static double INTAKE_SPEED=1;
+    public static double OUTTAKE_SPEED=-1; 
     public static final boolean
         DUSTPAN_RAISED = false,
         DUSTPAN_DROPPED = !DUSTPAN_RAISED,
@@ -74,4 +79,18 @@ public class Constants
         CONTROLLER_RIGHTSTICK_Y_AXIS_ID = 5,
         CONTROLLER_LEFT_TRIGGER_AXIS_ID = 2,
         CONTROLLER_RIGHT_TRIGGER_AXIS_ID = 3;
+
+        public static final int
+        CONTROLLER_1_BUTTON_ID = 1,
+        CONTROLLER_2_BUTTON_ID = 2,
+        CONTROLLER_3_BUTTON_ID = 3,
+        CONTROLLER_4_BUTTON_ID = 4,
+        CONTROLLER_5_BUTTON_ID = 5,
+        CONTROLLER_6_BUTTON_ID = 6,
+        CONTROLLER_7_BUTTON_ID = 7,
+        CONTROLLER_8_BUTTON_ID = 8,
+        CONTROLLER_9_BUTTON_ID = 9,
+        CONTROLLER_10_BUTTON_ID = 10,
+        CONTROLLER_11_BUTTON_ID = 11,
+        CONTROLLER_12_BUTTON_ID = 12;
 }
