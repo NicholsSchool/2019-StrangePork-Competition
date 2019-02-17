@@ -1,6 +1,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Constants;
 import frc.robot.Robot;
 
 public class DustpanDrop extends Command
@@ -20,6 +21,11 @@ public class DustpanDrop extends Command
     {
         System.out.println("Dropping");
         Robot.dustpan.drop();
+
+        if(Robot.armPot.getPosition() < Constants.ARM_INTERFERENCE_WITH_DUSTPAN)
+        Robot.arm.armMove();
+        else 
+        Robot.dustpan.drop();
     }
 
     /**
@@ -28,7 +34,7 @@ public class DustpanDrop extends Command
 	@Override
     protected boolean isFinished()
     {
-		return true;
+        return Robot.armPot.getPosition() > Constants.ARM_INTERFERENCE_WITH_DUSTPAN;
     }
 
     /**
