@@ -48,7 +48,7 @@ public class WallAllign extends Command {
     System.out.println("Aligning");
     double left = RobotMap.leftFrontUltraSonic.getValue();
     double right = RobotMap.rightFrontUltraSonic.getValue();
-    return (Math.abs(left - right)<=10); 
+    return Math.abs(left - right) <= 50; 
   }
   // Called once after isFinished returns true
   @Override
