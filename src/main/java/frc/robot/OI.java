@@ -32,24 +32,33 @@ public class OI {
     j2 = new JoystickContoller(2);
  
     
-    j0.b1.whenPressed(new Place());
+   // j0.b1.whenPressed(new Place());
     double armMoveSpeed = 0.5;
-    j0.b10.whenPressed(new ArmMoveToLevel(1, armMoveSpeed));
-    j0.b11.whenPressed(new ArmMoveToLevel(2, armMoveSpeed));
-    j0.b12.whenPressed(new ArmMoveToLevel(3, armMoveSpeed));
+    j0.b1.whenPressed(new DustpanDrop());
+    j0.b1.whenReleased(new DustpanRaise());
+    j0.b4.whenPressed(new AlignWithLineBB(0.7));
 
-    j0.b8.whenPressed(new ClimbSequence());
-    j0.b3.whenPressed(new WallAllign(0.5));
+    //j1b11 then j0b11 to override everything
+    // j1b3 and j1b4 switch between cameras
 
     j1.b1.whileHeld(new Intake());
+    
     j2.b1.whileHeld(new Outtake());
     j2.b1.whenReleased(new Intake(1))    ;    
-    j1.b2.whenPressed(new DustpanDrop());
-    j1.b2.whenReleased(new DustpanRaise());
-    j2.b2.whenPressed(new ToggleVisionCamera());
 
-    j2.b3.whenPressed(new ToggleVisionCamera());
-    j2.b4.whenPressed(new AlignWithLineBB(0.7));
+
+    j2.b2.whenPressed(new DustpanDrop());
+    j2.b2.whenReleased(new DustpanRaise());
+
+    j2.b11.whenPressed(new ClimbSequence());
+    // Add j1b2 to climb
+
+    j2.b4.whenPressed(new ArmMoveToLevel(1, armMoveSpeed));
+    j2.b3.whenPressed(new ArmMoveToLevel(2, armMoveSpeed));
+    j2.b5.whenPressed(new ArmMoveToLevel(3, armMoveSpeed));
+
+ //   j2.b3.whenPressed(new ToggleVisionCamera());
+//    
 
 
 

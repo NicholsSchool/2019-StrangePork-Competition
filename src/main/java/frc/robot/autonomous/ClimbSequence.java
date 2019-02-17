@@ -17,6 +17,6 @@ public class ClimbSequence extends CommandGroup
         addSequential(new Wait(1.5));
         addSequential(new JumpJacksRaise());
         addSequential(new Wait(2.5));
-        addSequential(new DriveTimeMove(0.5, 1));
+    //    addSequential(new DriveTimeMove(0.5, 1));
     }
 }
