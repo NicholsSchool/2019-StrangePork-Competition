@@ -22,7 +22,7 @@ public class OI {
   public JoystickContoller j0;
   public JoystickContoller j1;
   public JoystickContoller j2;
-  
+
 
 
   public OI()
@@ -34,12 +34,14 @@ public class OI {
     
     j0.b1.whenPressed(new Place());
 
+
     j0.b10.whenPressed(new ArmMoveToLevel(1, 0.5));
     j0.b11.whenPressed(new ArmMoveToLevel(2, 0.5));
     j0.b12.whenPressed(new ArmMoveToLevel(3, 0.5));
 
     j0.b3.whenPressed(new WallAllign(0.5));
     
+
     j1.b1.whileHeld(new Intake());
     j2.b1.whileHeld(new Outtake());    
     j1.b2.whenPressed(new DustpanDrop());
@@ -48,6 +50,9 @@ public class OI {
 
     j1.b7.whileHeld(new JumpJacksRaise()); 
     j1.b8.whileHeld(new JumpJacksDrop());
+
+    j2.b3.whenPressed(new ToggleVisionCamera());
+    j2.b4.whenPressed(new AlignWithLineBB(0.7));
 
 
 
