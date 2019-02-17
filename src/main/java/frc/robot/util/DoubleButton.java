@@ -2,10 +2,10 @@ package frc.robot.util;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 
-public class ClimbButton extends Button
+public class DoubleButton extends Button
 {
-    Button b1, b2;
-    public ClimbButton(Button b1, Button b2)
+    private Button b1, b2;
+    public DoubleButton(Button b1, Button b2)
     {
         this.b1 = b1;
         this.b2 = b2;

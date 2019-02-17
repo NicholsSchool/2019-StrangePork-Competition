@@ -12,6 +12,19 @@ import frc.robot.RobotMap;
  */
 public class Gripper extends Subsystem
 {
+    private double outtakeSpeed;
+    public double[] outtakeSpeeds;
+
+    public Gripper()
+    {
+        outtakeSpeed = Constants.LEVEL_1_OUTTAKE_SPD;
+        outtakeSpeeds = new double[3];
+        outtakeSpeeds[0] = Constants.LEVEL_1_OUTTAKE_SPD;
+        outtakeSpeeds[1] = Constants.LEVEL_2_OUTTAKE_SPD;
+        outtakeSpeeds[2] = Constants.LEVEL_3_OUTTAKE_SPD;
+
+    }
+
     public void setSpeed (double speed){
         RobotMap.leftGrip.set(-speed);
         RobotMap.rightGrip.set(speed);
@@ -31,7 +44,8 @@ public class Gripper extends Subsystem
      */
     public void outtake()
     {
-        setSpeed(Constants.OUTTAKE_SPEED);
+        setSpeed(outtakeSpeed);
+        System.out.println("Outtake speed: " + outtakeSpeed );
     }
     /**
      * Stops the gripper motors.
@@ -40,6 +54,11 @@ public class Gripper extends Subsystem
     {
         RobotMap.leftGrip.set(0);
         RobotMap.rightGrip.set(0);
+    }
+
+    public void setOuttakeSpeed(double outtakeSpeed) {
+        System.out.println("Changeing value to: " + outtakeSpeed);
+        this.outtakeSpeed = outtakeSpeed;
     }
 
     @Override

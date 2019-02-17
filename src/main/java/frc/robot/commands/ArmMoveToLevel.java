@@ -9,9 +9,13 @@ public class ArmMoveToLevel extends Command
     private double speed;
     private double originalSpeed;
 
+    private boolean isAbove;
+
     private double value;
     //Change value
-    private final int ARM_OFFSET = 3;
+    private final int COMING_UP_VAL = 1;
+    private final int COMING_DOWN_VAL = 4;
+
 
     //Speed should always be positive
     public ArmMoveToLevel(int level, double speed)
@@ -26,15 +30,24 @@ public class ArmMoveToLevel extends Command
     @Override
     public void initialize()
     {
-        if(Robot.limitswitches.isBallIn())
+        if(!Robot.limitswitches.isBallIn())
             value = Robot.arm.hatchLevelValues[level - 1];
         else
+        {
             value = Robot.arm.ballLevelValues[level - 1];
+            System.out.println(" ball");
+            Robot.gripper.setOuttakeSpeed(Robot.gripper.outtakeSpeeds[level - 1]);
+        }
         speed = originalSpeed;
         double currentValue = Robot.armPot.getPosition();
+
         System.out.println("Value is: " + value + " CurrentValue: " + currentValue);
+        isAbove = false;
         if(currentValue > value)
+        {
             speed = -speed;
+            isAbove = true;
+        }
         System.out.println("Speed is: " + speed);
     }
 
@@ -47,8 +60,11 @@ public class ArmMoveToLevel extends Command
     @Override
     protected boolean isFinished()
     {
-        return Robot.armPot.getPosition() > value - ARM_OFFSET
-            && Robot.armPot.getPosition() < value + ARM_OFFSET;
+        if(isAbove)
+            return Robot.armPot.getPosition() < value + COMING_DOWN_VAL;
+        else
+            return Robot.armPot.getPosition() > value - COMING_UP_VAL;
+            
     }
 
     @Override

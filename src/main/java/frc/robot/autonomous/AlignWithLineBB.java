@@ -41,9 +41,9 @@ public class AlignWithLineBB extends Command {
         System.out.println("\n\n[VISION]: Starting...\n\n");
         Robot.navX.reset();
         angleToLine = Vision.angleToLine;
-        distanceToLine = Vision.distanceToLine / Constants.WHEEL_DIAMETER_IN_FEET / Math.PI
-                * Constants.TICKS_PER_ROTATION;
-        angleToWall = Vision.angleToWall - Vision.angleToLine;
+        // distanceToLine = Vision.distanceToLine / Constants.WHEEL_DIAMETER_IN_FEET / Math.PI
+        //         * Constants.TICKS_PER_ROTATION;
+        // angleToWall = Vision.angleToWall - Vision.angleToLine;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -51,26 +51,25 @@ public class AlignWithLineBB extends Command {
     protected void execute() {
         if (!isFacingLine) {
 
-            if (Robot.navX.getAngle() > angleToLine + 1) {
+            if (Robot.navX.getAngle() > angleToLine + 3) {
                 Robot.driveTrain.move(-speed, speed);
-            } else if (Robot.navX.getAngle() < angleToLine - 1) {
+            } else if (Robot.navX.getAngle() < angleToLine - 3) {
                 Robot.driveTrain.move(speed, -speed);
             } else {
                 System.out.println("\n\n[VISION]: Faced Line\n\n");
                 isFacingLine = true;
 
-                // distanceToLine = Vision.distanceToLine / Constants.WHEEL_DIAMETER_IN_FEET /
-                // Math.PI
-                // * Constants.TICKS_PER_ROTATION;
-                // angleToWall = Vision.angleToWall;
+                distanceToLine = Vision.distanceToLine / Constants.WHEEL_DIAMETER_IN_FEET /
+                    Math.PI * Constants.TICKS_PER_ROTATION;
+                angleToWall = Vision.angleToWall;
 
                 Robot.driveTrain.resetEncoders();
             }
 
         } else if (!isOnLine) {
 
-            if (Math.abs(RobotMap.lFrontDrive.getSelectedSensorPosition(0)) < distanceToLine) {
-                Robot.driveTrain.move(speed, speed);
+            if (Math.abs(RobotMap.lMidDrive.getSelectedSensorPosition(0)) < distanceToLine) {
+                Robot.driveTrain.sigmoidMove(speed, speed);
             } else {
                 System.out.println("\n\n[VISION]: On Line\n\n");
                 isOnLine = true;
@@ -79,9 +78,9 @@ public class AlignWithLineBB extends Command {
 
         } else if (!isAligned) {
 
-            if (Robot.navX.getAngle() > angleToWall + 1) {
+            if (Robot.navX.getAngle() > angleToWall + 3) {
                 Robot.driveTrain.move(-speed, speed);
-            } else if (Robot.navX.getAngle() < angleToWall - 1) {
+            } else if (Robot.navX.getAngle() < angleToWall - 3) {
                 Robot.driveTrain.move(speed, -speed);
             } else {
                 System.out.println("\n\n[VISION]: Aligned\n\n");

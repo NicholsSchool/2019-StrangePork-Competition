@@ -10,7 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.*;
-import frc.robot.util.ClimbButton;
+import frc.robot.util.DoubleButton;
 import frc.robot.util.Controller;
 import frc.robot.util.JoystickContoller;
 import frc.robot.autonomous.*;
@@ -18,12 +18,12 @@ import frc.robot.autonomous.*;
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
- */
+ */ 
 public class OI {
   public JoystickContoller j0;
   public JoystickContoller j1;
   public JoystickContoller j2;
-  public ClimbButton climbButton;
+  public DoubleButton climbButton;
 
 
   public OI()
@@ -31,13 +31,15 @@ public class OI {
     j0 = new JoystickContoller(0);
     j1 = new JoystickContoller(1);
     j2 = new JoystickContoller(2);
-    climbButton = new ClimbButton(j1.b2, j2.b11);
+    climbButton = new DoubleButton(j1.b2, j2.b11);
     
    // j0.b1.whenPressed(new Place());
-    double armMoveSpeed = 0.5;
+    double armMoveSpeed = 0.5;  
     j0.b1.whenPressed(new DustpanDrop());
     j0.b1.whenReleased(new DustpanRaise());
     j0.b4.whenPressed(new AlignWithLineBB(0.7));
+
+    j0.b11.whenPressed(new AutoPaths());
 
     //j1b11 then j0b11 to override everything
     // j1b3 and j1b4 switch between cameras
@@ -46,9 +48,7 @@ public class OI {
 
     j1.b1.whileHeld(new Intake());
 
-    j2.b1.whileHeld(new Outtake());
-    j2.b1.whenReleased(new Intake(1))    ;    
-
+    j2.b1.whenPressed(new PlaceItem()); 
 
     j2.b2.whenPressed(new DustpanDrop());
     j2.b2.whenReleased(new DustpanRaise());

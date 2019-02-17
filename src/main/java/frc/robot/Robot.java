@@ -170,7 +170,7 @@ public class Robot extends TimedRobot {
     }
     RobotMap.jumpJacksSolenoid.set(Constants.JUMPJACKS_RAISED);
     RobotMap.dustPanSolenoid.set(Constants.DUSTPAN_RAISED);
- //   driveTrain.resetEncoders();
+   driveTrain.resetEncoders();
   }
 
   /**
