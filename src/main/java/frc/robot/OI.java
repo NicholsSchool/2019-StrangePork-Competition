@@ -38,7 +38,7 @@ public class OI {
     j0.b1.whenReleased(new DustpanRaise());
     j0.b4.whenPressed(new AlignWithLineBB(0.7));
 
-    //j1b11 then j0b11 to override everything
+    j0.b11.whenPressed(new OperatorOverride());
     // j1b3 and j1b4 switch between cameras
 
     j1.b1.whileHeld(new Intake());
