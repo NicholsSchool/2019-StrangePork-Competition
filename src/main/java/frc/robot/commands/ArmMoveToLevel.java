@@ -11,7 +11,7 @@ public class ArmMoveToLevel extends Command
 
     private double value;
     //Change value
-    private final int ARM_OFFSET = 1;
+    private final int ARM_OFFSET = 3;
 
     //Speed should always be positive
     public ArmMoveToLevel(int level, double speed)

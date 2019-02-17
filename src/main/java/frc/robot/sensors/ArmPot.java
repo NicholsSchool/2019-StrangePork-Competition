@@ -16,8 +16,8 @@ public class ArmPot extends Pot
 
     public int isAtExtremes()
     {
-     //   return isAtExtremes(Constants.ARM_POT_LOW_EXTREME_VALUE , Constants.ARM_POT_LOW_EXTREME_VALUE );
-        return 0;
+        return isAtExtremes(Constants.ARM_POT_LOW_EXTREME_VALUE , Constants.ARM_POT_HIGH_EXTREME_VALUE );
+
     }
 
 

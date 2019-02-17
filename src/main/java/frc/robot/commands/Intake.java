@@ -13,8 +13,16 @@ public class Intake extends Command {
 	/**
 	 * Requires the gripper subsytem.
 	 */
+
+	private double time;
 	public Intake() {
+		this(0);
+	}
+
+	public Intake(double time)
+	{
 		requires(Robot.gripper);
+		this.time = time;
 	}
 
 	/**
@@ -43,7 +51,11 @@ public class Intake extends Command {
 	 */
 	@Override
 	protected boolean isFinished() {
-		return false;
+		System.out.println("Running intake, time: " + time);
+		if(time > 0)
+			return timeSinceInitialized() > time;
+		else
+			return false;
 	}
 
 	/**

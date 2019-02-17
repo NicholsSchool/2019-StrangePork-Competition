@@ -33,17 +33,16 @@ public class OI {
  
     
     j0.b1.whenPressed(new Place());
-
-
-    j0.b10.whenPressed(new ArmMoveToLevel(1, 0.5));
-    j0.b11.whenPressed(new ArmMoveToLevel(2, 0.5));
-    j0.b12.whenPressed(new ArmMoveToLevel(3, 0.5));
+    double armMoveSpeed = 0.5;
+    j0.b10.whenPressed(new ArmMoveToLevel(1, armMoveSpeed));
+    j0.b11.whenPressed(new ArmMoveToLevel(2, armMoveSpeed));
+    j0.b12.whenPressed(new ArmMoveToLevel(3, armMoveSpeed));
 
     j0.b3.whenPressed(new WallAllign(0.5));
-    
 
     j1.b1.whileHeld(new Intake());
-    j2.b1.whileHeld(new Outtake());    
+    j2.b1.whileHeld(new Outtake());
+    j2.b1.whenReleased(new Intake(1))    ;    
     j1.b2.whenPressed(new DustpanDrop());
     j1.b2.whenReleased(new DustpanRaise());
     j2.b2.whenPressed(new ToggleVisionCamera());

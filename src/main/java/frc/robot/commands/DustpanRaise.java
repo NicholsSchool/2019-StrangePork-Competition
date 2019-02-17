@@ -6,6 +6,11 @@ import frc.robot.Robot;
 public class DustpanRaise extends Command
 {
 
+    public DustpanRaise()
+    {
+        requires(Robot.dustpan);
+    }
+
     @Override
     public void initialize()
     {

@@ -21,10 +21,10 @@ public class Constants
     TOP_ARM_LIMIT_SWITCH = 2,
     RETRACTED_JJ_LIMIT_SWITCH = 3,
 
-    ARM_POT_HIGH_BUFFER = 10,
-    ARM_POT_LOW_BUFFER = 5,
+    ARM_POT_HIGH_BUFFER = 5,
+    ARM_POT_LOW_BUFFER = 1,
     ARM_POT_HIGH_EXTREME_VALUE = 1016 - ARM_POT_HIGH_BUFFER ,
-    ARM_POT_LOW_EXTREME_VALUE = 990 + ARM_POT_LOW_BUFFER ,
+    ARM_POT_LOW_EXTREME_VALUE = 900 + ARM_POT_LOW_BUFFER ,
     ELEVATOR_POT_HIGH_BUFFER = 10, 
     ELEVATOR_POT_LOW_BUFFER = 1,
     ELEVATOR_POT_HIGH_EXTREME_VALUE = 1023 - ELEVATOR_POT_HIGH_BUFFER,
@@ -47,7 +47,7 @@ public class Constants
     LEVEL_3_HATCH_VALUE = 1009;
 
     public static final double
-    LEVEL_1_BALL_VALUE = 985,
+    LEVEL_1_BALL_VALUE = 991,
     LEVEL_2_BALL_VALUE = 995,
     LEVEL_3_BALL_VALUE = 1005;
 
@@ -96,4 +96,5 @@ public class Constants
 
     public static final double THIRTY_INCH_RULE_THRESH = 0.5;
     public static final double THIRTY_INCH_RULE_RATIO = 2;
+    public static final int ARM_INTERFERENCE_WITH_DUSTPAN = 999;
 }
