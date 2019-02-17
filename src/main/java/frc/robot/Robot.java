@@ -197,12 +197,7 @@ public class Robot extends TimedRobot {
 
     // SmartDashboard.putNumber("leftFrontUltrasonic Value:",
     // RobotMap.leftFrontUltraSonic.);
-
-    if (oi.controller1.b10.get())
-      oi.controller1.joy.setRumble(RumbleType.kRightRumble, 1);
   }
-  
-
   /**
    * This function is called periodically during test mode.
    */

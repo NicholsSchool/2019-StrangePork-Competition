@@ -5,26 +5,25 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj.buttons.Button;
 
-public class JoystickContoller 
+public class JoystickContoller extends Joystick
  {
-    public JoystickContoller(Joystick joystick)
+    public JoystickContoller(int port)
     {
-        joy = joystick;
-        b1 = new JoystickButton(joy, Constants.CONTROLLER_1_BUTTON_ID);
-        b2 = new JoystickButton(joy, Constants.CONTROLLER_2_BUTTON_ID);
-        b3 = new JoystickButton(joy, Constants.CONTROLLER_3_BUTTON_ID);
-        b4 = new JoystickButton(joy, Constants.CONTROLLER_4_BUTTON_ID);
-        b5 = new JoystickButton(joy, Constants.CONTROLLER_5_BUTTON_ID);
-        b6 = new JoystickButton(joy, Constants.CONTROLLER_6_BUTTON_ID);
-        b7 = new JoystickButton(joy, Constants.CONTROLLER_7_BUTTON_ID);
-        b8 = new JoystickButton(joy, Constants.CONTROLLER_8_BUTTON_ID);
-        b9 = new JoystickButton(joy, Constants.CONTROLLER_9_BUTTON_ID);
-        b10 = new JoystickButton(joy, Constants.CONTROLLER_10_BUTTON_ID);
-        b11 = new JoystickButton(joy, Constants.CONTROLLER_11_BUTTON_ID);
-        b12 = new JoystickButton(joy, Constants.CONTROLLER_12_BUTTON_ID);
+        super(port);
+        b1 = new JoystickButton(this, Constants.CONTROLLER_1_BUTTON_ID);
+        b2 = new JoystickButton(this, Constants.CONTROLLER_2_BUTTON_ID);
+        b3 = new JoystickButton(this, Constants.CONTROLLER_3_BUTTON_ID);
+        b4 = new JoystickButton(this, Constants.CONTROLLER_4_BUTTON_ID);
+        b5 = new JoystickButton(this, Constants.CONTROLLER_5_BUTTON_ID);
+        b6 = new JoystickButton(this, Constants.CONTROLLER_6_BUTTON_ID);
+        b7 = new JoystickButton(this, Constants.CONTROLLER_7_BUTTON_ID);
+        b8 = new JoystickButton(this, Constants.CONTROLLER_8_BUTTON_ID);
+        b9 = new JoystickButton(this, Constants.CONTROLLER_9_BUTTON_ID);
+        b10 = new JoystickButton(this, Constants.CONTROLLER_10_BUTTON_ID);
+        b11 = new JoystickButton(this, Constants.CONTROLLER_11_BUTTON_ID);
+        b12 = new JoystickButton(this, Constants.CONTROLLER_12_BUTTON_ID);
     }
 
-    public Joystick joy;
 
     public JoystickButton b1;
 	public JoystickButton b2;
