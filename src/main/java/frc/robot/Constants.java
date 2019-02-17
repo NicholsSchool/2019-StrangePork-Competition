@@ -93,4 +93,7 @@ public class Constants
         CONTROLLER_10_BUTTON_ID = 10,
         CONTROLLER_11_BUTTON_ID = 11,
         CONTROLLER_12_BUTTON_ID = 12;
+
+    public static final double THIRTY_INCH_RULE_THRESH = 0.5;
+    public static final double THIRTY_INCH_RULE_RATIO = 2;
 }
