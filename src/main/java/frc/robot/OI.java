@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.*;
+import frc.robot.util.ClimbButton;
 import frc.robot.util.Controller;
 import frc.robot.util.JoystickContoller;
 import frc.robot.autonomous.*;
@@ -22,7 +23,7 @@ public class OI {
   public JoystickContoller j0;
   public JoystickContoller j1;
   public JoystickContoller j2;
-
+  public ClimbButton climbButton;
 
 
   public OI()
@@ -30,7 +31,7 @@ public class OI {
     j0 = new JoystickContoller(0);
     j1 = new JoystickContoller(1);
     j2 = new JoystickContoller(2);
- 
+    climbButton = new ClimbButton(j1.b2, j2.b11);
     
    // j0.b1.whenPressed(new Place());
     double armMoveSpeed = 0.5;
@@ -42,7 +43,7 @@ public class OI {
     // j1b3 and j1b4 switch between cameras
 
     j1.b1.whileHeld(new Intake());
-    
+
     j2.b1.whileHeld(new Outtake());
     j2.b1.whenReleased(new Intake(1))    ;    
 
@@ -50,7 +51,7 @@ public class OI {
     j2.b2.whenPressed(new DustpanDrop());
     j2.b2.whenReleased(new DustpanRaise());
 
-    j2.b11.whenPressed(new ClimbSequence());
+    climbButton.whenPressed(new ClimbSequence());
     // Add j1b2 to climb
 
     j2.b4.whenPressed(new ArmMoveToLevel(1, armMoveSpeed));
