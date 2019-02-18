@@ -26,26 +26,28 @@ public class SigmoidMoveForward extends Command
         Robot.driveTrain.resetEncoders();
         Robot.driveTrain.reset();
         speedReached = false;
-        startValue = RobotMap.lFrontDrive.getSelectedSensorPosition(0);
+        startValue = RobotMap.lMidDrive.getSelectedSensorPosition(0);
         distanceToAccelerate = 0;
     }
 
     @Override
     protected void execute() {
         
-        if (distance - RobotMap.lFrontDrive.getSelectedSensorPosition(0) > distanceToAccelerate)
+        System.out.println("Moving");
+   //     if (distance - RobotMap.lMidDrive.getSelectedSensorPosition(0) > distanceToAccelerate)
             Robot.driveTrain.sigmoidMove(speed, speed, 1);
-        else
-            Robot.driveTrain.sigmoidMove(0, 0, 1);
+   //     else
+    //        Robot.driveTrain.sigmoidMove(0, 0, 1);
 
         if (Robot.driveTrain.currentSpeeds[0] >= speed && !speedReached) {
             speedReached = true;
-            distanceToAccelerate = RobotMap.lFrontDrive.getSelectedSensorPosition(0) - startValue;
+            distanceToAccelerate = RobotMap.lMidDrive.getSelectedSensorPosition(0) - startValue;
         }
     }
     @Override
     protected boolean isFinished() {
-        return distance <= RobotMap.lFrontDrive.getSelectedSensorPosition(0);
+        System.out.println("Is Finished, encoder: " +RobotMap.lMidDrive.getSelectedSensorPosition(0) );
+        return distance <= RobotMap.lMidDrive.getSelectedSensorPosition(0);
     }
 
     @Override

@@ -17,6 +17,7 @@ public class AngleTurn extends Command
      */
     public AngleTurn(double agl, double spd)
     {
+        
         speed = spd;
         desiredAngle = agl;
 
@@ -37,6 +38,7 @@ public class AngleTurn extends Command
     @Override
     protected void execute() 
     {
+        System.out.println("Turning");
         if(desiredAngle > 0)
             Robot.driveTrain.sigmoidMove(speed, -speed);    
         

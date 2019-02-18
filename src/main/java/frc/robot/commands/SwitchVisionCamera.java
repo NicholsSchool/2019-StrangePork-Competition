@@ -10,24 +10,20 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.sensors.Vision;
 
-public class ToggleVisionCamera extends Command {
+public class SwitchVisionCamera extends Command {
 
-    public ToggleVisionCamera() {
+    private int camera;
+
+    public SwitchVisionCamera(int camera) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+        this.camera = camera;
     }
 
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        switch (Vision.camera) {
-        case 0:
-            Vision.switchCamera(1);
-            break;
-        case 1:
-            Vision.switchCamera(0);
-            break;
-        }
+        Vision.switchCamera(camera);
     }
 
     // Called repeatedly when this Command is scheduled to run

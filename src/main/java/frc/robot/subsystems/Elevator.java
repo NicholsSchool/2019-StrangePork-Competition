@@ -47,11 +47,11 @@ public class Elevator extends Subsystem
         double armPos = Robot.armPot.getPosition() - Constants.ARM_POT_LOW_EXTREME_VALUE;
         armPos /= Constants.ARM_POT_HIGH_EXTREME_VALUE - Constants.ARM_POT_LOW_EXTREME_VALUE;
 
-        if(armPos < Constants.THIRTY_INCH_RULE_THRESH && elevatorPos > Constants.THIRTY_INCH_RULE_RATIO * armPos)
-        {
-            move(-0.5);
-            return;
-        }
+        // if(armPos < Constants.THIRTY_INCH_RULE_THRESH && elevatorPos > Constants.THIRTY_INCH_RULE_RATIO * armPos)
+        // {
+        //     move(-0.5);
+        //     return;
+        // }
 
         int pov = Robot.oi.j2.getPOV();
         if(pov == 315 || pov == 0 || pov ==45)

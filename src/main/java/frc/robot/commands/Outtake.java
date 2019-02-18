@@ -9,11 +9,17 @@ import frc.robot.subsystems.Gripper;
  * until it is manually stopped.
  */
 public class Outtake extends Command {
-/**
-	 * Requires the gripper subsytem.
-	 */
+
+	double time;
+
 	public Outtake() {
+		this(0);
+	}
+
+	public Outtake(double time)
+	{
 		requires(Robot.gripper);
+		this.time = time;
 	}
 /**
 	 * Outtake does nothing during initialize
@@ -40,7 +46,10 @@ public class Outtake extends Command {
 	@Override
 	protected boolean isFinished()
 	{
-		return false;
+		if(time > 0)
+			return timeSinceInitialized() > time;
+		else
+			return false;
 	}
 	/**
 	 * Runs the end() method.

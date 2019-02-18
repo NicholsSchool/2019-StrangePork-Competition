@@ -21,14 +21,14 @@ public class Constants
     TOP_ARM_LIMIT_SWITCH = 2,
     RETRACTED_JJ_LIMIT_SWITCH = 3,
 
-    ARM_POT_HIGH_BUFFER = 5,
+    ARM_POT_HIGH_BUFFER = 2,
     ARM_POT_LOW_BUFFER = 1,
     ARM_POT_HIGH_EXTREME_VALUE = 1016 - ARM_POT_HIGH_BUFFER ,
     ARM_POT_LOW_EXTREME_VALUE = 900 + ARM_POT_LOW_BUFFER ,
     ELEVATOR_POT_HIGH_BUFFER = 10, 
     ELEVATOR_POT_LOW_BUFFER = 1,
     ELEVATOR_POT_HIGH_EXTREME_VALUE = 1023 - ELEVATOR_POT_HIGH_BUFFER,
-    ELEVATOR_POT_LOW_EXTREME_VALUE = 983 + ELEVATOR_POT_LOW_BUFFER,
+    ELEVATOR_POT_LOW_EXTREME_VALUE = 982 + ELEVATOR_POT_LOW_BUFFER,
 
     ELEVATOR_ARM_POT = 4,
     ARM_POT = 5;
@@ -38,7 +38,7 @@ public class Constants
     //Need to be changed
     public static final double 
     WHEEL_DIAMETER_IN_FEET = 0.5,
-    TICKS_PER_ROTATION = 1128;
+    TICKS_PER_ROTATION = 12000;
 
     //Need to be changed
     public static final double
@@ -47,12 +47,16 @@ public class Constants
     LEVEL_3_HATCH_VALUE = 1009;
 
     public static final double
-    LEVEL_1_BALL_VALUE = 991,
-    LEVEL_2_BALL_VALUE = 995,
-    LEVEL_3_BALL_VALUE = 1005;
+    LEVEL_1_BALL_VALUE = 989,
+    LEVEL_2_BALL_VALUE = 999,
+    LEVEL_3_BALL_VALUE = 1009;
+
+    public static final double
+    LEVEL_1_OUTTAKE_SPD = -0.3,
+    LEVEL_2_OUTTAKE_SPD = -0.5,
+    LEVEL_3_OUTTAKE_SPD = -1.0;
 
     public static double INTAKE_SPEED=1;
-    public static double OUTTAKE_SPEED=-1; 
     public static final boolean
         DUSTPAN_RAISED = false,
         DUSTPAN_DROPPED = !DUSTPAN_RAISED,

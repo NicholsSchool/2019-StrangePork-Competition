@@ -51,7 +51,6 @@ public class Intake extends Command {
 	 */
 	@Override
 	protected boolean isFinished() {
-		System.out.println("Running intake, time: " + time);
 		if(time > 0)
 			return timeSinceInitialized() > time;
 		else
