@@ -21,7 +21,7 @@ public class ArmMoveToLevel extends Command {
   private double value;
   // Change value
   private final int COMING_UP_VAL = 1;
-  private final int COMING_DOWN_VAL = 4;
+  private final int COMING_DOWN_VAL = 0;
 
   public ArmMoveToLevel(int level, double speed) {
       requires(Robot.arm);

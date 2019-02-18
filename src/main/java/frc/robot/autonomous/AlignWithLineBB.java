@@ -51,9 +51,9 @@ public class AlignWithLineBB extends Command {
     protected void execute() {
         if (!isFacingLine) {
 
-            if (Robot.navX.getAngle() > angleToLine + 3) {
+            if (Robot.navX.getAngle() > angleToLine + 1) {
                 Robot.driveTrain.move(-speed, speed);
-            } else if (Robot.navX.getAngle() < angleToLine - 3) {
+            } else if (Robot.navX.getAngle() < angleToLine - 1) {
                 Robot.driveTrain.move(speed, -speed);
             } else {
                 System.out.println("\n\n[VISION]: Faced Line\n\n");
@@ -78,9 +78,9 @@ public class AlignWithLineBB extends Command {
 
         } else if (!isAligned) {
 
-            if (Robot.navX.getAngle() > angleToWall + 3) {
+            if (Robot.navX.getAngle() > angleToWall + 1) {
                 Robot.driveTrain.move(-speed, speed);
-            } else if (Robot.navX.getAngle() < angleToWall - 3) {
+            } else if (Robot.navX.getAngle() < angleToWall - 1) {
                 Robot.driveTrain.move(speed, -speed);
             } else {
                 System.out.println("\n\n[VISION]: Aligned\n\n");

@@ -41,6 +41,7 @@ public class OI {
     double armMoveSpeed = 0.5;  
     j0.b1.whenPressed(new DustpanDrop());
     j0.b1.whenReleased(new DustpanRaise());
+    j0.b3.whenPressed(new Grab());
     j0.b4.whenPressed(new AlignWithLineBB(0.7));
 
 

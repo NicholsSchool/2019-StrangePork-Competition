@@ -31,17 +31,21 @@ public class AutoPaths extends CommandGroup
 
     private void twoHatchRocket()
     {
-        addSequential(new ElevatorTimeMove(1.0, 1));
-        addSequential(new SigmoidMoveForward(0.6, 6.5));
-        addSequential(new AngleTurn(45, 0.7));
+        System.out.println("\n\nRUNNING GOOD CODE\n\n");
+        addSequential(new ElevatorTimeMove(1.0, 0.3));
+        addSequential(new SigmoidMoveForward(0.6, 5.6));
+        addSequential(new AngleTurn(47.5, 0.7));
         addSequential(new ArmMoveToLevel(1, 0.5));
-        addSequential(new SigmoidMoveForward(0.6, 8));
-        // addSequential(new Place());
-        // addSequential(new AngleTurn(90, 0.7));
-        // addSequential(new SigmoidMoveForward(0.6, 5));
-        // //grab somehow
-        // addSequential(new AngleTurn(180, 0.7));
-        // addSequential(new SigmoidMoveForward(0.6, 5));
+        addSequential(new ArmTimeMove(-1, 0.1));
+        addSequential(new SigmoidMoveForward(0.6, 8.3));
+       
+         addSequential(new Place());
+         addSequential(new AngleTurn(115, 0.7));
+        //  addSequential(new SigmoidMoveForward(0.6, 15.2));
+        // addSequential(new Grab());
+        //  addSequential(new AngleTurn(180, 0.7));
+        //  addSequential(new SigmoidMoveForward(0.6, 15.2));
+        //  addSequential(new Place());
 
     }
 
