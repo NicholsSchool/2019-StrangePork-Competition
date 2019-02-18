@@ -15,6 +15,7 @@ public class ElevatorPot extends Pot
 
     public int isAtExtremes() 
     {
+        
         return isAtExtremes(Constants.ELEVATOR_POT_LOW_EXTREME_VALUE, Constants.ELEVATOR_POT_HIGH_EXTREME_VALUE);
     }
 

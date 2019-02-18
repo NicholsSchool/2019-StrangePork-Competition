@@ -27,10 +27,10 @@ public class DustpanDrop extends Command
     {
         System.out.println("Dropping");
 
-        if(Robot.armPot.getPosition() < Constants.ARM_INTERFERENCE_WITH_DUSTPAN)
-        Robot.arm.move(1.0);
+        if(Robot.armPot.getPosition() < Constants.ARM_INTERFERENCE_WITH_DUSTPAN && !Robot.sensorOverride)
+            Robot.arm.move(1.0);
         else 
-        Robot.dustpan.drop();
+            Robot.dustpan.drop();
     }
 
     /**
@@ -39,7 +39,7 @@ public class DustpanDrop extends Command
 	@Override
     protected boolean isFinished()
     {
-        return Robot.armPot.getPosition() > Constants.ARM_INTERFERENCE_WITH_DUSTPAN;
+        return Robot.armPot.getPosition() > Constants.ARM_INTERFERENCE_WITH_DUSTPAN || Robot.sensorOverride;
     }
 
     /**
@@ -54,7 +54,7 @@ public class DustpanDrop extends Command
     @Override
     protected void end() 
     {
-    
+        Robot.arm.stop();
     }
 
 

@@ -46,7 +46,9 @@ public class Robot extends TimedRobot {
   public static Arm arm;
   public static Dial appDial;
 
+  public static boolean sensorOverride;
   public static boolean dropped;
+
   
 
   Command m_autonomousCommand;
@@ -75,14 +77,15 @@ public class Robot extends TimedRobot {
     //sensors
     Vision.init();
 
-    dropped = false;
-
     navX = new NavX(RobotMap.ahrs);
     ultrasonic = new Ultrasonic();
     limitswitches = new LimitSwitch(RobotMap.leftGrip, RobotMap.leftDart);
     armPot = new ArmPot(RobotMap.leftDart);
     elevatorPot = new ElevatorPot(RobotMap.armExtend);
     appDial = new Dial(RobotMap.appPot);
+    sensorOverride = false;
+    dropped = false;
+
     //OI gets Instantiated LAST!
     oi = new OI();
   }
