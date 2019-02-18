@@ -13,5 +13,12 @@ public class AutoPaths extends CommandGroup
         addSequential(new ArmMoveToLevel(1, 0.5));
         addSequential(new SigmoidMoveForward(0.6, 8));
       //  addSequential(new Place());
+        // addSequential(new AngleTurn(90, 0.7));
+        // addSequential(new SigmoidMoveForward(0.6, 5));
+        // //grab somehow
+        // addSequential(new AngleTurn(180, 0.7));
+        // addSequential(new SigmoidMoveForward(0.6, 5));
+
+
     }
 }

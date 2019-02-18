@@ -34,7 +34,6 @@ import frc.robot.sensors.*;
 public class Robot extends TimedRobot {
   public static JumpJacks jumpJacks;
   public static Ultrasonic ultrasonic;
-  public static boolean dropped;
   public static OI oi;
   public static DriveTrain driveTrain;
   public static ArmPot armPot; 
@@ -47,6 +46,7 @@ public class Robot extends TimedRobot {
   public static Arm arm;
   public static Dial appDial;
 
+  public static boolean dropped;
   
 
   Command m_autonomousCommand;
@@ -75,6 +75,7 @@ public class Robot extends TimedRobot {
     //sensors
     Vision.init();
 
+    dropped = false;
 
     navX = new NavX(RobotMap.ahrs);
     ultrasonic = new Ultrasonic();

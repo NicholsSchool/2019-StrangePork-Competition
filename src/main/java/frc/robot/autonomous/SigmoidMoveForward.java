@@ -46,6 +46,7 @@ public class SigmoidMoveForward extends Command
     }
     @Override
     protected boolean isFinished() {
+        System.out.println("Is Finished, encoder: " +RobotMap.lMidDrive.getSelectedSensorPosition(0) );
         return distance <= RobotMap.lMidDrive.getSelectedSensorPosition(0);
     }
 
