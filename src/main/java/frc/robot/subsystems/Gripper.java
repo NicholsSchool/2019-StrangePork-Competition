@@ -17,7 +17,7 @@ public class Gripper extends Subsystem
 
     public Gripper()
     {
-        outtakeSpeed = Constants.LEVEL_1_OUTTAKE_SPD;
+        outtakeSpeed = -0.75;
         outtakeSpeeds = new double[3];
         outtakeSpeeds[0] = Constants.LEVEL_1_OUTTAKE_SPD;
         outtakeSpeeds[1] = Constants.LEVEL_2_OUTTAKE_SPD;
@@ -43,7 +43,9 @@ public class Gripper extends Subsystem
      * runs gripper motors to outtake ball.
      */
     public void outtake()
-    {
+    {   
+        if(outtakeSpeed > 0)
+            outtakeSpeed = -outtakeSpeed;
         setSpeed(outtakeSpeed);
         System.out.println("Outtake speed: " + outtakeSpeed );
     }
@@ -59,6 +61,10 @@ public class Gripper extends Subsystem
     public void setOuttakeSpeed(double outtakeSpeed) {
         System.out.println("Changeing value to: " + outtakeSpeed);
         this.outtakeSpeed = outtakeSpeed;
+    }
+
+    public double getOuttakeSpeed() {
+        return outtakeSpeed;
     }
 
     @Override

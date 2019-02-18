@@ -1,83 +1,86 @@
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
+
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ArmMoveToLevel extends Command
-{
-    private int level;
-    private double speed;
-    private double originalSpeed;
+public class ArmMoveToLevel extends Command {
 
-    private boolean isAbove;
+  private int level;
+  private double speed;
+  private double originalSpeed;
 
-    private double value;
-    //Change value
-    private final int COMING_UP_VAL = 1;
-    private final int COMING_DOWN_VAL = 4;
+  private boolean isAbove;
 
+  private double value;
+  // Change value
+  private final int COMING_UP_VAL = 1;
+  private final int COMING_DOWN_VAL = 4;
 
-    //Speed should always be positive
-    public ArmMoveToLevel(int level, double speed)
+  public ArmMoveToLevel(int level, double speed) {
+      requires(Robot.arm);
+      this.level = level;
+      this.speed = speed;
+      originalSpeed = speed;
+  }
+
+  // Called just before this Command runs the first time
+  @Override
+  protected void initialize() {
+    if(!Robot.limitswitches.isBallIn())
+      value = Robot.arm.hatchLevelValues[level - 1];
+    else
     {
-        requires(Robot.arm);
-        this.level = level;
-        this.speed = speed;
-        originalSpeed = speed;
-
+      value = Robot.arm.ballLevelValues[level - 1];
+      System.out.println("ball");
     }
 
-    @Override
-    public void initialize()
+    speed = originalSpeed;
+    double currentValue = Robot.armPot.getPosition();
+
+    System.out.println("Value is: " + value + " CurrentValue: " + currentValue);
+    isAbove = false;
+    if(currentValue > value)
     {
-        if(!Robot.limitswitches.isBallIn())
-            value = Robot.arm.hatchLevelValues[level - 1];
-        else
-        {
-            value = Robot.arm.ballLevelValues[level - 1];
-            System.out.println(" ball");
-            Robot.gripper.setOuttakeSpeed(Robot.gripper.outtakeSpeeds[level - 1]);
-        }
-        speed = originalSpeed;
-        double currentValue = Robot.armPot.getPosition();
-
-        System.out.println("Value is: " + value + " CurrentValue: " + currentValue);
-        isAbove = false;
-        if(currentValue > value)
-        {
-            speed = -speed;
-            isAbove = true;
-        }
-        System.out.println("Speed is: " + speed);
+      speed = -speed;
+      isAbove = true;
     }
+    System.out.println("Speed is: " + speed);
+  }
 
-    @Override
-    protected void execute() 
-    {
-        Robot.arm.move(speed);
-    }
+  // Called repeatedly when this Command is scheduled to run
+  @Override
+  protected void execute() {
+     Robot.arm.move(speed);
+  }
 
-    @Override
-    protected boolean isFinished()
-    {
-        if(isAbove)
-            return Robot.armPot.getPosition() < value + COMING_DOWN_VAL;
-        else
-            return Robot.armPot.getPosition() > value - COMING_UP_VAL;
-            
-    }
+  // Make this return true when this Command no longer needs to run execute()
+  @Override
+  protected boolean isFinished() {
 
-    @Override
-    protected void interrupted()
-    {
-        end();
-    }
+    if(isAbove)
+      return Robot.armPot.getPosition() < value + COMING_DOWN_VAL;
+    else
+      return Robot.armPot.getPosition() > value - COMING_UP_VAL;
 
-    @Override
-    protected void end() 
-    {
-        Robot.arm.stop();
-    }
+  }
 
+  // Called once after isFinished returns true
+  @Override
+  protected void end() {
+    Robot.arm.stop();
+  }
 
+  // Called when another command which requires one or more of the same
+  // subsystems is scheduled to run
+  @Override
+  protected void interrupted() {
+    end();
+  }
 }

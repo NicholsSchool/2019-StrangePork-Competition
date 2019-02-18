@@ -38,7 +38,7 @@ public class DriveTrain extends Subsystem
         motors[2] = RobotMap.lBackDrive;
         motors[3] = RobotMap.rFrontDrive;
         motors[4] = RobotMap.rMidDrive;
-        motors[5] = RobotMap.lBackDrive;
+        motors[5] = RobotMap.rBackDrive;
         reset();
     }
 
@@ -156,6 +156,39 @@ public class DriveTrain extends Subsystem
         currentSpeeds[1] = rightSpeed;
     }
     
+    protected double applyDeadband(double value, double deadband) {
+        if (Math.abs(value) > deadband) {
+            if (value > 0.0) {
+                return (value - deadband) / (1.0 - deadband);
+            } else {
+                return (value + deadband) / (1.0 - deadband);
+            }
+        } else {
+            return 0.0;
+        }
+    }
+    
+    public void set(double frontSpeed, double midSpeed, double backSpeed) 
+    {
+        frontSpeed = applyDeadband(frontSpeed, 0.02);
+        frontSpeed = Math.copySign(frontSpeed * frontSpeed, frontSpeed);
+
+        midSpeed = applyDeadband(midSpeed, 0.02);
+        midSpeed = Math.copySign(midSpeed * midSpeed, midSpeed);
+      
+        backSpeed = applyDeadband(backSpeed, 0.02);
+        backSpeed = Math.copySign(backSpeed * backSpeed, backSpeed);
+
+        motors[0].set(frontSpeed);
+        motors[1].set(midSpeed);
+        motors[2].set(backSpeed);
+
+
+        motors[3].set(-frontSpeed);
+        motors[4].set(-midSpeed);
+        motors[5].set(-backSpeed);
+    }
+
     /**
      * Runs a PID distance loop on the talons
      * @param distance - the distance to travel

@@ -20,10 +20,9 @@ public class OperatorOverride extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        if (Robot.oi.j1.b11.get()) {
             Scheduler.getInstance().removeAll();
             Robot.sensorOverride = !Robot.sensorOverride;
-        }
+            System.out.println("Override pressed new value: " + Robot.sensorOverride);  
     }
 
     // Called repeatedly when this Command is scheduled to run

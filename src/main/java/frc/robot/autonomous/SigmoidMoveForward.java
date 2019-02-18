@@ -10,7 +10,6 @@ public class SigmoidMoveForward extends Command
     private double speed;
     private double distance;
     private double startValue;
-    private double distanceToAccelerate;
     private boolean speedReached;
 
     public SigmoidMoveForward(double speed, double feet)
@@ -27,22 +26,14 @@ public class SigmoidMoveForward extends Command
         Robot.driveTrain.reset();
         speedReached = false;
         startValue = RobotMap.lMidDrive.getSelectedSensorPosition(0);
-        distanceToAccelerate = 0;
+
     }
 
     @Override
     protected void execute() {
         
         System.out.println("Moving");
-   //     if (distance - RobotMap.lMidDrive.getSelectedSensorPosition(0) > distanceToAccelerate)
             Robot.driveTrain.sigmoidMove(speed, speed, 1);
-   //     else
-    //        Robot.driveTrain.sigmoidMove(0, 0, 1);
-
-        if (Robot.driveTrain.currentSpeeds[0] >= speed && !speedReached) {
-            speedReached = true;
-            distanceToAccelerate = RobotMap.lMidDrive.getSelectedSensorPosition(0) - startValue;
-        }
     }
     @Override
     protected boolean isFinished() {

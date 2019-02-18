@@ -6,7 +6,7 @@ public class Shoot extends CommandGroup
 {
     public Shoot()
     {
-        addSequential(new Outtake(0.5));
+        addSequential(new Outtake(0.35));
         addSequential(new Intake(1));
     }
 }

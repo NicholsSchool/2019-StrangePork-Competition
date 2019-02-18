@@ -25,6 +25,7 @@ public class OI {
   public JoystickContoller j2;
   public DoubleButton climbButton;
   public DoubleButton toggleJacks;
+  public DoubleButton overrideButtons;
 
 
   public OI()
@@ -34,6 +35,7 @@ public class OI {
     j2 = new JoystickContoller(2);
     climbButton = new DoubleButton(j1.b2, j2.b11);
     toggleJacks = new DoubleButton(j2.b7, j2.b8);
+    overrideButtons = new DoubleButton(j1.b11, j0.b11);
     
    // j0.b1.whenPressed(new Place());
     double armMoveSpeed = 0.5;  
@@ -42,7 +44,7 @@ public class OI {
     j0.b4.whenPressed(new AlignWithLineBB(0.7));
 
 
-    j0.b11.whenPressed(new OperatorOverride());
+    overrideButtons.whenPressed(new OperatorOverride());
 
     j0.b12.whenPressed(new AutoPaths());
 
@@ -62,10 +64,11 @@ public class OI {
     toggleJacks.whenPressed(new JumpJacksToggle());
   
 
-    j2.b4.whenPressed(new ArmMoveToLevel(1, armMoveSpeed));
-    j2.b3.whenPressed(new ArmMoveToLevel(2, armMoveSpeed));
-    j2.b5.whenPressed(new ArmMoveToLevel(3, armMoveSpeed));
-
+    j2.b4.whenPressed(new ChangeOuttake(1));
+    j2.b3.whenPressed(new ChangeOuttake(2));
+    j2.b5.whenPressed(new ChangeOuttake(3));
+    j2.b12.whileHeld(new Outtake());
+    j2.b12.whenReleased(new Intake(1));
  //   j2.b3.whenPressed(new ToggleVisionCamera());
 //    
 

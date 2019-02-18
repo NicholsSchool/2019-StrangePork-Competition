@@ -17,6 +17,9 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.*;
+import frc.robot.autonomous.ArmTimeMove;
+import frc.robot.autonomous.AutoPaths;
+import frc.robot.autonomous.ElevatorTimeMove;
 import frc.robot.sensors.*;
 
 
@@ -124,6 +127,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("App pot raw", RobotMap.appPot.get());
     SmartDashboard.putNumber("App Pot", appDial.getPosition());
 
+    SmartDashboard.putNumber("ElevatorArmPot Value:", elevatorPot.getPosition());
+    SmartDashboard.putNumber("ArmPot Value:", armPot.getPosition());
 
   }
 
@@ -148,6 +153,9 @@ public class Robot extends TimedRobot {
      * = new MyAutoCommand(); break; case "Default Auto": default:
      * autonomousCommand = new ExampleCommand(); break; }
      */
+
+     if(RobotMap.appSwitch.get())
+        m_autonomousCommand = new AutoPaths();
 
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
@@ -183,7 +191,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-  //  RobotMap.leftGrip.set(0.1);
+ //   RobotMap.rBackDrive.set(-0.1);
     SmartDashboard.putNumber("FrontLD Encoder Value:", RobotMap.lFrontDrive.getSelectedSensorPosition(0));
     SmartDashboard.putNumber("MidLD Encoder Value:", RobotMap.lMidDrive.getSelectedSensorPosition(0));
     SmartDashboard.putNumber("BackLD Encoder Value:", RobotMap.lBackDrive.getSelectedSensorPosition(0));
@@ -201,6 +209,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Left Ultrasonic", ultrasonic.getRange(true));
     SmartDashboard.putNumber("Right Ultrasonic", ultrasonic.getRange(false));
 
+    SmartDashboard.putBoolean("Override", sensorOverride);
+    SmartDashboard.putNumber("Outtake Speed", gripper.getOuttakeSpeed());
     // SmartDashboard.putNumber("leftFrontUltrasonic Value:",
     // RobotMap.leftFrontUltraSonic.);
   }
