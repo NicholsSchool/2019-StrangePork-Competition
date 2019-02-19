@@ -44,7 +44,7 @@ public class DriveTrain extends Subsystem
 
     @Override
     protected void initDefaultCommand() {
-        setDefaultCommand(new SigmoidDrive());
+    //    setDefaultCommand(new SigmoidDrive());
     }
 
     /**

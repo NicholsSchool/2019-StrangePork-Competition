@@ -49,6 +49,8 @@ public class Robot extends TimedRobot {
   public static Arm arm;
   public static Dial appDial;
 
+  public static NewDriveTrain newDriveTrain;
+
   public static boolean sensorOverride;
   public static boolean dropped;
 
@@ -76,7 +78,7 @@ public class Robot extends TimedRobot {
     gripper = new Gripper();
     elevator = new Elevator();
     arm = new Arm();
-
+    newDriveTrain = new NewDriveTrain();
     //sensors
     Vision.init();
 
@@ -171,6 +173,7 @@ public class Robot extends TimedRobot {
     RobotMap.jumpJacksSolenoid.set(Constants.JUMPJACKS_RAISED);
     RobotMap.dustPanSolenoid.set(Constants.DUSTPAN_RAISED);
    driveTrain.resetEncoders();
+   newDriveTrain.reset();
   }
 
   /**
