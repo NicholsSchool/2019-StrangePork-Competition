@@ -118,18 +118,6 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledPeriodic() {
     Scheduler.getInstance().run();
-    SmartDashboard.putNumber("POV", oi.j2.getPOV());
-    SmartDashboard.putNumber("NavX raw", RobotMap.ahrs.getYaw());
-    SmartDashboard.putNumber("Navx ", navX.getAngle());
-    SmartDashboard.putNumber("Left Ultrasonic", ultrasonic.getRange(true));
-    SmartDashboard.putNumber("Right Ultrasonic", ultrasonic.getRange(false));
-    SmartDashboard.putBoolean("App Switch", RobotMap.appSwitch.get());
-    SmartDashboard.putNumber("App pot raw", RobotMap.appPot.get());
-    SmartDashboard.putNumber("App Pot", appDial.getPosition());
-
-    SmartDashboard.putNumber("ElevatorArmPot Value:", elevatorPot.getPosition());
-    SmartDashboard.putNumber("ArmPot Value:", armPot.getPosition());
-
   }
 
   /**
@@ -191,14 +179,24 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
- //   RobotMap.rBackDrive.set(-0.1);
+
+    SmartDashboard.putBoolean("Override", sensorOverride);
+  }
+  /**
+   * This function is called periodically during test mode.
+   */
+  @Override
+  public void testPeriodic() 
+  {
+
+    SmartDashboard.putNumber("POV", oi.j2.getPOV());
+
     SmartDashboard.putNumber("FrontLD Encoder Value:", RobotMap.lFrontDrive.getSelectedSensorPosition(0));
     SmartDashboard.putNumber("MidLD Encoder Value:", RobotMap.lMidDrive.getSelectedSensorPosition(0));
     SmartDashboard.putNumber("BackLD Encoder Value:", RobotMap.lBackDrive.getSelectedSensorPosition(0));
     SmartDashboard.putNumber("FrontRD Encoder Value:", RobotMap.rFrontDrive.getSelectedSensorPosition(0));
     SmartDashboard.putNumber("MidRD Encoder Value:", RobotMap.rMidDrive.getSelectedSensorPosition(0));
     SmartDashboard.putNumber("BackRD Encoder Value:", RobotMap.rBackDrive.getSelectedSensorPosition(0));
-
 
     SmartDashboard.putBoolean("bottomArmLimitSwitch Value:", limitswitches.isArmDown());
     SmartDashboard.putBoolean("ball Limit Switch Value:", limitswitches.isBallIn());
@@ -211,17 +209,16 @@ public class Robot extends TimedRobot {
 
     SmartDashboard.putBoolean("Override", sensorOverride);
     SmartDashboard.putNumber("Outtake Speed", gripper.getOuttakeSpeed());
-    // SmartDashboard.putNumber("leftFrontUltrasonic Value:",
-    // RobotMap.leftFrontUltraSonic.);
-  }
-  /**
-   * This function is called periodically during test mode.
-   */
-  @Override
-  public void testPeriodic() {
 
-  }
 
+    SmartDashboard.putNumber("Navx ", navX.getAngle());
+
+    SmartDashboard.putBoolean("App Switch", RobotMap.appSwitch.get());
+    SmartDashboard.putNumber("App pot raw", RobotMap.appPot.get());
+    SmartDashboard.putNumber("App Pot", appDial.getPosition());
+  }
+ 
+  
 
 
 }
