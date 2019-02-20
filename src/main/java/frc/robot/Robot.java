@@ -181,6 +181,11 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
 
     SmartDashboard.putBoolean("Override", sensorOverride);
+    SmartDashboard.putBoolean("bottomArmLimitSwitch Value:", limitswitches.isArmDown());
+    SmartDashboard.putBoolean("ball Limit Switch Value:", limitswitches.isBallIn());
+
+    SmartDashboard.putNumber("ElevatorArmPot Value:", elevatorPot.getPosition());
+    SmartDashboard.putNumber("ArmPot Value:", armPot.getPosition());
   }
   /**
    * This function is called periodically during test mode.

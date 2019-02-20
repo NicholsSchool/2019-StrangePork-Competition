@@ -18,7 +18,9 @@ public class LimitSwitch
 
     public boolean isBallIn()
     {
-        return ballLM.isFwdLimitSwitchClosed() || Robot.sensorOverride;
+        if(!Robot.sensorOverride)
+            return ballLM.isFwdLimitSwitchClosed();
+        return false;
     }
 
     public boolean isArmDown()
