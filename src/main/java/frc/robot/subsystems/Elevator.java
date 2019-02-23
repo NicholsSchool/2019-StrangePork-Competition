@@ -9,11 +9,30 @@ import frc.robot.sensors.Pot;
 
 public class Elevator extends Subsystem
 {
-    
+    private boolean extended;
+    private double lastCheck;
+    public Elevator()
+    {
+        extended = false;
+        lastCheck = 0;
+    }
+
     private void set( double speed )
     {
         RobotMap.armExtend.set(speed);
     }
+
+    private boolean fullExtend(double time)
+    {
+        if(!extended)
+        {
+            lastCheck = 0;
+            extended = true;
+        }
+        lastCheck += 0.02;
+        return lastCheck < time;
+    }
+
 
     public void move( double speed )
     {
@@ -31,7 +50,12 @@ public class Elevator extends Subsystem
         else if( elevatorPosition == Pot.AT_MAX )
         {
             if( speed < 0 )
+            {
                 set(speed);
+                extended = false;
+            }
+            else if( fullExtend(1) )
+                set(speed/2);
             else
                 set(0);
             
