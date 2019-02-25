@@ -22,8 +22,6 @@ public class Arm extends Subsystem
         ballLevelValues[0] = Constants.LEVEL_1_BALL_VALUE;
         ballLevelValues[1] = Constants.LEVEL_2_BALL_VALUE;
         ballLevelValues[2] = Constants.LEVEL_3_BALL_VALUE;
-
-
     }
 
     private void set( double speed )
@@ -31,10 +29,14 @@ public class Arm extends Subsystem
         RobotMap.leftDart.set(speed);
     }
 
+    /**
+     * Takes in speed to move the arm at, and checks arm conditions before setting the speed
+     * @param speed - the speed to move the arm
+     */
     public void move( double speed )
     {
         int armPosition = Robot.armPot.isAtExtremes();
-        //2 == down
+        //If arm is down, only accept positive speeds
         if( Robot.limitswitches.isArmDown() )
         {
             if( speed > 0 )
@@ -43,6 +45,7 @@ public class Arm extends Subsystem
                 set(0);
             
         }
+        //If arm is at max height, only accept negative speeds
         else if( armPosition == Pot.AT_MAX )
         {
             if(speed < 0 )
@@ -54,22 +57,33 @@ public class Arm extends Subsystem
             set(speed);
     }
 
+    /**
+     * Moves the arm based off joystick2 y values 
+     */
     public void armMove()
     {
         move(Robot.oi.j2.getY());
     }
 
+    /**
+     * Reset pot values
+     */
     public void resetPot()
     {
         Robot.armPot.reset();
     }
 
-    //check the armExtend
+    /**
+     * Stops all arm movement
+     */
     public void stop()
     {
         RobotMap.leftDart.stopMotor();
     }
 
+    /**
+     * Sets the default command to be the arm movement command
+     */
     @Override
     protected void initDefaultCommand() 
     {

@@ -15,6 +15,10 @@ public class Gripper extends Subsystem
     private double outtakeSpeed;
     public double[] outtakeSpeeds;
 
+    /**
+     * Constructor for gripper class, sets default outtake speed, and an array
+     * for all possible speeds
+     */
     public Gripper()
     {
         outtakeSpeed = -0.75;
@@ -22,15 +26,18 @@ public class Gripper extends Subsystem
         outtakeSpeeds[0] = Constants.LEVEL_1_OUTTAKE_SPD;
         outtakeSpeeds[1] = Constants.LEVEL_2_OUTTAKE_SPD;
         outtakeSpeeds[2] = Constants.LEVEL_3_OUTTAKE_SPD;
-
     }
 
+    /**
+     * Sets the speed of the grippers
+     * @param speed - the speed to set at, between -1 to 1
+     */
     public void setSpeed (double speed){
         RobotMap.leftGrip.set(-speed);
         RobotMap.rightGrip.set(speed);
     }
     /**
-     * Runs the gripper motors to intake a ball.
+     * Runs the gripper motors to intake a ball, if the ball is not in.
      */
     public void intake()
     {
@@ -40,7 +47,7 @@ public class Gripper extends Subsystem
             setSpeed(0);
     } 
     /**
-     * runs gripper motors to outtake ball.
+     * Runs gripper motors to outtake ball.
      */
     public void outtake()
     {   
@@ -58,11 +65,19 @@ public class Gripper extends Subsystem
         RobotMap.rightGrip.set(0);
     }
 
+    /**
+     * Changes the outtake speed
+     * @param outtakeSpeed - the speed to outtake at
+     */
     public void setOuttakeSpeed(double outtakeSpeed) {
         System.out.println("Changeing value to: " + outtakeSpeed);
         this.outtakeSpeed = outtakeSpeed;
     }
 
+    /**
+     * Returns the outtake speed
+     * @return the outtake speed
+     */
     public double getOuttakeSpeed() {
         return outtakeSpeed;
     }

@@ -4,17 +4,21 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Constants;
 import frc.robot.RobotMap;
 
+/**
+ * Subsystem class used for controlling the dustpan, which is used for picking up
+ * hatches on the ground
+ */
 public class DustPan extends Subsystem
 {
     /**
-     * Uses solenoid to raise the DustPan
+     * Raises the DustPan
      */
     public void raise()
     {
         RobotMap.dustPanSolenoid.set(Constants.DUSTPAN_RAISED);
     }
     /**
-     * Uses solenoid to drop the DustPan
+     * Drops the DustPan
      */
     public void drop()
     {

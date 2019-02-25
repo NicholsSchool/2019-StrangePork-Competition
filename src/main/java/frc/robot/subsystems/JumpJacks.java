@@ -13,19 +13,26 @@ import frc.robot.Constants;
 import frc.robot.Robot;
 
 /**
- * An example subsystem.  You can replace me with your own Subsystem.
+ * Subsystem class for the JumpJacks (back pneumatic wheels)
  */
 public class JumpJacks extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
+ 
 
   @Override
   public void initDefaultCommand() {
   }
+
+  /**
+   * Drops the back wheels
+   */
   public void drop() {
     RobotMap.jumpJacksSolenoid.set(Constants.JUMPJACKS_DROPPED);
     Robot.dropped = true;
   }
+
+  /**
+   * Raises the back wheels
+   */
   public void raise() {
     RobotMap.jumpJacksSolenoid.set(Constants.JUMPJACKS_RAISED);
     Robot.dropped = false;
