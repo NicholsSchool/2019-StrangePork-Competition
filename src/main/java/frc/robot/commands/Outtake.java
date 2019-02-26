@@ -5,8 +5,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Robot;
 import frc.robot.subsystems.Gripper;
 /**
- * The Outtake Command runs the gripper motors
- * until it is manually stopped.
+ * The Outtake Command outtakes the gripper motors
+ * 
  */
 public class Outtake extends Command {
 
@@ -21,9 +21,7 @@ public class Outtake extends Command {
 		requires(Robot.gripper);
 		this.time = time;
 	}
-/**
-	 * Outtake does nothing during initialize
-	 */
+
 	@Override
 	public void initialize()
 	{
