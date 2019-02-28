@@ -49,7 +49,7 @@ public class Constants
     LEVEL_2_HATCH_VALUE = 2323,
     LEVEL_3_HATCH_VALUE = 2442;
 
-    public static final double
+    public static final int
     LEVEL_1_BALL_VALUE = 2258,
     LEVEL_2_BALL_VALUE = 2442,
     LEVEL_3_BALL_VALUE = 2442;
