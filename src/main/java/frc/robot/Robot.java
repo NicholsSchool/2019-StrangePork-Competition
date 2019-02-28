@@ -118,6 +118,9 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledPeriodic() {
     Scheduler.getInstance().run();
+    SmartDashboard.putBoolean("App Switch", RobotMap.appSwitch.get());
+    SmartDashboard.putNumber("App pot raw", RobotMap.appPot.get());
+    SmartDashboard.putNumber("App Pot", appDial.getPosition());
   }
 
   /**
@@ -142,8 +145,8 @@ public class Robot extends TimedRobot {
      * autonomousCommand = new ExampleCommand(); break; }
      */
 
-     if(RobotMap.appSwitch.get())
-        m_autonomousCommand = new AutoPaths();
+    //  if(RobotMap.appSwitch.get())
+    //     m_autonomousCommand = new AutoPaths();
 
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
