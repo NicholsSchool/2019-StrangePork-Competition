@@ -189,6 +189,7 @@ public class Robot extends TimedRobot {
 
     SmartDashboard.putNumber("ElevatorArmPot Value:", elevatorPot.getPosition());
     SmartDashboard.putNumber("ArmPot Value:", armPot.getPosition());
+    SmartDashboard.putNumber("Outtake Speed", gripper.getOuttakeSpeed());
   }
   /**
    * This function is called periodically during test mode.

@@ -28,17 +28,27 @@ public class ArmMoveToLevel extends Command {
       this.level = level;
       this.speed = speed;
       originalSpeed = speed;
+      value = 0;
+  }
+
+  public ArmMoveToLevel(double potVal, double speed)
+  {
+    this(-1, speed);
+    value = potVal;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    if(!Robot.limitswitches.isBallIn())
-      value = Robot.arm.hatchLevelValues[level - 1];
-    else
-    {
-      value = Robot.arm.ballLevelValues[level - 1];
-      System.out.println("ball");
+    if(value == 0)
+      {
+        if(!Robot.limitswitches.isBallIn())
+          value = Robot.arm.hatchLevelValues[level - 1];
+        else
+        {
+          value = Robot.arm.ballLevelValues[level - 1];
+          System.out.println("ball");
+        }
     }
 
     speed = originalSpeed;

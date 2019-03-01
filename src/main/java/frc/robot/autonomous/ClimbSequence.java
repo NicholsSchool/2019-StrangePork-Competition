@@ -8,10 +8,10 @@ public class ClimbSequence extends CommandGroup
 {
     public ClimbSequence()
     {
-        addParallel(new DriveTimeMove(0.7, 3.75));
+        addParallel(new DriveTimeMove(0.75, 6));
         addParallel(new JumpJacksDrop());
         addSequential(new Wait(0.5));
-        addSequential(new ArmDown(-0.6));
+        addSequential(new ArmDown(-0.65));
         addSequential(new Wait(1.25));
         addSequential(new ArmTimeMove(0.5, 0.5));
         addSequential(new Wait(2));
