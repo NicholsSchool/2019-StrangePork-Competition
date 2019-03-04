@@ -149,9 +149,9 @@ public class Robot extends TimedRobot {
     //     m_autonomousCommand = new AutoPaths();
 
     // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.start();
-    }
+    // if (m_autonomousCommand != null) {
+    //   m_autonomousCommand.start();
+    // }
   }
 
   /**

@@ -58,7 +58,7 @@ public class Constants
     ARM_DOWN = 130;
 
     public static final double
-    LEVEL_1_OUTTAKE_SPD = -0.3,
+    LEVEL_1_OUTTAKE_SPD = -0.22,
     LEVEL_2_OUTTAKE_SPD = -0.7,
     LEVEL_3_OUTTAKE_SPD = -1.0;
 
