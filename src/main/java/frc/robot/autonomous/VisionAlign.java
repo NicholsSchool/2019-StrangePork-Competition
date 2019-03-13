@@ -7,15 +7,22 @@
 
 package frc.robot.autonomous;
 
+import edu.wpi.first.networktables.EntryListenerFlags;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Constants;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-import frc.robot.sensors.Vision;
+import frc.robot.util.MotionProfile;
 
-public class AlignWithLineBB extends Command {
+public class VisionAlign extends Command {
+    private double piAngleToLine;
+    private double piDistanceToLine;
+    private double piAngleToWall;
 
     private double speed;
+
     private double angleToLine;
     private double distanceToLine;
     private double angleToWall;
@@ -24,10 +31,24 @@ public class AlignWithLineBB extends Command {
     private boolean isOnLine;
     private boolean isAligned;
 
-    public AlignWithLineBB(double speed) {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    public static final int ANGLE_BUFFER = 4;
+
+    public VisionAlign(int waypoint, double speed) {
         requires(Robot.driveTrain);
+
+        NetworkTable table = NetworkTableInstance.getDefault().getTable("vision");
+        int flags = EntryListenerFlags.kNew | EntryListenerFlags.kUpdate;
+
+        table.getEntry("angleToLine" + waypoint).addListener(event -> {
+            piAngleToLine = event.value.getDouble();
+        }, flags);
+        table.getEntry("distanceToLine" + waypoint).addListener(event -> {
+            piDistanceToLine = event.value.getDouble();
+        }, flags);
+        table.getEntry("angleToWall" + waypoint).addListener(event -> {
+            piAngleToWall = event.value.getDouble();
+        }, flags);
+
         this.speed = speed;
     }
 
@@ -38,35 +59,35 @@ public class AlignWithLineBB extends Command {
         isOnLine = false;
         isAligned = false;
 
-        System.out.println("\n\n[VISION]: Starting...\n\n");
         Robot.navX.reset();
-        angleToLine = Vision.angleToLine;
-        distanceToLine = Vision.distanceToLine / Constants.WHEEL_DIAMETER_IN_FEET / Math.PI
-                * Constants.TICKS_PER_ROTATION;
-        angleToWall = Vision.angleToWall - Vision.angleToLine;
+
+        angleToLine = piAngleToLine;
+        distanceToLine = piDistanceToLine / Constants.WHEEL_DIAMETER_IN_FEET / Math.PI * Constants.TICKS_PER_ROTATION;
+        angleToWall = piAngleToWall - piAngleToLine;
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
+
         if (!isFacingLine) {
 
-            if (Robot.navX.getAngle() > angleToLine + 1) {
+            // speed = MotionProfile.threeSpeed(Robot.navX.getAngle() / angleToLine);
+
+            if (Robot.navX.getAngle() > angleToLine + ANGLE_BUFFER) {
                 Robot.driveTrain.move(-speed, speed);
-            } else if (Robot.navX.getAngle() < angleToLine - 1) {
+            } else if (Robot.navX.getAngle() < angleToLine - ANGLE_BUFFER) {
                 Robot.driveTrain.move(speed, -speed);
             } else {
                 System.out.println("\n\n[VISION]: Faced Line\n\n");
                 isFacingLine = true;
 
-                // distanceToLine = Vision.distanceToLine / Constants.WHEEL_DIAMETER_IN_FEET /
-                //     Math.PI * Constants.TICKS_PER_ROTATION;
-                // angleToWall = Vision.angleToWall;
-
                 Robot.driveTrain.resetEncoders();
             }
 
         } else if (!isOnLine) {
+
+            // speed = MotionProfile.threeSpeed(RobotMap.lMidDrive.getSelectedSensorPosition(0) / distanceToLine);
 
             if (Math.abs(RobotMap.lMidDrive.getSelectedSensorPosition(0)) < distanceToLine) {
                 Robot.driveTrain.move(speed, speed);
@@ -78,9 +99,11 @@ public class AlignWithLineBB extends Command {
 
         } else if (!isAligned) {
 
-            if (Robot.navX.getAngle() > angleToWall + 1) {
+            // speed = MotionProfile.threeSpeed(Robot.navX.getAngle() / angleToWall);
+
+            if (Robot.navX.getAngle() > angleToWall + ANGLE_BUFFER) {
                 Robot.driveTrain.move(-speed, speed);
-            } else if (Robot.navX.getAngle() < angleToWall - 1) {
+            } else if (Robot.navX.getAngle() < angleToWall - ANGLE_BUFFER) {
                 Robot.driveTrain.move(speed, -speed);
             } else {
                 System.out.println("\n\n[VISION]: Aligned\n\n");
@@ -88,7 +111,6 @@ public class AlignWithLineBB extends Command {
             }
 
         }
-
     }
 
     // Make this return true when this Command no longer needs to run execute()

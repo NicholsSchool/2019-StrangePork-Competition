@@ -7,8 +7,8 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.sensors.Vision;
 
 public class SwitchVisionCamera extends Command {
 
@@ -23,7 +23,7 @@ public class SwitchVisionCamera extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        Vision.switchCamera(camera);
+        NetworkTableInstance.getDefault().getTable("vision").getEntry("camera").setDouble(camera);
     }
 
     // Called repeatedly when this Command is scheduled to run

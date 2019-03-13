@@ -78,8 +78,6 @@ public class Robot extends TimedRobot {
     arm = new Arm();
 
     //sensors
-    Vision.init();
-
     navX = new NavX(RobotMap.ahrs);
     ultrasonic = new Ultrasonic();
     limitswitches = new LimitSwitch(RobotMap.leftGrip, RobotMap.leftDart);
