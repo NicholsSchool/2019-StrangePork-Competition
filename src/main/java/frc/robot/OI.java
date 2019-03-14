@@ -63,7 +63,8 @@ public class OI {
 
     climbButton.whenPressed(new ClimbSequence());
     toggleJacks.whenPressed(new JumpJacksToggle());
-  
+    // j2.b10.whenPressed(new JumpJacksRaise());
+    // j2.b11.whenPressed(new JumpJacksDrop());
 
     j2.b4.whenPressed(new ChangeOuttake(1));
     j2.b3.whenPressed(new ChangeOuttake(2));

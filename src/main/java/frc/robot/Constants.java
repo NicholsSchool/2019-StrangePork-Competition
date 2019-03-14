@@ -43,20 +43,23 @@ public class Constants
     public static final double 
     START_ARM_VALUE = 2414;
 
-    //Need to be changed
+    //Need to be changed   
     public static final double
-    LEVEL_1_HATCH_VALUE = 2186,
-    LEVEL_2_HATCH_VALUE = 2323,
-    LEVEL_3_HATCH_VALUE = 2442;
+    LEVEL_1_HATCH_VALUE = 136,
+    LEVEL_2_HATCH_VALUE = 292,
+    LEVEL_3_HATCH_VALUE = 393;
 
     public static final double
-    LEVEL_1_BALL_VALUE = 2258,
-    LEVEL_2_BALL_VALUE = 2442,
-    LEVEL_3_BALL_VALUE = 2442;
+    LEVEL_1_BALL_VALUE = 230,
+    LEVEL_2_BALL_VALUE = 350,
+    LEVEL_3_BALL_VALUE = 350;
 
     public static final double
-    LEVEL_1_OUTTAKE_SPD = -0.3,
-    LEVEL_2_OUTTAKE_SPD = -0.5,
+    ARM_DOWN = 130;
+
+    public static final double
+    LEVEL_1_OUTTAKE_SPD = -0.22,
+    LEVEL_2_OUTTAKE_SPD = -0.7,
     LEVEL_3_OUTTAKE_SPD = -1.0;
 
     public static double INTAKE_SPEED=1;
