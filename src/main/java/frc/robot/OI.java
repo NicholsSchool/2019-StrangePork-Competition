@@ -42,7 +42,8 @@ public class OI {
     j0.b1.whenPressed(new DustpanDrop());
     j0.b1.whenReleased(new DustpanRaise());
     j0.b3.whenPressed(new Grab());
-    j0.b4.whenPressed(new AlignWithLineBB(0.7));
+    j0.b4.whenPressed(new VisionAlign(1, 0.7));
+    j0.b5.whenPressed(new MultiWaypointAlign(0.7));
 
 
     overrideButtons.whenPressed(new OperatorOverride());
