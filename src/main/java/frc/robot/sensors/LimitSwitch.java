@@ -27,4 +27,10 @@ public class LimitSwitch
     {
         return armLM.isFwdLimitSwitchClosed();
     }
+    
+    public boolean areWheelsAgainstWall()
+    {
+     //   return !RobotMap.wheelsAgainstWallLS.get();
+        return false;
+    }
 }

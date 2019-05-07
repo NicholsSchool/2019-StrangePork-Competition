@@ -26,6 +26,7 @@ public class OI {
   public DoubleButton climbButton;
   public DoubleButton toggleJacks;
   public DoubleButton overrideButtons;
+  public DoubleButton lvl2Climb;
 
 
   public OI()
@@ -34,8 +35,10 @@ public class OI {
     j1 = new JoystickContoller(1);
     j2 = new JoystickContoller(2);
     climbButton = new DoubleButton(j1.b2, j2.b11);
+    lvl2Climb = new DoubleButton(j1.b9, j2.b9);
     toggleJacks = new DoubleButton(j2.b7, j2.b8);
     overrideButtons = new DoubleButton(j1.b11, j0.b11);
+    
     
    // j0.b1.whenPressed(new Place());
     double armMoveSpeed = 0.5;  
@@ -58,11 +61,13 @@ public class OI {
     j1.b1.whileHeld(new Intake());
 
     j2.b1.whenPressed(new PlaceItem()); 
+    j2.b1.whenReleased(new Intake(1, true));
 
     j2.b2.whenPressed(new DustpanDrop());
     j2.b2.whenReleased(new DustpanRaise());
 
     climbButton.whenPressed(new ClimbSequence());
+    lvl2Climb.whenPressed(new Level2Climb());
     toggleJacks.whenPressed(new JumpJacksToggle());
     // j2.b10.whenPressed(new JumpJacksRaise());
     // j2.b11.whenPressed(new JumpJacksDrop());

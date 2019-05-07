@@ -17,7 +17,7 @@ public class Gripper extends Subsystem
 
     public Gripper()
     {
-        outtakeSpeed = -0.75;
+        outtakeSpeed = -Constants.LEVEL_1_OUTTAKE_SPD;
         outtakeSpeeds = new double[3];
         outtakeSpeeds[0] = Constants.LEVEL_1_OUTTAKE_SPD;
         outtakeSpeeds[1] = Constants.LEVEL_2_OUTTAKE_SPD;

@@ -15,6 +15,7 @@ public class Intake extends Command {
 	 */
 
 	private double time;
+	private boolean checkForBall;
 	public Intake() {
 		this(0);
 	}
@@ -24,6 +25,14 @@ public class Intake extends Command {
 		requires(Robot.gripper);
 		this.time = time;
 	}
+
+	public Intake( double time, boolean checkForBall)
+	{
+		requires(Robot.gripper);
+		this.time = time;
+		this.checkForBall = checkForBall;
+	}
+
 
 	/**
 	 * Intake does nothing during initialize
@@ -38,9 +47,8 @@ public class Intake extends Command {
 	 */
 	@Override
 	protected void execute() {
-
-		Robot.gripper.intake();
-
+		if(!(checkForBall && !Robot.ballWasIn))
+			Robot.gripper.intake();
 	}
 
 	/**
@@ -70,6 +78,8 @@ public class Intake extends Command {
 	 */
 	@Override
 	protected void end() {
+		if(checkForBall && Robot.ballWasIn)
+			Robot.ballWasIn = false;
 		Robot.gripper.stop();
 	}
 

@@ -51,7 +51,7 @@ public class Robot extends TimedRobot {
 
   public static boolean sensorOverride;
   public static boolean dropped;
-
+  public static boolean ballWasIn;
   
 
   Command m_autonomousCommand;
@@ -86,7 +86,7 @@ public class Robot extends TimedRobot {
     appDial = new Dial(RobotMap.appPot);
     sensorOverride = false;
     dropped = false;
-
+    ballWasIn = false;
     //OI gets Instantiated LAST!
     oi = new OI();
   }
@@ -119,6 +119,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putBoolean("App Switch", RobotMap.appSwitch.get());
     SmartDashboard.putNumber("App pot raw", RobotMap.appPot.get());
     SmartDashboard.putNumber("App Pot", appDial.getPosition());
+    SmartDashboard.putBoolean("Back Wheels Limit Switch",   Robot.limitswitches.areWheelsAgainstWall());
   }
 
   /**
@@ -188,6 +189,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("ElevatorArmPot Value:", elevatorPot.getPosition());
     SmartDashboard.putNumber("ArmPot Value:", armPot.getPosition());
     SmartDashboard.putNumber("Outtake Speed", gripper.getOuttakeSpeed());
+    SmartDashboard.putBoolean("Back Wheels Limit Switch",  Robot.limitswitches.areWheelsAgainstWall());
   }
   /**
    * This function is called periodically during test mode.

@@ -31,7 +31,8 @@ public class Constants
     ELEVATOR_POT_LOW_EXTREME_VALUE = 982 + ELEVATOR_POT_LOW_BUFFER,
 
     ELEVATOR_ARM_POT = 4,
-    ARM_POT = 5;
+    ARM_POT = 5,
+    WHEELS_AGAINST_WALL_LS_CHNL = 1;
 
     public static final double SIGMOID_A = 25;
 

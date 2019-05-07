@@ -79,6 +79,8 @@ public class RobotMap
   public static AnalogPotentiometer appPot;
   public static DigitalInput appSwitch;
 
+ // public static DigitalInput wheelsAgainstWallLS;
+
   public static AHRS ahrs;
 
   public static Compressor compressor;
@@ -156,7 +158,8 @@ public class RobotMap
     leftDart.configLimitSwitchDisableNeutralOnLOS(true, 100);
     leftDart.configForwardLimitSwitchSource(LimitSwitchSource.RemoteTalonSRX, LimitSwitchNormal.NormallyOpen);
     leftDart.configForwardSoftLimitEnable(false);
-
+    //Wheels against wall LS
+ //   wheelsAgainstWallLS = new DigitalInput(Constants.WHEELS_AGAINST_WALL_LS_CHNL); 
     //Make A.P.P. sensors
     appPot = new AnalogPotentiometer(2, 360);
     appSwitch = new DigitalInput(0);

@@ -11,7 +11,7 @@ import frc.robot.subsystems.Gripper;
 public class Outtake extends Command {
 
 	double time;
-
+	boolean whileHeld;
 	public Outtake() {
 		this(0);
 	}
@@ -20,6 +20,13 @@ public class Outtake extends Command {
 	{
 		requires(Robot.gripper);
 		this.time = time;
+		this.whileHeld = false;
+	}
+
+	public Outtake(boolean whileHeld)
+	{
+		requires(Robot.gripper);
+		this.whileHeld = whileHeld;
 	}
 /**
 	 * Outtake does nothing during initialize
@@ -48,6 +55,8 @@ public class Outtake extends Command {
 	{
 		if(time > 0)
 			return timeSinceInitialized() > time;
+		else if(whileHeld)
+			return !Robot.oi.j2.b1.get();
 		else
 			return false;
 	}
