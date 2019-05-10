@@ -37,7 +37,10 @@ public class Gripper extends Subsystem
         if(!Robot.limitswitches.isBallIn())
           setSpeed(Constants.INTAKE_SPEED);
         else
+        {
             setSpeed(0);
+            Robot.oi.controller.setRumble(1.0, 1.0);
+        }
     } 
     /**
      * runs gripper motors to outtake ball.

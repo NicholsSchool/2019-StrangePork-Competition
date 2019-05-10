@@ -77,10 +77,17 @@ public class Elevator extends Subsystem
         //     return;
         // }
 
-        int pov = Robot.oi.j2.getPOV();
-        if(pov == 315 || pov == 0 || pov ==45)
+        // int pov = Robot.oi.j2.getPOV();
+        // if(pov == 315 || pov == 0 || pov ==45)
+        //     move(0.5);
+        // else if(pov == 225 || pov == 180 || pov == 135)
+        //     move(-0.5);
+        // else
+        //     move(0);
+
+        if(Robot.oi.controller.rightBumper.get())
             move(0.5);
-        else if(pov == 225 || pov == 180 || pov == 135)
+        else if(Robot.oi.controller.leftBumper.get())
             move(-0.5);
         else
             move(0);

@@ -190,6 +190,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("ArmPot Value:", armPot.getPosition());
     SmartDashboard.putNumber("Outtake Speed", gripper.getOuttakeSpeed());
     SmartDashboard.putBoolean("Back Wheels Limit Switch",  Robot.limitswitches.areWheelsAgainstWall());
+
+    SmartDashboard.putNumber("Right Trigger", oi.controller.getRawAxis(3));
   }
   /**
    * This function is called periodically during test mode.

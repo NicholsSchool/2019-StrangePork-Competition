@@ -53,7 +53,7 @@ public class DriveTrain extends Subsystem
      */
     public void sigmoidDrive()
     {
-        sigmoidMove(-Robot.oi.j0.getY(), -Robot.oi.j1.getY());
+        sigmoidMove(Robot.oi.controller.getLeftStickY(), Robot.oi.controller.getRightStickY());
     }
 
     /**

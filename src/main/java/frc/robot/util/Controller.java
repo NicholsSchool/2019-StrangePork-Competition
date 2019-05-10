@@ -23,8 +23,8 @@ public class Controller extends Joystick
 	public JoystickButton leftStickButton = new JoystickButton(this, Constants.CONTROLLER_LEFTSTICK_BUTTON_ID);
     public JoystickButton rightStickButton = new JoystickButton(this, Constants.CONTROLLER_RIGHTSTICK_BUTTON_ID);
     
-    public Button leftTriggerButton = new JoystickButton(this, Constants.CONTROLLER_LEFT_TRIGGER_BUTTON_ID);
-    public Button rightTriggerButton = new JoystickButton(this, Constants.CONTROLLER_RIGHT_TRIGGER_BUTTON_ID);
+    public TriggerButton leftTriggerButton = new TriggerButton(this, 2);
+    public TriggerButton rightTriggerButton = new TriggerButton(this, 3);
     
     public double getTriggerTwist() 
     {
