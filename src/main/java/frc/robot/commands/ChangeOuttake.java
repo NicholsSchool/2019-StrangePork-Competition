@@ -5,24 +5,29 @@ import frc.robot.Robot;
 
 public class ChangeOuttake extends Command
 {
-    private int level;
-    public ChangeOuttake(int level)
+    private boolean goUp;
+
+    public ChangeOuttake(boolean goUp)
     {
         requires(Robot.arm);
-        this.level = level;
-
+        this.goUp = goUp;
     }
 
     @Override
     public void initialize()
     {
-
-        Robot.gripper.setOuttakeSpeed(Robot.gripper.outtakeSpeeds[level - 1]);
+ 
     }
 
     @Override
     protected void execute() 
     {
+        double currentSpeed = Math.abs(Robot.gripper.getOuttakeSpeed());
+        if (goUp && currentSpeed != 1.0)
+            currentSpeed += 0.1;
+        else if (!goUp && currentSpeed != 0)
+            currentSpeed -= 0.1;
+        Robot.gripper.setOuttakeSpeed(currentSpeed);
     }
 
     @Override

@@ -85,9 +85,9 @@ public class Elevator extends Subsystem
         // else
         //     move(0);
 
-        if(Robot.oi.controller.rightBumper.get())
+        if(Robot.oi.controller.yButton.get())
             move(0.5);
-        else if(Robot.oi.controller.leftBumper.get())
+        else if(Robot.oi.controller.aButton.get())
             move(-0.5);
         else
             move(0);

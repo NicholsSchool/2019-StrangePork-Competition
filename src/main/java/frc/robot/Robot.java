@@ -52,6 +52,8 @@ public class Robot extends TimedRobot {
   public static boolean sensorOverride;
   public static boolean dropped;
   public static boolean ballWasIn;
+  public static int outtakeLevel;
+
   
 
   Command m_autonomousCommand;
@@ -87,6 +89,7 @@ public class Robot extends TimedRobot {
     sensorOverride = false;
     dropped = false;
     ballWasIn = false;
+    outtakeLevel = 0;
     //OI gets Instantiated LAST!
     oi = new OI();
   }
@@ -191,6 +194,13 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Outtake Speed", gripper.getOuttakeSpeed());
     SmartDashboard.putBoolean("Back Wheels Limit Switch",  Robot.limitswitches.areWheelsAgainstWall());
 
+    SmartDashboard.putNumber("FrontLD  Value:", RobotMap.lFrontDrive.get());
+    SmartDashboard.putNumber("MidLD  Value:", RobotMap.lMidDrive.get());
+    SmartDashboard.putNumber("BackLD  Value:", RobotMap.lBackDrive.get());
+    SmartDashboard.putNumber("FrontRD  Value:", RobotMap.rFrontDrive.get());
+    SmartDashboard.putNumber("MidRD Value:", RobotMap.rMidDrive.get());
+    SmartDashboard.putNumber("BackRD Value:", RobotMap.rBackDrive.get());
+
     SmartDashboard.putNumber("Right Trigger", oi.controller.getRawAxis(3));
   }
   /**
@@ -208,6 +218,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("FrontRD Encoder Value:", RobotMap.rFrontDrive.getSelectedSensorPosition(0));
     SmartDashboard.putNumber("MidRD Encoder Value:", RobotMap.rMidDrive.getSelectedSensorPosition(0));
     SmartDashboard.putNumber("BackRD Encoder Value:", RobotMap.rBackDrive.getSelectedSensorPosition(0));
+
+
 
     SmartDashboard.putBoolean("bottomArmLimitSwitch Value:", limitswitches.isArmDown());
     SmartDashboard.putBoolean("ball Limit Switch Value:", limitswitches.isBallIn());

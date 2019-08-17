@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Constants;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
+import frc.robot.commands.NormalDrive;
 import frc.robot.commands.SigmoidDrive;
 
 public class DriveTrain extends Subsystem
@@ -44,7 +45,7 @@ public class DriveTrain extends Subsystem
 
     @Override
     protected void initDefaultCommand() {
-        setDefaultCommand(new SigmoidDrive());
+        setDefaultCommand(new NormalDrive());
     }
 
     /**
@@ -53,7 +54,14 @@ public class DriveTrain extends Subsystem
      */
     public void sigmoidDrive()
     {
-        sigmoidMove(Robot.oi.controller.getLeftStickY(), Robot.oi.controller.getRightStickY());
+        double buffer = 0.9;
+        sigmoidMove(buffer * Robot.oi.controller.getLeftStickY(), buffer* Robot.oi.controller.getRightStickY());
+    }
+
+    public void drive()
+    {
+        double buffer = 0.9;
+        move(buffer * Robot.oi.controller.getLeftStickY(), buffer* Robot.oi.controller.getRightStickY());
     }
 
     /**

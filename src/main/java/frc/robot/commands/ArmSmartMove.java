@@ -14,7 +14,7 @@ public class ArmSmartMove extends CommandGroup {
    * Add your docs here.
    */
   public ArmSmartMove(int level, double speed) {
-       addSequential(new ChangeOuttake(level));
+   //    addSequential(new ChangeOuttake(level));
        addSequential((new ArmMoveToLevel(level, speed)));
   }
   public ArmSmartMove(double potVal, double speed)

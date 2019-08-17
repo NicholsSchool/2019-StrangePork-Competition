@@ -57,10 +57,10 @@ public class Arm extends Subsystem
     public void armMove()
     {
        // move(Robot.oi.j2.getY());
-        if(Robot.oi.controller.yButton.get())
-            move(0.5);
-        else if(Robot.oi.controller.aButton.get())
-            move(-0.5);
+        if(Robot.oi.controller.rightBumper.get())
+            move(0.85);
+        else if(Robot.oi.controller.leftBumper.get())
+            move(-0.85);
         else
          move(0);
     }

@@ -47,7 +47,6 @@ public class Intake extends Command {
 	 */
 	@Override
 	protected void execute() {
-		if(!(checkForBall && !Robot.ballWasIn))
 			Robot.gripper.intake();
 	}
 
@@ -59,9 +58,6 @@ public class Intake extends Command {
 	 */
 	@Override
 	protected boolean isFinished() {
-		if(time > 0)
-			return timeSinceInitialized() > time;
-		else
 			return false;
 	}
 

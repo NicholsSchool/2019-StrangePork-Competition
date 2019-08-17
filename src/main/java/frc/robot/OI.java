@@ -73,7 +73,9 @@ public class OI {
      * 
      */
     controller = new Controller(0);
-    controller.rightTriggerButton.whenPressed(new PlaceItem());
+    controller.rightTriggerButton.whileHeld(new Outtake());
     controller.leftTriggerButton.whileHeld(new Intake());
+    controller.bButton.whenPressed(new ChangeOuttake(true));
+    controller.xButton.whenPressed(new ChangeOuttake(false));
   }
 }
