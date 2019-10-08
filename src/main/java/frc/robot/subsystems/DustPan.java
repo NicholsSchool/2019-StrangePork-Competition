@@ -11,14 +11,14 @@ public class DustPan extends Subsystem
      */
     public void raise()
     {
-        RobotMap.dustPanSolenoid.set(Constants.DUSTPAN_RAISED);
+      //  RobotMap.dustPanSolenoid.set(Constants.DUSTPAN_RAISED);
     }
     /**
      * Uses solenoid to drop the DustPan
      */
     public void drop()
     {
-        RobotMap.dustPanSolenoid.set(Constants.DUSTPAN_DROPPED);
+      //  RobotMap.dustPanSolenoid.set(Constants.DUSTPAN_DROPPED);
     }
 
     @Override

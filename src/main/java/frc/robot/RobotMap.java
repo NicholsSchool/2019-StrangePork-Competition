@@ -165,11 +165,11 @@ public class RobotMap
     appSwitch = new DigitalInput(0);
 
     compressor = new Compressor(50);
-    solenoid0 = new Solenoid(50, 2);
-    jumpJacksSolenoid = new Solenoid(50, 0);
-    dustPanSolenoid = new Solenoid(50, 1);
-    jumpJacksSolenoid.set(Constants.JUMPJACKS_RAISED);
-    dustPanSolenoid.set(Constants.DUSTPAN_RAISED);
+   // solenoid0 = new Solenoid(50, 2);
+  //  jumpJacksSolenoid = new Solenoid(50, 0);
+   // dustPanSolenoid = new Solenoid(50, 1);
+  //  jumpJacksSolenoid.set(Constants.JUMPJACKS_RAISED);
+    //dustPanSolenoid.set(Constants.DUSTPAN_RAISED);
   }
 
 }

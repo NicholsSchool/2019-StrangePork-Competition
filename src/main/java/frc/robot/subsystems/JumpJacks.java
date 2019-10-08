@@ -23,13 +23,13 @@ public class JumpJacks extends Subsystem {
   public void initDefaultCommand() {
   }
   public void drop() {
-    RobotMap.jumpJacksSolenoid.set(Constants.JUMPJACKS_DROPPED);
+  //  RobotMap.jumpJacksSolenoid.set(Constants.JUMPJACKS_DROPPED);
     Robot.dropped = true;
     System.out.println("Drop Jumpjacks ");
   }
   public void raise() {
     System.out.println("Raise Jumpjacks ");
-    RobotMap.jumpJacksSolenoid.set(Constants.JUMPJACKS_RAISED);
+//    RobotMap.jumpJacksSolenoid.set(Constants.JUMPJACKS_RAISED);
     Robot.dropped = false;
 	}
 }

@@ -173,8 +173,8 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
-    RobotMap.jumpJacksSolenoid.set(Constants.JUMPJACKS_RAISED);
-    RobotMap.dustPanSolenoid.set(Constants.DUSTPAN_RAISED);
+  //  RobotMap.jumpJacksSolenoid.set(Constants.JUMPJACKS_RAISED);
+ ///   RobotMap.dustPanSolenoid.set(Constants.DUSTPAN_RAISED);
    driveTrain.resetEncoders();
   }
 
@@ -184,7 +184,6 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-
     SmartDashboard.putBoolean("Override", sensorOverride);
     SmartDashboard.putBoolean("bottomArmLimitSwitch Value:", limitswitches.isArmDown());
     SmartDashboard.putBoolean("ball Limit Switch Value:", limitswitches.isBallIn());
